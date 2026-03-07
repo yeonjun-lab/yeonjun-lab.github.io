@@ -54,6 +54,9 @@ layout: default
           {% assign topic_label = site.data.navigation_names[page.topic] | default: page.topic %}
           <span class="doc-meta-item">Topic: {{ topic_label }}</span>
         {% endif %}
+        {% if page.doc_type %}
+          <span class="doc-meta-item">Type: {{ page.doc_type }}</span>
+        {% endif %}
         {% if page.tags and page.tags.size > 0 %}
           <span class="doc-meta-item">Tags: {{ page.tags | join: ", " }}</span>
         {% endif %}

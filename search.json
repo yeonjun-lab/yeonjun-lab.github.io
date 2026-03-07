@@ -1,0 +1,27 @@
+---
+layout: null
+permalink: /search.json
+---
+
+[
+  {% assign docs = "" | split: "" %}
+  {% assign docs = docs | concat: site.foundations %}
+  {% assign docs = docs | concat: site.engineering %}
+  {% assign docs = docs | concat: site.ai_systems %}
+  {% assign docs = docs | concat: site.research %}
+  {% assign docs = docs | concat: site.projects %}
+
+  {% for doc in docs %}
+    {
+      "title": {{ doc.title | jsonify }},
+      "url": {{ doc.url | relative_url | jsonify }},
+      "section": {{ doc.section | default: "" | jsonify }},
+      "subcategory": {{ doc.subcategory | default: "" | jsonify }},
+      "topic": {{ doc.topic | default: "" | jsonify }},
+      "doc_type": {{ doc.doc_type | default: "" | jsonify }},
+      "tags": {{ doc.tags | default: empty | jsonify }},
+      "sort_date": {{ doc.sort_date | default: "" | jsonify }},
+      "content": {{ doc.content | markdownify | strip_html | normalize_whitespace | jsonify }}
+    }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+]

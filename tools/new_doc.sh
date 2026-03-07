@@ -2,14 +2,15 @@
 set -euo pipefail
 
 if [ "$#" -lt 2 ]; then
-  echo "Usage: $0 <path> <title> [layout]"
-  echo "Example: $0 _foundations/db/oracle/optimizer/cardinality-estimate-basics.md \"Cardinality Estimate 기초\""
+  echo "Usage: $0 <path> <title> [template]"
+  echo "Example: $0 _foundations/db/oracle/optimizer/ \"Cardinality Estimate Basics\" deep-dive"
   exit 1
 fi
 
 FILE_PATH="$1"
 TITLE="$2"
-LAYOUT="${3:-doc}"
+TEMPLATE_NAME="${3:-concept}"
+LAYOUT="doc"
 
 TODAY="$(TZ=Asia/Seoul date +%F)"
 
@@ -79,7 +80,6 @@ infer_topic() {
   fi
 }
 
-# If path ends with /, auto-generate filename from title.
 if [[ "$FILE_PATH" == */ ]]; then
   SLUG="$(slugify "$TITLE")"
   FILE_PATH="${FILE_PATH}${SLUG}.md"
@@ -92,6 +92,12 @@ NAV_GROUP="$(echo "$NAV_GROUP" | sed 's#///*#/#g')"
 SECTION="$(infer_section "$FILE_PATH")"
 SUBCATEGORY="$(infer_subcategory "$FILE_PATH")"
 TOPIC="$(infer_topic "$FILE_PATH")"
+
+TEMPLATE_FILE="templates/${TEMPLATE_NAME}.md"
+if [ ! -f "$TEMPLATE_FILE" ]; then
+  echo "Template not found: $TEMPLATE_FILE"
+  exit 1
+fi
 
 mkdir -p "$(dirname "$FILE_PATH")"
 
@@ -106,6 +112,7 @@ created_at: $TODAY
 updated_at: $TODAY
 sort_date: $TODAY
 nav_group: $NAV_GROUP
+doc_type: $TEMPLATE_NAME
 EOT
 
 if [ -n "$TOPIC" ]; then
@@ -116,13 +123,8 @@ cat >> "$FILE_PATH" <<'EOT'
 tags: []
 ---
 
-## 1. 왜 이 주제를 공부했는가
-
-## 2. 핵심 개념
-
-## 3. 중요한 포인트
-
-## 4. 실무 관점
 EOT
+
+cat "$TEMPLATE_FILE" >> "$FILE_PATH"
 
 echo "created: $FILE_PATH"

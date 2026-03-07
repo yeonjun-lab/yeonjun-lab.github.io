@@ -29,4 +29,8 @@ cards:
   - title: "Archive"
     url: /archive/
     description: "전체 문서를 한 번에 탐색할 수 있는 아카이브입니다."
+
+  - title: "Search"
+    url: /search/
+    description: "제목, 태그, 주제, 본문 기준으로 전체 문서를 검색합니다."
 ---

@@ -15,10 +15,10 @@ help:
 @echo "  make clean                             - clean generated site"
 @echo "  make validate                          - validate document metadata"
 @echo "  make recent                            - show recently changed docs"
-@echo "  make new DOC_PATH=... TITLE=...        - create a new doc"
+@echo "  make new DOC_PATH=... TITLE=... TEMPLATE=... - create a new doc"
 @echo "  make touch FILE=...                    - update updated_at/sort_date"
 @echo "  make commit FILE=... MSG=...           - touch and commit one doc"
-@echo "  make doc DOC_PATH=... TITLE=... MSG=... - create doc, validate, add, commit"
+@echo "  make doc DOC_PATH=... TITLE=... TEMPLATE=... MSG=... - create doc, validate, add, commit"
 @echo ""
 
 init:
@@ -44,7 +44,7 @@ new:
 echo 'Usage: make new DOC_PATH=_foundations/.../ TITLE="Document Title"'; \
 exit 1; \
 fi
-./tools/new_doc.sh "$(DOC_PATH)" "$(TITLE)"
+./tools/new_doc.sh "$(DOC_PATH)" "$(TITLE)" "$(or $(TEMPLATE),concept)"
 
 touch:
 @if [ -z "$(FILE)" ]; then \
@@ -65,7 +65,7 @@ doc:
 echo 'Usage: make doc DOC_PATH=_foundations/.../ TITLE="Document Title" MSG="commit message"'; \
 exit 1; \
 fi
-./tools/new_doc.sh "$(DOC_PATH)" "$(TITLE)"
+./tools/new_doc.sh "$(DOC_PATH)" "$(TITLE)" "$(or $(TEMPLATE),concept)"
 python3 tools/validate_docs.py
 git add .
 git commit -m "$(MSG)"
