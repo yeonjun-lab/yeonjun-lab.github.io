@@ -155,3 +155,82 @@
 .doc-content {
   line-height: 1.8;
 }
+
+.doc-shell {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+.doc-sidebar {
+  position: relative;
+}
+
+.doc-sidebar-inner {
+  position: sticky;
+  top: 1.5rem;
+  padding: 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  background: #fafafa;
+}
+
+.doc-sidebar-title {
+  margin-bottom: 0.9rem;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.sidebar-tree {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+.sidebar-tree .sidebar-tree {
+  margin-top: 0.35rem;
+  padding-left: 0.9rem;
+  border-left: 1px solid #e5e7eb;
+}
+
+.sidebar-tree-item {
+  margin: 0.2rem 0;
+}
+
+.sidebar-link {
+  display: inline-block;
+  padding: 0.22rem 0;
+  color: #444;
+  text-decoration: none;
+  line-height: 1.5;
+}
+
+.sidebar-link:hover {
+  text-decoration: underline;
+}
+
+.sidebar-link.is-ancestor {
+  color: #222;
+  font-weight: 600;
+}
+
+.sidebar-link.is-current {
+  color: #111;
+  font-weight: 700;
+}
+
+.doc-main {
+  min-width: 0;
+}
+
+@media (max-width: 960px) {
+  .doc-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .doc-sidebar-inner {
+    position: static;
+    top: auto;
+  }
+}

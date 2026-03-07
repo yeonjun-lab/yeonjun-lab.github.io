@@ -1,0 +1,23 @@
+{% assign nodes = include.nodes %}
+{% assign current_url = page.url %}
+
+<ul class="sidebar-tree">
+  {% for node in nodes %}
+    {% assign is_exact = current_url == node.url %}
+    {% assign is_section = current_url contains node.url %}
+    <li class="sidebar-tree-item">
+      <a
+        href="{{ node.url | relative_url }}"
+        class="sidebar-link{% if is_exact %} is-current{% elsif is_section %} is-ancestor{% endif %}"
+      >
+        {{ node.title }}
+      </a>
+
+      {% if node.children %}
+        {% if is_section or is_exact %}
+          {% include sidebar-nav.html nodes=node.children %}
+        {% endif %}
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>

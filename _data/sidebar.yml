@@ -1,0 +1,99 @@
+foundations:
+  - title: "Languages"
+    url: /foundations/languages/
+    children:
+      - title: "C"
+        url: /foundations/languages/c/
+      - title: "C++"
+        url: /foundations/languages/cpp/
+      - title: "Java"
+        url: /foundations/languages/java/
+      - title: "Python"
+        url: /foundations/languages/python/
+        children:
+          - title: "Object Model"
+            url: /foundations/languages/python/object-model/
+      - title: "R"
+        url: /foundations/languages/r/
+      - title: "JavaScript"
+        url: /foundations/languages/javascript/
+        children:
+          - title: "Closure"
+            url: /foundations/languages/javascript/closure/
+
+  - title: "CS"
+    url: /foundations/cs/
+    children:
+      - title: "Operating Systems"
+        url: /foundations/cs/operating-systems/
+      - title: "Network"
+        url: /foundations/cs/network/
+      - title: "Data Structures"
+        url: /foundations/cs/data-structures/
+      - title: "Algorithms"
+        url: /foundations/cs/algorithms/
+
+  - title: "DB"
+    url: /foundations/db/
+    children:
+      - title: "Oracle"
+        url: /foundations/db/oracle/
+        children:
+          - title: "Optimizer"
+            url: /foundations/db/oracle/optimizer/
+          - title: "Execution Plan"
+            url: /foundations/db/oracle/execution-plan/
+      - title: "MySQL"
+        url: /foundations/db/mysql/
+      - title: "PostgreSQL"
+        url: /foundations/db/postgresql/
+
+engineering:
+  - title: "Frontend"
+    url: /engineering/frontend/
+    children:
+      - title: "Browser"
+        url: /engineering/frontend/browser/
+      - title: "ReactJs"
+        url: /engineering/frontend/reactjs/
+        children:
+          - title: "Fiber"
+            url: /engineering/frontend/reactjs/fiber/
+      - title: "NextJs"
+        url: /engineering/frontend/nextjs/
+
+  - title: "Backend"
+    url: /engineering/backend/
+    children:
+      - title: "Spring"
+        url: /engineering/backend/spring/
+      - title: "FastAPI"
+        url: /engineering/backend/fastapi/
+      - title: "Node.js"
+        url: /engineering/backend/nodejs/
+
+ai_systems:
+  - title: "AIOS"
+    url: /ai-systems/aios/
+  - title: "ACOS"
+    url: /ai-systems/acos/
+  - title: "Emotion AI"
+    url: /ai-systems/emotion-ai/
+  - title: "Realtime Inference"
+    url: /ai-systems/realtime-inference/
+
+research:
+  - title: "Papers"
+    url: /research/papers/
+  - title: "Ideas"
+    url: /research/ideas/
+  - title: "Architecture Notes"
+    url: /research/architecture-notes/
+
+projects:
+  - title: "Personal"
+    url: /projects/personal/
+  - title: "Experiments"
+    url: /projects/experiments/
+  - title: "Implementation Logs"
+    url: /projects/implementation-logs/
