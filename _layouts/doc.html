@@ -63,10 +63,21 @@ layout: default
       </div>
     </header>
 
-    <article class="doc-content">
-      {{ content }}
-    </article>
+    <div class="doc-content-wrap">
+      <article class="doc-content" id="doc-content">
+        {{ content }}
+      </article>
+
+      <aside class="doc-toc" aria-label="Table of contents">
+        <div class="doc-toc-inner">
+          <div class="doc-toc-title">On this page</div>
+          <nav id="doc-toc-nav"></nav>
+        </div>
+      </aside>
+    </div>
 
     {% include doc-pagination.html %}
   </main>
 </div>
+
+<script src="{{ '/assets/js/toc.js' | relative_url }}"></script>
