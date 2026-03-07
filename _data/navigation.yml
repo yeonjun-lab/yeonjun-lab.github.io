@@ -1,0 +1,85 @@
+foundations:
+  - name: Languages
+    url: /foundations/languages/
+    children:
+      - name: C
+        url: /foundations/languages/c/
+      - name: C++
+        url: /foundations/languages/cpp/
+      - name: Java
+        url: /foundations/languages/java/
+      - name: Python
+        url: /foundations/languages/python/
+      - name: R
+        url: /foundations/languages/r/
+      - name: JavaScript
+        url: /foundations/languages/javascript/
+
+  - name: CS
+    url: /foundations/cs/
+    children:
+      - name: Operating Systems
+        url: /foundations/cs/operating-systems/
+      - name: Network
+        url: /foundations/cs/network/
+      - name: Data Structures
+        url: /foundations/cs/data-structures/
+      - name: Algorithms
+        url: /foundations/cs/algorithms/
+
+  - name: DB
+    url: /foundations/db/
+    children:
+      - name: Oracle
+        url: /foundations/db/oracle/
+      - name: MySQL
+        url: /foundations/db/mysql/
+      - name: PostgreSQL
+        url: /foundations/db/postgresql/
+
+engineering:
+  - name: Frontend
+    url: /engineering/frontend/
+    children:
+      - name: Browser
+        url: /engineering/frontend/browser/
+      - name: ReactJs
+        url: /engineering/frontend/reactjs/
+      - name: NextJs
+        url: /engineering/frontend/nextjs/
+
+  - name: Backend
+    url: /engineering/backend/
+    children:
+      - name: Spring
+        url: /engineering/backend/spring/
+      - name: FastAPI
+        url: /engineering/backend/fastapi/
+      - name: Node.js
+        url: /engineering/backend/nodejs/
+
+ai_systems:
+  - name: AIOS
+    url: /ai-systems/aios/
+  - name: ACOS
+    url: /ai-systems/acos/
+  - name: Emotion AI
+    url: /ai-systems/emotion-ai/
+  - name: Realtime Inference
+    url: /ai-systems/realtime-inference/
+
+research:
+  - name: Papers
+    url: /research/papers/
+  - name: Ideas
+    url: /research/ideas/
+  - name: Architecture Notes
+    url: /research/architecture-notes/
+
+projects:
+  - name: Personal
+    url: /projects/personal/
+  - name: Experiments
+    url: /projects/experiments/
+  - name: Implementation Logs
+    url: /projects/implementation-logs/

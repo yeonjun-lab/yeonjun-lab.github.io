@@ -1,0 +1,86 @@
+title: "Yeonjun Archive"
+description: "김연준의 기술 학습 아카이브"
+url: "https://yeonjun-lab.github.io"
+baseurl: ""
+
+lang: ko-KR
+timezone: Asia/Seoul
+
+theme: minima
+
+markdown: kramdown
+highlighter: rouge
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+collections:
+  foundations:
+    output: true
+    permalink: /foundations/:path/
+  engineering:
+    output: true
+    permalink: /engineering/:path/
+  ai_systems:
+    output: true
+    permalink: /ai-systems/:path/
+  research:
+    output: true
+    permalink: /research/:path/
+  projects:
+    output: true
+    permalink: /projects/:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: page
+
+  - scope:
+      path: ""
+      type: "foundations"
+    values:
+      layout: page
+
+  - scope:
+      path: ""
+      type: "engineering"
+    values:
+      layout: page
+
+  - scope:
+      path: ""
+      type: "ai_systems"
+    values:
+      layout: page
+
+  - scope:
+      path: ""
+      type: "research"
+    values:
+      layout: page
+
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: page
+
+header_pages:
+  - pages/about.md
+  - pages/archive.md
+  - pages/foundations.md
+  - pages/engineering.md
+  - pages/ai-systems.md
+  - pages/research.md
+  - pages/projects.md
+
+minima:
+  skin: auto
+  social_links:
+    - title: github
+      icon: github
+      url: "https://github.com/yeonjun-lab"
