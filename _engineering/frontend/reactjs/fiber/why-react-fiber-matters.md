@@ -1,4 +1,5 @@
 ---
+nav_group: /engineering/frontend/reactjs/fiber/
 title: "React Fiber를 왜 알아야 하는가"
 permalink: /engineering/frontend/reactjs/fiber/why-react-fiber-matters/
 section: engineering

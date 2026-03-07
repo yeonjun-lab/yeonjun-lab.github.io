@@ -1,4 +1,5 @@
 ---
+nav_group: /foundations/
 title: "CS"
 permalink: /foundations/cs/
 section: foundations

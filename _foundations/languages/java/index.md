@@ -1,4 +1,5 @@
 ---
+nav_group: /foundations/languages/
 title: "Java"
 permalink: /foundations/languages/java/
 section: foundations

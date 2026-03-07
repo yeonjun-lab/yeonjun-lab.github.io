@@ -1,4 +1,5 @@
 ---
+nav_group: /foundations/cs/
 title: "Data Structures"
 permalink: /foundations/cs/data-structures/
 section: foundations

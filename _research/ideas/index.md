@@ -1,4 +1,5 @@
 ---
+nav_group: /research/
 title: "Ideas"
 permalink: /research/ideas/
 section: research

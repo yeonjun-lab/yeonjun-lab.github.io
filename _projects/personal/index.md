@@ -1,4 +1,5 @@
 ---
+nav_group: /projects/
 title: "Personal"
 permalink: /projects/personal/
 section: projects

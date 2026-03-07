@@ -1,4 +1,5 @@
 ---
+nav_group: /engineering/
 layout: category-hub
 title: "Frontend"
 permalink: /engineering/frontend/

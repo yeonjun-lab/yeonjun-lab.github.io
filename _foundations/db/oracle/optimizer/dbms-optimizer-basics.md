@@ -1,4 +1,5 @@
 ---
+nav_group: /foundations/db/oracle/optimizer/
 title: "DBMS 옵티마이저란 무엇인가"
 permalink: /foundations/db/oracle/optimizer/dbms-optimizer-basics/
 section: foundations

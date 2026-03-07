@@ -1,4 +1,5 @@
 ---
+nav_group: /ai-systems/
 title: "Emotion AI"
 permalink: /ai-systems/emotion-ai/
 section: ai_systems

@@ -1,4 +1,5 @@
 ---
+nav_group: /foundations/
 layout: category-hub
 title: "DB"
 permalink: /foundations/db/

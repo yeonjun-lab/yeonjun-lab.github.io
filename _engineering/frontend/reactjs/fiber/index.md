@@ -1,4 +1,5 @@
 ---
+nav_group: /engineering/frontend/reactjs/
 title: "Fiber"
 permalink: /engineering/frontend/reactjs/fiber/
 section: engineering

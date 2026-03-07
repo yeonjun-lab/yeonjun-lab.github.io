@@ -1,4 +1,5 @@
 ---
+nav_group: /projects/
 title: "Implementation Logs"
 permalink: /projects/implementation-logs/
 section: projects

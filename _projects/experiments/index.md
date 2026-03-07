@@ -1,4 +1,5 @@
 ---
+nav_group: /projects/
 title: "Experiments"
 permalink: /projects/experiments/
 section: projects

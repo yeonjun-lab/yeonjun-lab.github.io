@@ -1,4 +1,5 @@
 ---
+nav_group: /engineering/frontend/
 title: "Browser"
 permalink: /engineering/frontend/browser/
 section: engineering

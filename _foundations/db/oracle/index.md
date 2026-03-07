@@ -1,4 +1,5 @@
 ---
+nav_group: /foundations/db/
 layout: category-hub
 title: "Oracle"
 permalink: /foundations/db/oracle/

@@ -1,4 +1,5 @@
 ---
+nav_group: /research/
 title: "Architecture Notes"
 permalink: /research/architecture-notes/
 section: research

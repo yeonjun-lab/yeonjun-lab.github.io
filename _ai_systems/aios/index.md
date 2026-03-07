@@ -1,4 +1,5 @@
 ---
+nav_group: /ai-systems/
 title: "AIOS"
 permalink: /ai-systems/aios/
 section: ai_systems

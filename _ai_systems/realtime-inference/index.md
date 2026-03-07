@@ -1,4 +1,5 @@
 ---
+nav_group: /ai-systems/
 title: "Realtime Inference"
 permalink: /ai-systems/realtime-inference/
 section: ai_systems

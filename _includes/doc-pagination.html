@@ -1,0 +1,48 @@
+{% assign collection_docs = site[page.collection] | default: empty %}
+{% assign group_docs = collection_docs | where: "nav_group", page.nav_group | sort: "sort_date" %}
+
+{% assign current_index = -1 %}
+{% for doc in group_docs %}
+  {% if doc.url == page.url %}
+    {% assign current_index = forloop.index0 %}
+  {% endif %}
+{% endfor %}
+
+{% assign prev_index = current_index | minus: 1 %}
+{% assign next_index = current_index | plus: 1 %}
+
+{% assign prev_doc = nil %}
+{% assign next_doc = nil %}
+
+{% for doc in group_docs %}
+  {% if forloop.index0 == prev_index %}
+    {% assign prev_doc = doc %}
+  {% endif %}
+  {% if forloop.index0 == next_index %}
+    {% assign next_doc = doc %}
+  {% endif %}
+{% endfor %}
+
+{% if prev_doc or next_doc %}
+<nav class="doc-pagination" aria-label="Document pagination">
+  <div class="doc-pagination-grid">
+    <div class="doc-pagination-item prev">
+      {% if prev_doc %}
+        <a href="{{ prev_doc.url | relative_url }}">
+          <span class="doc-pagination-label">이전</span>
+          <strong>{{ prev_doc.title }}</strong>
+        </a>
+      {% endif %}
+    </div>
+
+    <div class="doc-pagination-item next">
+      {% if next_doc %}
+        <a href="{{ next_doc.url | relative_url }}">
+          <span class="doc-pagination-label">다음</span>
+          <strong>{{ next_doc.title }}</strong>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</nav>
+{% endif %}

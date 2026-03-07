@@ -1,4 +1,5 @@
 ---
+nav_group: /foundations/db/
 title: "MySQL"
 permalink: /foundations/db/mysql/
 section: foundations

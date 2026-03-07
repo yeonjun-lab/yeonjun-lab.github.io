@@ -21,6 +21,9 @@ PERMALINK="/$(echo "$FILE_PATH" \
   | sed 's#/index\.md$#/#' \
   | sed 's#\.md$#/#')"
 
+NAV_GROUP="$(dirname "$PERMALINK")/"
+NAV_GROUP="$(echo "$NAV_GROUP" | sed 's#///*#/#g')"
+
 mkdir -p "$(dirname "$FILE_PATH")"
 
 cat > "$FILE_PATH" <<EOT
@@ -31,6 +34,7 @@ layout: $LAYOUT
 created_at: $TODAY
 updated_at: $TODAY
 sort_date: $TODAY
+nav_group: $NAV_GROUP
 ---
 
 ## 1. 왜 이 주제를 공부했는가

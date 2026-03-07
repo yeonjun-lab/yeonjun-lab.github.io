@@ -1,4 +1,5 @@
 ---
+nav_group: /engineering/frontend/
 title: "NextJs"
 permalink: /engineering/frontend/nextjs/
 section: engineering

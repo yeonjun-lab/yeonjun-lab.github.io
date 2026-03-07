@@ -1,4 +1,5 @@
 ---
+nav_group: /foundations/languages/
 title: "JavaScript"
 permalink: /foundations/languages/javascript/
 section: foundations

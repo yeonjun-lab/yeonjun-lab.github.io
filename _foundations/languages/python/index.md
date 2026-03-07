@@ -1,4 +1,5 @@
 ---
+nav_group: /foundations/languages/
 layout: category-hub
 title: "Python"
 permalink: /foundations/languages/python/

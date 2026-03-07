@@ -1,4 +1,5 @@
 ---
+nav_group: /foundations/cs/
 title: "Operating Systems"
 permalink: /foundations/cs/operating-systems/
 section: foundations

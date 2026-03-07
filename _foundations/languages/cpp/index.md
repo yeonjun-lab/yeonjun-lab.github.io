@@ -1,4 +1,5 @@
 ---
+nav_group: /foundations/languages/
 title: "C++"
 permalink: /foundations/languages/cpp/
 section: foundations
