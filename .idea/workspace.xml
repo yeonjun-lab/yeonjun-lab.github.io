@@ -5,44 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9101f5f1-46f5-4127-a6ed-47879746a7f4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PROJECT_CONTEXT.md" beforeDir="false" afterPath="$PROJECT_DIR$/PROJECT_CONTEXT.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_ai_systems/acos/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_ai_systems/acos/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_ai_systems/aios/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_ai_systems/aios/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_ai_systems/emotion-ai/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_ai_systems/emotion-ai/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_ai_systems/realtime-inference/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_ai_systems/realtime-inference/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_engineering/backend/fastapi/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_engineering/backend/fastapi/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_engineering/backend/nodejs/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_engineering/backend/nodejs/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_engineering/backend/spring/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_engineering/backend/spring/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_engineering/frontend/browser/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_engineering/frontend/browser/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_engineering/frontend/nextjs/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_engineering/frontend/nextjs/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_engineering/frontend/reactjs/fiber/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_engineering/frontend/reactjs/fiber/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_engineering/frontend/reactjs/fiber/why-react-fiber-matters.md" beforeDir="false" afterPath="$PROJECT_DIR$/_engineering/frontend/reactjs/fiber/why-react-fiber-matters.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/cs/algorithms/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/cs/algorithms/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/cs/data-structures/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/cs/data-structures/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/cs/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/cs/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/cs/network/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/cs/network/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/cs/operating-systems/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/cs/operating-systems/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/db/mysql/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/db/mysql/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/db/oracle/execution-plan/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/db/oracle/execution-plan/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/db/oracle/optimizer/dbms-optimizer-basics.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/db/oracle/optimizer/dbms-optimizer-basics.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/db/oracle/optimizer/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/db/oracle/optimizer/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/db/postgresql/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/db/postgresql/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/cpp/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/cpp/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/java/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/java/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/javascript/closure/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/javascript/closure/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/javascript/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/javascript/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/python/object-model/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/python/object-model/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/python/object-model/mutable-immutable.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/python/object-model/mutable-immutable.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/r/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/r/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_projects/experiments/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_projects/experiments/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_projects/implementation-logs/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_projects/implementation-logs/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_projects/personal/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_projects/personal/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_research/architecture-notes/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_research/architecture-notes/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_research/ideas/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_research/ideas/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_research/papers/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_research/papers/index.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/repo_structure.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/css/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/style.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -92,7 +56,7 @@
       <option name="presentableId" value="Default" />
       <updated>1772890093841</updated>
       <workItem from="1772890094922" duration="1274000" />
-      <workItem from="1772891397988" duration="1961000" />
+      <workItem from="1772891397988" duration="3294000" />
     </task>
     <servers />
   </component>

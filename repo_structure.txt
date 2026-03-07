@@ -1,0 +1,165 @@
+yeonjun-lab.github.io/
+├─ Gemfile
+├─ Gemfile.lock
+├─ Makefile
+├─ _config.yml
+├─ index.md
+├─ README.md
+├─ 404.html
+├─ PROJECT_CONTEXT.md
+├─ CURRENT_STATUS.md
+├─ OPERATIONS.md
+├─ HANDOFF.md
+├─ CHANGELOG.md
+│
+├─ _data/
+│  ├─ navigation.yml
+│  ├─ navigation_names.yml
+│  └─ sidebar.yml
+│
+├─ _includes/
+│  ├─ sidebar-nav.html
+│  ├─ doc-pagination.html
+│  ├─ related-docs.html
+│  └─ footer-custom.html
+│
+├─ _layouts/
+│  ├─ default.html
+│  ├─ home.html
+│  ├─ section-hub.html
+│  ├─ category-hub.html
+│  └─ doc.html
+│
+├─ assets/
+│  ├─ css/
+│  │  └─ style.scss
+│  └─ js/
+│     ├─ search.js
+│     ├─ tags.js
+│     ├─ topics.js
+│     └─ toc.js
+│
+├─ pages/
+│  ├─ about.md
+│  ├─ writing-guide.md
+│  ├─ archive.md
+│  ├─ search.md
+│  ├─ tags.md
+│  ├─ topics.md
+│  ├─ foundations.md
+│  ├─ engineering.md
+│  ├─ ai-systems.md
+│  ├─ research.md
+│  └─ projects.md
+│
+├─ _foundations/
+│  ├─ languages/
+│  │  ├─ index.md
+│  │  ├─ c/
+│  │  │  └─ index.md
+│  │  ├─ cpp/
+│  │  │  └─ index.md
+│  │  ├─ java/
+│  │  │  └─ index.md
+│  │  ├─ python/
+│  │  │  ├─ index.md
+│  │  │  └─ object-model/
+│  │  │     ├─ index.md
+│  │  │     └─ mutable-immutable.md
+│  │  ├─ r/
+│  │  │  └─ index.md
+│  │  └─ javascript/
+│  │     ├─ index.md
+│  │     └─ closure/
+│  │        └─ index.md
+│  │
+│  ├─ cs/
+│  │  ├─ index.md
+│  │  ├─ operating-systems/
+│  │  │  └─ index.md
+│  │  ├─ network/
+│  │  │  └─ index.md
+│  │  ├─ data-structures/
+│  │  │  └─ index.md
+│  │  └─ algorithms/
+│  │     └─ index.md
+│  │
+│  └─ db/
+│     ├─ index.md
+│     ├─ oracle/
+│     │  ├─ index.md
+│     │  ├─ optimizer/
+│     │  │  ├─ index.md
+│     │  │  └─ dbms-optimizer-basics.md
+│     │  └─ execution-plan/
+│     │     └─ index.md
+│     ├─ mysql/
+│     │  └─ index.md
+│     └─ postgresql/
+│        └─ index.md
+│
+├─ _engineering/
+│  ├─ frontend/
+│  │  ├─ index.md
+│  │  ├─ browser/
+│  │  │  └─ index.md
+│  │  ├─ reactjs/
+│  │  │  ├─ index.md
+│  │  │  └─ fiber/
+│  │  │     ├─ index.md
+│  │  │     └─ why-react-fiber-matters.md
+│  │  └─ nextjs/
+│  │     └─ index.md
+│  │
+│  └─ backend/
+│     ├─ index.md
+│     ├─ spring/
+│     │  └─ index.md
+│     ├─ fastapi/
+│     │  └─ index.md
+│     └─ nodejs/
+│        └─ index.md
+│
+├─ _ai_systems/
+│  ├─ aios/
+│  │  └─ index.md
+│  ├─ acos/
+│  │  └─ index.md
+│  ├─ emotion-ai/
+│  │  └─ index.md
+│  └─ realtime-inference/
+│     └─ index.md
+│
+├─ _research/
+│  ├─ papers/
+│  │  └─ index.md
+│  ├─ ideas/
+│  │  └─ index.md
+│  └─ architecture-notes/
+│     └─ index.md
+│
+├─ _projects/
+│  ├─ personal/
+│  │  └─ index.md
+│  ├─ experiments/
+│  │  └─ index.md
+│  └─ implementation-logs/
+│     └─ index.md
+│
+├─ tools/
+│  ├─ new_doc.sh
+│  ├─ touch_doc.sh
+│  ├─ doc_commit.sh
+│  ├─ prepublish.sh
+│  ├─ publish.sh
+│  ├─ validate_docs.py
+│  └─ validate_docs_strict.py
+│
+├─ templates/
+│  ├─ concept.md
+│  ├─ deep-dive.md
+│  ├─ troubleshooting.md
+│  ├─ project-log.md
+│  └─ research-note.md
+│
+└─ _site/   # build 결과물
