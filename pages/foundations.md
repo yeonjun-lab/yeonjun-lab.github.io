@@ -3,6 +3,8 @@ layout: section-hub
 title: "Foundations"
 permalink: /foundations/
 description: "기술의 기반 원리를 정리하는 영역입니다."
+collection_name: foundations
+latest_limit: 6
 
 cards:
   - title: "Languages"

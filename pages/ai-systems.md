@@ -3,6 +3,8 @@ layout: section-hub
 title: "AI Systems"
 permalink: /ai-systems/
 description: "AIOS, ACOS, 감정 인식, 실시간 추론 시스템을 정리하는 영역입니다."
+collection_name: ai_systems
+latest_limit: 6
 
 cards:
   - title: "AIOS"

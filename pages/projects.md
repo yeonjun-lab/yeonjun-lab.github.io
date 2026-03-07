@@ -3,6 +3,8 @@ layout: section-hub
 title: "Projects"
 permalink: /projects/
 description: "개인 프로젝트, 실험 기록, 구현 로그를 정리하는 영역입니다."
+collection_name: projects
+latest_limit: 6
 
 cards:
   - title: "Personal"

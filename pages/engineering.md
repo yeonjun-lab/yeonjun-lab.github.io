@@ -3,6 +3,8 @@ layout: section-hub
 title: "Engineering"
 permalink: /engineering/
 description: "실제 시스템 구현과 프레임워크, 아키텍처를 정리하는 영역입니다."
+collection_name: engineering
+latest_limit: 6
 
 cards:
   - title: "Frontend"
