@@ -33,4 +33,12 @@ cards:
   - title: "Search"
     url: /search/
     description: "제목, 태그, 주제, 본문 기준으로 전체 문서를 검색합니다."
+
+  - title: "Tags"
+    url: /tags/
+    description: "태그별로 문서를 모아보고 주제 축으로 탐색합니다."
+
+  - title: "Topics"
+    url: /topics/
+    description: "같은 시리즈와 같은 학습 축 문서를 topic 기준으로 모아봅니다."
 ---

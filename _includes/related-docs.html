@@ -1,0 +1,59 @@
+{% assign all_docs = site[page.collection] | where_exp: "item", "item.url != page.url" %}
+{% assign same_topic_docs = all_docs | where: "topic", page.topic | sort: "sort_date" | reverse %}
+{% assign same_subcategory_docs = all_docs | where: "subcategory", page.subcategory | sort: "sort_date" | reverse %}
+
+{% assign rendered = 0 %}
+{% assign rendered_urls = "|" %}
+
+<div class="related-docs">
+  <h2>Related Documents</h2>
+  <div class="related-docs-grid">
+
+    {% for doc in same_topic_docs %}
+      {% if rendered < 4 %}
+        {% assign key = "|" | append: doc.url | append: "|" %}
+        {% unless rendered_urls contains key %}
+          <article class="related-doc-card">
+            <a href="{{ doc.url | relative_url }}">
+              <div class="related-doc-card-body">
+                <h3>{{ doc.title }}</h3>
+                <p>
+                  {% if doc.topic %}{{ doc.topic | replace: "-", " " }}{% endif %}
+                  {% if doc.doc_type %} · {{ doc.doc_type }}{% endif %}
+                </p>
+              </div>
+            </a>
+          </article>
+          {% assign rendered_urls = rendered_urls | append: doc.url | append: "|" %}
+          {% assign rendered = rendered | plus: 1 %}
+        {% endunless %}
+      {% endif %}
+    {% endfor %}
+
+    {% for doc in same_subcategory_docs %}
+      {% if rendered < 4 %}
+        {% assign key = "|" | append: doc.url | append: "|" %}
+        {% unless rendered_urls contains key %}
+          <article class="related-doc-card">
+            <a href="{{ doc.url | relative_url }}">
+              <div class="related-doc-card-body">
+                <h3>{{ doc.title }}</h3>
+                <p>
+                  {% if doc.subcategory %}{{ doc.subcategory | replace: "-", " " }}{% endif %}
+                  {% if doc.doc_type %} · {{ doc.doc_type }}{% endif %}
+                </p>
+              </div>
+            </a>
+          </article>
+          {% assign rendered_urls = rendered_urls | append: doc.url | append: "|" %}
+          {% assign rendered = rendered | plus: 1 %}
+        {% endunless %}
+      {% endif %}
+    {% endfor %}
+
+    {% if rendered == 0 %}
+      <div class="related-docs-empty">관련 문서가 아직 없습니다.</div>
+    {% endif %}
+
+  </div>
+</div>

@@ -73,6 +73,8 @@ header_pages:
   - pages/about.md
   - pages/archive.md
   - pages/search.md
+  - pages/tags.md
+  - pages/topics.md
   - pages/foundations.md
   - pages/engineering.md
   - pages/ai-systems.md
