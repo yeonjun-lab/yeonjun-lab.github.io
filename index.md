@@ -3,7 +3,6 @@ layout: home
 title: "Home"
 hero_title: "Yeonjun Archive"
 hero_description: "기술의 기반 원리, 실제 구현 구조, AI 시스템 설계, 연구 노트와 프로젝트를 축적하는 개인 기술 아카이브입니다."
-show_recent: true
 
 cards:
   - title: "Foundations"
@@ -26,19 +25,7 @@ cards:
     url: /projects/
     description: "개인 프로젝트, 실험, 구현 로그를 축적합니다."
 
-  - title: "Archive"
-    url: /archive/
-    description: "전체 문서를 한 번에 탐색할 수 있는 아카이브입니다."
-
   - title: "Search"
     url: /search/
     description: "제목, 태그, 주제, 본문 기준으로 전체 문서를 검색합니다."
-
-  - title: "Tags"
-    url: /tags/
-    description: "태그별로 문서를 모아보고 주제 축으로 탐색합니다."
-
-  - title: "Topics"
-    url: /topics/
-    description: "같은 시리즈와 같은 학습 축 문서를 topic 기준으로 모아봅니다."
 ---
