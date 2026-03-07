@@ -1,0 +1,41 @@
+---
+layout: default
+---
+
+<div class="home-hero">
+  <h1>{{ page.hero_title | default: site.title }}</h1>
+  <p>{{ page.hero_description }}</p>
+</div>
+
+<div class="section-grid">
+  {% for card in page.cards %}
+    <a class="section-card" href="{{ card.url | relative_url }}">
+      <div class="section-card-body">
+        <h2>{{ card.title }}</h2>
+        <p>{{ card.description }}</p>
+      </div>
+    </a>
+  {% endfor %}
+</div>
+
+{% if page.show_recent %}
+  <div class="recent-section">
+    <h2>Recent Documents</h2>
+
+    {% assign recent_docs = "" | split: "" %}
+    {% assign recent_docs = recent_docs | concat: site.foundations %}
+    {% assign recent_docs = recent_docs | concat: site.engineering %}
+    {% assign recent_docs = recent_docs | concat: site.ai_systems %}
+    {% assign recent_docs = recent_docs | concat: site.research %}
+    {% assign recent_docs = recent_docs | concat: site.projects %}
+    {% assign recent_docs = recent_docs | sort: "sort_date" | reverse %}
+
+    <ul class="recent-list">
+      {% for doc in recent_docs limit: 12 %}
+        <li>
+          <a href="{{ doc.url | relative_url }}">{{ doc.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}

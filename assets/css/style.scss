@@ -1,0 +1,157 @@
+---
+---
+
+@import "minima";
+
+.home-hero {
+  margin: 2rem 0 2.5rem 0;
+  padding: 1.5rem 1.25rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  background: #fafafa;
+}
+
+.home-hero h1 {
+  margin-bottom: 0.75rem;
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+.home-hero p {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #444;
+}
+
+.section-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 2rem 0 2.5rem 0;
+}
+
+.section-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  background: #fff;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+}
+
+.section-card:hover {
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border-color: #d1d5db;
+}
+
+.section-card-body {
+  padding: 1.25rem;
+}
+
+.section-card h2 {
+  margin: 0 0 0.65rem 0;
+  font-size: 1.2rem;
+}
+
+.section-card p {
+  margin: 0;
+  color: #555;
+  line-height: 1.6;
+}
+
+.recent-section {
+  margin-top: 2.5rem;
+}
+
+.recent-section h2 {
+  margin-bottom: 1rem;
+}
+
+.recent-list {
+  margin-left: 1rem;
+}
+
+.recent-list li {
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .section-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-hero h1 {
+    font-size: 1.6rem;
+  }
+}
+
+.hub-hero {
+  margin: 1.5rem 0 2rem 0;
+}
+
+.hub-hero h1 {
+  margin-bottom: 0.6rem;
+}
+
+.hub-hero p {
+  margin: 0;
+  color: #555;
+  line-height: 1.7;
+}
+
+.hub-extra {
+  margin-top: 2rem;
+}
+
+.breadcrumb {
+  margin: 0.5rem 0 1rem 0;
+  font-size: 0.95rem;
+  color: #666;
+}
+
+.breadcrumb a {
+  color: #666;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb-sep {
+  margin: 0 0.4rem;
+  color: #999;
+}
+
+.doc-header {
+  margin: 0 0 2rem 0;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.doc-header h1 {
+  margin-bottom: 0.75rem;
+}
+
+.doc-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+}
+
+.doc-meta-item {
+  display: inline-block;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  background: #f3f4f6;
+  color: #444;
+  font-size: 0.9rem;
+}
+
+.doc-content {
+  line-height: 1.8;
+}

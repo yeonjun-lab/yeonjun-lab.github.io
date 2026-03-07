@@ -4,6 +4,9 @@ permalink: /engineering/backend/spring/
 section: engineering
 subcategory: backend
 topic: spring
+created_at: 2026-03-07
+updated_at: 2026-03-07
+sort_date: 2026-03-07
 ---
 
 ## Backend > Spring

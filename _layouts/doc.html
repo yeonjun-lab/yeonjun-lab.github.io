@@ -1,0 +1,49 @@
+---
+layout: default
+---
+
+{% assign crumbs = page.url | split: "/" %}
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="{{ '/' | relative_url }}">{{ site.data.navigation_names.home }}</a>
+  {% assign path_acc = "" %}
+  {% for crumb in crumbs %}
+    {% unless crumb == "" %}
+      {% assign path_acc = path_acc | append: "/" | append: crumb %}
+      {% assign crumb_label = site.data.navigation_names[crumb] | default: crumb | replace: "-", " " | capitalize %}
+      {% unless forloop.last %}
+        <span class="breadcrumb-sep">/</span>
+        <a href="{{ path_acc | append: '/' | relative_url }}">{{ crumb_label }}</a>
+      {% else %}
+        <span class="breadcrumb-sep">/</span>
+        <span>{{ page.title }}</span>
+      {% endunless %}
+    {% endunless %}
+  {% endfor %}
+</nav>
+
+<header class="doc-header">
+  <h1>{{ page.title }}</h1>
+
+  <div class="doc-meta">
+    {% if page.section %}
+      {% assign section_label = site.data.navigation_names[page.section] | default: page.section %}
+      <span class="doc-meta-item">Section: {{ section_label }}</span>
+    {% endif %}
+    {% if page.subcategory %}
+      {% assign category_label = site.data.navigation_names[page.subcategory] | default: page.subcategory %}
+      <span class="doc-meta-item">Category: {{ category_label }}</span>
+    {% endif %}
+    {% if page.topic %}
+      {% assign topic_label = site.data.navigation_names[page.topic] | default: page.topic %}
+      <span class="doc-meta-item">Topic: {{ topic_label }}</span>
+    {% endif %}
+    {% if page.tags and page.tags.size > 0 %}
+      <span class="doc-meta-item">Tags: {{ page.tags | join: ", " }}</span>
+    {% endif %}
+  </div>
+</header>
+
+<article class="doc-content">
+  {{ content }}
+</article>

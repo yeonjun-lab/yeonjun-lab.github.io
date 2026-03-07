@@ -3,6 +3,9 @@ title: "Emotion AI"
 permalink: /ai-systems/emotion-ai/
 section: ai_systems
 topic: emotion-ai
+created_at: 2026-03-07
+updated_at: 2026-03-07
+sort_date: 2026-03-07
 ---
 
 ## Emotion AI

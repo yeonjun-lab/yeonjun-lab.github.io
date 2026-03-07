@@ -1,17 +1,20 @@
 ---
+layout: section-hub
 title: "Engineering"
 permalink: /engineering/
+description: "실제 시스템 구현과 프레임워크, 아키텍처를 정리하는 영역입니다."
+
+cards:
+  - title: "Frontend"
+    url: /engineering/frontend/
+    description: "Browser, ReactJs, NextJs 등 사용자 인터페이스와 클라이언트 구조를 정리합니다."
+
+  - title: "Backend"
+    url: /engineering/backend/
+    description: "Spring, FastAPI, Node.js, API 구조, 서버 아키텍처를 정리합니다."
 ---
 
-## Engineering
+## 포함 범위
 
-실제 시스템 구현과 프레임워크, 아키텍처를 정리하는 아카이브입니다.
-
-{% for item in site.data.navigation.engineering %}
-- [{{ item.name }}]({{ item.url | relative_url }})
-  {% if item.children %}
-  {% for child in item.children %}
-  - [{{ child.name }}]({{ child.url | relative_url }})
-  {% endfor %}
-  {% endif %}
-{% endfor %}
+- Frontend: 브라우저, 렌더링, UI 프레임워크
+- Backend: 서버, 프레임워크, 애플리케이션 구조, API

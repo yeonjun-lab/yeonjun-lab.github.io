@@ -3,6 +3,9 @@ title: "ACOS"
 permalink: /ai-systems/acos/
 section: ai_systems
 topic: acos
+created_at: 2026-03-07
+updated_at: 2026-03-07
+sort_date: 2026-03-07
 ---
 
 ## ACOS

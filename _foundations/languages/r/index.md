@@ -4,6 +4,9 @@ permalink: /foundations/languages/r/
 section: foundations
 subcategory: languages
 topic: r
+created_at: 2026-03-07
+updated_at: 2026-03-07
+sort_date: 2026-03-07
 ---
 
 ## R

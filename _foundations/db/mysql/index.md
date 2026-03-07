@@ -4,6 +4,9 @@ permalink: /foundations/db/mysql/
 section: foundations
 subcategory: db
 topic: mysql
+created_at: 2026-03-07
+updated_at: 2026-03-07
+sort_date: 2026-03-07
 ---
 
 ## MySQL

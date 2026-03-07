@@ -5,6 +5,9 @@ section: foundations
 subcategory: languages
 topic: python-object-model
 tags: [python, mutable, immutable, object-model]
+created_at: 2026-03-07
+updated_at: 2026-03-07
+sort_date: 2026-03-07
 ---
 
 ## 1. 왜 이 주제를 공부했는가

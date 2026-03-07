@@ -43,31 +43,31 @@ defaults:
       path: ""
       type: "foundations"
     values:
-      layout: page
+      layout: doc
 
   - scope:
       path: ""
       type: "engineering"
     values:
-      layout: page
+      layout: doc
 
   - scope:
       path: ""
       type: "ai_systems"
     values:
-      layout: page
+      layout: doc
 
   - scope:
       path: ""
       type: "research"
     values:
-      layout: page
+      layout: doc
 
   - scope:
       path: ""
       type: "projects"
     values:
-      layout: page
+      layout: doc
 
 header_pages:
   - pages/about.md

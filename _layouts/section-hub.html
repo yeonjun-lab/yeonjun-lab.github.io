@@ -1,0 +1,27 @@
+---
+layout: default
+---
+
+<div class="hub-hero">
+  <h1>{{ page.title }}</h1>
+  {% if page.description %}
+    <p>{{ page.description }}</p>
+  {% endif %}
+</div>
+
+<div class="section-grid">
+  {% for card in page.cards %}
+    <a class="section-card" href="{{ card.url | relative_url }}">
+      <div class="section-card-body">
+        <h2>{{ card.title }}</h2>
+        <p>{{ card.description }}</p>
+      </div>
+    </a>
+  {% endfor %}
+</div>
+
+{% if content and content != "" %}
+<div class="hub-extra">
+  {{ content }}
+</div>
+{% endif %}

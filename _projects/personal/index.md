@@ -3,6 +3,9 @@ title: "Personal"
 permalink: /projects/personal/
 section: projects
 topic: personal
+created_at: 2026-03-07
+updated_at: 2026-03-07
+sort_date: 2026-03-07
 ---
 
 ## Personal Projects

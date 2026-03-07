@@ -5,6 +5,9 @@ section: foundations
 subcategory: db
 topic: oracle-optimizer
 tags: [optimizer, execution-plan, oracle, mysql]
+created_at: 2026-03-07
+updated_at: 2026-03-07
+sort_date: 2026-03-07
 ---
 
 ## 1. 왜 중요한가

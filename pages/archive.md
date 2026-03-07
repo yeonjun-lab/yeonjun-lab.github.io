@@ -1,31 +1,37 @@
 ---
 title: "Archive"
 permalink: /archive/
+layout: page
 ---
 
 ## Archive
 
 ### Foundations
-{% for doc in site.foundations %}
+{% assign docs = site.foundations | sort: "sort_date" | reverse %}
+{% for doc in docs %}
 - [{{ doc.title }}]({{ doc.url | relative_url }})
 {% endfor %}
 
 ### Engineering
-{% for doc in site.engineering %}
+{% assign docs = site.engineering | sort: "sort_date" | reverse %}
+{% for doc in docs %}
 - [{{ doc.title }}]({{ doc.url | relative_url }})
 {% endfor %}
 
 ### AI Systems
-{% for doc in site.ai_systems %}
+{% assign docs = site.ai_systems | sort: "sort_date" | reverse %}
+{% for doc in docs %}
 - [{{ doc.title }}]({{ doc.url | relative_url }})
 {% endfor %}
 
 ### Research
-{% for doc in site.research %}
+{% assign docs = site.research | sort: "sort_date" | reverse %}
+{% for doc in docs %}
 - [{{ doc.title }}]({{ doc.url | relative_url }})
 {% endfor %}
 
 ### Projects
-{% for doc in site.projects %}
+{% assign docs = site.projects | sort: "sort_date" | reverse %}
+{% for doc in docs %}
 - [{{ doc.title }}]({{ doc.url | relative_url }})
 {% endfor %}

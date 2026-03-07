@@ -4,6 +4,9 @@ permalink: /foundations/cs/data-structures/
 section: foundations
 subcategory: cs
 topic: data-structures
+created_at: 2026-03-07
+updated_at: 2026-03-07
+sort_date: 2026-03-07
 ---
 
 ## Data Structures
