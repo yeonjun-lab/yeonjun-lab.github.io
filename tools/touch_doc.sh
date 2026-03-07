@@ -36,3 +36,5 @@ for f in files:
     p.write_text(text)
     print(f"updated: {p}")
 PY
+
+git add "$@" 2>/dev/null || true
