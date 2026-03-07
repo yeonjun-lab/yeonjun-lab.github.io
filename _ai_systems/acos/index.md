@@ -1,4 +1,5 @@
 ---
+layout: category-hub
 nav_group: /ai-systems/
 title: "ACOS"
 permalink: /ai-systems/acos/

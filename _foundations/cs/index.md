@@ -1,4 +1,5 @@
 ---
+layout: category-hub
 nav_group: /foundations/
 title: "CS"
 permalink: /foundations/cs/

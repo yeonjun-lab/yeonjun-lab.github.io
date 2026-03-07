@@ -1,4 +1,5 @@
 ---
+layout: category-hub
 nav_group: /foundations/db/oracle/
 title: "Execution Plan"
 permalink: /foundations/db/oracle/execution-plan/

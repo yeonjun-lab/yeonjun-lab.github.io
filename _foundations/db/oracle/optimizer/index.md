@@ -1,4 +1,5 @@
 ---
+layout: category-hub
 nav_group: /foundations/db/oracle/
 title: "Optimizer"
 permalink: /foundations/db/oracle/optimizer/

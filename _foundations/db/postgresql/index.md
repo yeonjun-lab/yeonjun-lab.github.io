@@ -1,4 +1,5 @@
 ---
+layout: category-hub
 nav_group: /foundations/db/
 title: "PostgreSQL"
 permalink: /foundations/db/postgresql/

@@ -1,4 +1,5 @@
 ---
+layout: category-hub
 nav_group: /projects/
 title: "Experiments"
 permalink: /projects/experiments/

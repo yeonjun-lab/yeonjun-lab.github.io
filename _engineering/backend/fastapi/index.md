@@ -1,4 +1,5 @@
 ---
+layout: category-hub
 nav_group: /engineering/backend/
 title: "FastAPI"
 permalink: /engineering/backend/fastapi/

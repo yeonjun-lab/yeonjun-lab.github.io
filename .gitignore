@@ -5,3 +5,15 @@ _site/
 .bundle/
 vendor/bundle/
 .DS_Store
+
+#gitignore
+.gitignore
+
+#Chat File
+CHANGELOG.md
+CURRENT_STATUS.md
+OPERATIONS.md
+HANDOFF.md
+
+#Gempfile
+Gemfile

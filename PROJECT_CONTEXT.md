@@ -186,16 +186,17 @@ GitHub Pages + Jekyll 기반 문서형 기술 아카이브
 ## Long-Term Direction
 이 프로젝트는 앞으로 다음 기술축을 중심으로 성장한다.
 
-- Oracle Optimizer / Execution Plan
-- Python Object Model
-- JavaScript Runtime / Language Internals
-- React Fiber / Rendering / Scheduling
-- AIOS / ACOS
-- Emotion AI / Personalized Emotion Modeling
-- Research Notes / Architecture Expansion- Python Object Model
-- JavaScript Runtime / Language Internals
-- React Fiber / Rendering / Scheduling
+- Oracle
+- MySql
+- PostgreSql
+- R
+- C
+- C++
+- Python
+- JavaScript
+- ReactJs
+- NextJs
+- LLM / DeepLearning
 - AIOS / ACOS
 - Emotion AI / Personalized Emotion Modeling
 - Research Notes / Architecture Expansion
-

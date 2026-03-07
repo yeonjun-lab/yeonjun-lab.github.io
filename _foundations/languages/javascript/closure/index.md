@@ -1,4 +1,5 @@
 ---
+layout: category-hub
 nav_group: /foundations/languages/javascript/
 title: "Closure"
 permalink: /foundations/languages/javascript/closure/

@@ -1,4 +1,6 @@
 ---
+doc_type: concept
+layout: doc
 nav_group: /foundations/languages/python/object-model/
 title: "파이썬의 가변 객체와 불변 객체"
 permalink: /foundations/languages/python/object-model/mutable-immutable/

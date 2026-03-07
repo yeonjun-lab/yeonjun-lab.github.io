@@ -1,4 +1,5 @@
 ---
+layout: category-hub
 nav_group: /ai-systems/
 title: "Emotion AI"
 permalink: /ai-systems/emotion-ai/

@@ -1,4 +1,5 @@
 ---
+layout: category-hub
 nav_group: /foundations/languages/
 title: "R"
 permalink: /foundations/languages/r/

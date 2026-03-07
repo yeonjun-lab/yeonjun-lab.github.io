@@ -1,4 +1,5 @@
 ---
+layout: category-hub
 nav_group: /foundations/languages/python/
 title: "Object Model"
 permalink: /foundations/languages/python/object-model/

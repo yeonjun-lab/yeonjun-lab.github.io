@@ -1,4 +1,5 @@
 ---
+layout: category-hub
 nav_group: /research/
 title: "Ideas"
 permalink: /research/ideas/

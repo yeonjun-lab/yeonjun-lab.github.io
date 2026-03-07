@@ -1,4 +1,5 @@
 ---
+layout: category-hub
 nav_group: /research/
 title: "Architecture Notes"
 permalink: /research/architecture-notes/
