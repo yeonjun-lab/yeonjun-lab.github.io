@@ -4,7 +4,7 @@ JEKYLL_BUNDLE := bundle exec
 JEKYLL := $(JEKYLL_BUNDLE) jekyll
 RUBY_BUNDLE := bundle
 
-.PHONY: help init serve build clean validate recent touch commit new doc
+.PHONY: help init serve build clean validate validate-strict recent touch commit new doc check quality prepublish publish
 
 help:
 @echo ""
@@ -13,7 +13,11 @@ help:
 @echo "  make serve                             - run local Jekyll server"
 @echo "  make build                             - build site"
 @echo "  make clean                             - clean generated site"
-@echo "  make validate                          - validate document metadata"
+@echo "  make validate                          - validate document metadata (errors only)"
+@echo "  make validate-strict                   - validate document metadata (warnings fail)
+@echo "  make quality                          - strict quality validation + build
+@echo "  make prepublish                       - strict validation + build only
+@echo "  make publish MSG=...                  - validate, build, commit, push
 @echo "  make recent                            - show recently changed docs"
 @echo "  make new DOC_PATH=... TITLE=... TEMPLATE=... - create a new doc"
 @echo "  make touch FILE=...                    - update updated_at/sort_date"

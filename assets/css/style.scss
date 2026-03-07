@@ -828,3 +828,139 @@
     grid-template-columns: 1fr;
   }
 }
+
+.not-found-page {
+  display: flex;
+  justify-content: center;
+  margin: 3rem 0 4rem 0;
+}
+
+.not-found-box {
+  width: 100%;
+  max-width: 760px;
+  padding: 2rem 1.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  background: #fafafa;
+  text-align: center;
+}
+
+.not-found-box h1 {
+  margin: 0 0 0.8rem 0;
+  font-size: 3rem;
+}
+
+.not-found-message {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.not-found-description {
+  margin: 0 0 1.5rem 0;
+  color: #666;
+  line-height: 1.7;
+}
+
+.not-found-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.not-found-actions a {
+  display: inline-block;
+  padding: 0.6rem 0.95rem;
+  border: 1px solid #d1d5db;
+  border-radius: 999px;
+  background: #fff;
+  text-decoration: none;
+  color: #333;
+}
+
+.not-found-actions a:hover {
+  background: #f3f4f6;
+  text-decoration: none;
+}
+
+.not-found-sections {
+  text-align: left;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.not-found-sections h2 {
+  margin-bottom: 0.7rem;
+  font-size: 1rem;
+}
+
+.not-found-sections ul {
+  margin: 0;
+  padding-left: 1rem;
+}
+
+.not-found-sections li {
+  margin-bottom: 0.4rem;
+}
+
+.footer-custom {
+  margin-top: 3rem;
+  padding: 2rem 0 3rem 0;
+  border-top: 1px solid #e5e7eb;
+  background: #fafafa;
+}
+
+.footer-custom .wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.footer-custom-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.footer-custom-col h3 {
+  margin: 0 0 0.8rem 0;
+  font-size: 1rem;
+}
+
+.footer-custom-col p {
+  margin: 0;
+  color: #666;
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+.footer-custom-col ul {
+  margin: 0;
+  padding-left: 1rem;
+}
+
+.footer-custom-col li {
+  margin-bottom: 0.45rem;
+}
+
+.footer-custom-col a {
+  text-decoration: none;
+}
+
+.footer-custom-col a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .footer-custom-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .not-found-box h1 {
+    font-size: 2.4rem;
+  }
+}

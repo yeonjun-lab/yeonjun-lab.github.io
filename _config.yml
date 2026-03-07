@@ -71,6 +71,7 @@ defaults:
 
 header_pages:
   - pages/about.md
+  - pages/writing-guide.md
   - pages/archive.md
   - pages/search.md
   - pages/tags.md
