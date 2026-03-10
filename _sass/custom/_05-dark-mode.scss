@@ -142,7 +142,8 @@
   color: var(--text-soft);
 }
 
-:root[data-theme="dark"] .quick-search__close {
+:root[data-theme="dark"] .quick-search__close,
+:root[data-theme="dark"] .search-reset-button{
   background: #0b1220;
   border-color: var(--border);
 }

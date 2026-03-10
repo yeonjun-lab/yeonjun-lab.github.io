@@ -5,64 +5,6 @@
    - Related docs and doc pagination
    ========================================================= */
 
-/* =========================================================
-   13. DOC NAVIGATION DETAIL TUNING
-   ========================================================= */
-
-.doc-toc nav,
-#doc-toc-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 0.28rem;
-}
-
-#doc-toc-nav a {
-  position: relative;
-  display: block;
-  padding: 0.48rem 0.7rem;
-  border-radius: 12px;
-  color: var(--text-soft);
-  font-size: 0.9rem;
-  line-height: 1.4;
-}
-
-#doc-toc-nav a:hover {
-  background: var(--surface-soft);
-  color: var(--text);
-}
-
-#doc-toc-nav a.is-active {
-  background: var(--primary-soft);
-  color: var(--primary);
-  font-weight: 700;
-  box-shadow: inset 0 0 0 1px rgba(37, 99, 235, 0.08);
-}
-
-#doc-toc-nav a.is-active::before {
-  content: "";
-  position: absolute;
-  left: -0.15rem;
-  top: 0.42rem;
-  bottom: 0.42rem;
-  width: 3px;
-  border-radius: 999px;
-  background: var(--primary);
-}
-
-#doc-toc-nav .toc-depth-3,
-#doc-toc-nav .toc-level-3,
-#doc-toc-nav a[data-depth="3"] {
-  padding-left: 1rem;
-  font-size: 0.87rem;
-}
-
-#doc-toc-nav .toc-depth-4,
-#doc-toc-nav .toc-level-4,
-#doc-toc-nav a[data-depth="4"] {
-  padding-left: 1.25rem;
-  font-size: 0.84rem;
-  color: var(--text-muted);
-}
 
 .doc-content h2,
 .doc-content h3,
@@ -445,6 +387,7 @@ body.quick-search-open {
 }
 
 .doc-toc-empty {
+  padding: 0.25rem 0;
   color: var(--text-muted);
   font-size: 0.9rem;
 }
@@ -459,13 +402,15 @@ body.quick-search-open {
   overflow-y: auto;
   overflow-x: hidden;
   padding: 0;
+  background: var(--surface);
+  isolation: isolate;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
   scrollbar-color: var(--border-strong) transparent;
 }
 
 .doc-toc::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 .doc-toc::-webkit-scrollbar-track {
@@ -473,14 +418,16 @@ body.quick-search-open {
 }
 
 .doc-toc::-webkit-scrollbar-thumb {
-  background: var(--border-strong);
-  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.45);
   border: 2px solid transparent;
+  border-radius: 999px;
   background-clip: padding-box;
 }
 
 .doc-toc::-webkit-scrollbar-thumb:hover {
-  background: var(--text-muted);
+  background: rgba(148, 163, 184, 0.65);
+  border: 2px solid transparent;
+  background-clip: padding-box;
 }
 
 .doc-toc-inner {
@@ -491,26 +438,23 @@ body.quick-search-open {
 .doc-toc-title {
   position: sticky;
   top: 0;
-  z-index: 2;
+  z-index: 3;
   margin: 0;
   padding: 1rem 1rem 0.75rem;
-  background: var(--surface, #fff);
+  background: var(--surface);
   border-bottom: 1px solid var(--border);
   border-top-left-radius: var(--radius-lg);
   border-top-right-radius: var(--radius-lg);
-}
-
-.doc-toc-title::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: inherit;
-  border-bottom: inherit;
+  font-size: 0.93rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
 }
 
 #doc-toc-nav {
-  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
   padding: 0.35rem 1rem 3.5rem;
 }
 
@@ -518,14 +462,15 @@ body.quick-search-open {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.28rem;
 }
 
 .doc-toc-item {
   margin: 0;
   padding: 0;
+}
+
+.doc-toc-item + .doc-toc-item {
+  margin-top: 0.16rem;
 }
 
 .doc-toc-item a {
@@ -534,8 +479,13 @@ body.quick-search-open {
   padding: 0.48rem 0.7rem;
   border-radius: 12px;
   color: var(--text-soft);
-  font-size: 0.9rem;
-  line-height: 1.4;
+  font-size: 0.89rem;
+  line-height: 1.42;
+  text-decoration: none;
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    box-shadow var(--transition-fast);
 }
 
 .doc-toc-item a:hover {
@@ -572,6 +522,10 @@ body.quick-search-open {
   color: var(--text-muted);
 }
 
+.doc-toc-item.level-h4 a.is-active {
+  color: var(--primary);
+}
+
 @media (max-width: 1100px) {
   .doc-sidebar-title,
   .doc-toc-title {
@@ -580,7 +534,6 @@ body.quick-search-open {
     padding: 0 0 0.5rem;
   }
 }
-
 /* =========================================================
    19. DOC BOTTOM NAV DETAIL TUNING
    ========================================================= */

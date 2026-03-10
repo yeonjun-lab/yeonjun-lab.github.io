@@ -9,7 +9,7 @@ updated_at: 2026-03-10
 sort_date: 2026-03-10
 nav_group: /foundations/languages/c/
 doc_type: deep-dive
-topic: c
+topic: c-dynamic-memory
 tags: [c, dynamic-memory, malloc, free, heap, allocation, memory-leak]
 ---
 

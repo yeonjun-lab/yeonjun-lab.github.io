@@ -16,10 +16,10 @@
    ========================================================= */
 
 :root {
-  --container: 1240px;
+  --container: 1440px;
   --content: 760px;
   --sidebar: 250px;
-  --toc: 240px;
+  --toc: 220px;
   --header-height: 72px;
 
   --radius-sm: 10px;
@@ -417,8 +417,8 @@ input:focus-visible {
 
 .doc-content-wrap {
   display: grid;
-  grid-template-columns: minmax(0, var(--content)) var(--toc);
-  gap: var(--space-6);
+  grid-template-columns: minmax(0, 1fr) var(--toc);
+  gap: var(--space-10);
   align-items: start;
 }
 

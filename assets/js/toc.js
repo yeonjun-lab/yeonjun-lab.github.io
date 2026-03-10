@@ -1,24 +1,13 @@
 (function () {
-  const sidebarDetails = document.querySelector(".doc-sidebar-details");
-  const mobileSidebarBreakpoint = window.matchMedia("(max-width: 1100px)");
-
-  function syncSidebarDisclosure(event) {
-    if (!sidebarDetails) return;
-
-    sidebarDetails.open = !event.matches;
-  }
-
-  syncSidebarDisclosure(mobileSidebarBreakpoint);
-  mobileSidebarBreakpoint.addEventListener("change", syncSidebarDisclosure);
-
   const content = document.getElementById("doc-content");
   const tocNav = document.getElementById("doc-toc-nav");
   const tocPanel = document.querySelector(".doc-toc");
 
-  if (!content || !tocNav) return;
+  if (!content || !tocNav || !tocPanel) return;
 
   const headings = Array.from(content.querySelectorAll("h2, h3, h4"));
-  if (headings.length === 0) {
+
+  if (!headings.length) {
     tocNav.innerHTML = '<div class="doc-toc-empty">목차가 없습니다.</div>';
     return;
   }
@@ -51,12 +40,15 @@
 
   headings.forEach((heading) => {
     const li = document.createElement("li");
-    li.className = `doc-toc-item level-${heading.tagName.toLowerCase()}`;
+    const level = heading.tagName.toLowerCase();
+
+    li.className = `doc-toc-item level-${level}`;
 
     const a = document.createElement("a");
     a.href = `#${heading.id}`;
     a.textContent = heading.textContent.trim();
     a.dataset.targetId = heading.id;
+    a.dataset.depth = heading.tagName.replace("H", "");
 
     li.appendChild(a);
     list.appendChild(li);
@@ -77,22 +69,25 @@
     tocLinks.forEach((link) => {
       const isActive = link.dataset.targetId === id;
       link.classList.toggle("is-active", isActive);
-      if (isActive) activeLink = link;
+
+      if (isActive) {
+        activeLink = link;
+      }
     });
 
-    if (shouldScrollIntoView && activeLink && tocPanel && window.innerWidth > 1100) {
-      const titleHeight =
-        document.querySelector(".doc-toc-title")?.getBoundingClientRect().height ?? 0;
-      const panelRect = tocPanel.getBoundingClientRect();
-      const linkRect = activeLink.getBoundingClientRect();
-      const topLimit = panelRect.top + titleHeight;
-      const bottomLimit = panelRect.bottom;
+    if (!shouldScrollIntoView || !activeLink || window.innerWidth <= 1100) return;
 
-      if (linkRect.top < topLimit) {
-        tocPanel.scrollTop -= topLimit - linkRect.top + 8;
-      } else if (linkRect.bottom > bottomLimit) {
-        tocPanel.scrollTop += linkRect.bottom - bottomLimit + 8;
-      }
+    const titleHeight =
+      document.querySelector(".doc-toc-title")?.getBoundingClientRect().height ?? 0;
+    const panelRect = tocPanel.getBoundingClientRect();
+    const linkRect = activeLink.getBoundingClientRect();
+    const topLimit = panelRect.top + titleHeight;
+    const bottomLimit = panelRect.bottom;
+
+    if (linkRect.top < topLimit) {
+      tocPanel.scrollTop -= topLimit - linkRect.top + 8;
+    } else if (linkRect.bottom > bottomLimit) {
+      tocPanel.scrollTop += linkRect.bottom - bottomLimit + 8;
     }
   }
 
@@ -104,11 +99,9 @@
       const rect = heading.getBoundingClientRect();
       const distance = Math.abs(rect.top - headerOffset);
 
-      if (rect.top - headerOffset <= window.innerHeight * 0.5) {
-        if (distance < closestDistance) {
-          closest = heading;
-          closestDistance = distance;
-        }
+      if (rect.top - headerOffset <= window.innerHeight * 0.5 && distance < closestDistance) {
+        closest = heading;
+        closestDistance = distance;
       }
     });
 
@@ -144,6 +137,7 @@
         top: Math.max(targetTop, 0),
         behavior: "smooth"
       });
+
       window.history.replaceState(null, "", `#${targetId}`);
 
       activeLockTimer = window.setTimeout(() => {
@@ -170,9 +164,7 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", () => {
     if (!ticking) {
-      window.requestAnimationFrame(() => {
-        setActiveLink();
-      });
+      window.requestAnimationFrame(setActiveLink);
     }
   });
 

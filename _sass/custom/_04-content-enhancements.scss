@@ -205,21 +205,6 @@ body {
 .doc-sidebar {
   padding: 1rem;
 }
-
-.doc-toc {
-  padding: 0 1rem 1rem;
-}
-
-.doc-sidebar-title,
-.doc-toc-title {
-  font-size: 0.93rem;
-}
-
-.sidebar-link,
-.doc-toc-item a {
-  font-size: 0.89rem;
-}
-
 /* =========================================================
    23. SEARCH / TAGS / TOPICS RHYTHM
    ========================================================= */
@@ -288,9 +273,6 @@ body {
     padding: 1rem;
   }
 
-  .doc-toc {
-    padding: 0 1rem 1rem;
-  }
 }
 
 @media (max-width: 720px) {
@@ -325,6 +307,7 @@ body {
 #doc-content pre {
   position: relative;
   padding-top: 2.9rem;
+  overflow: auto;
 }
 
 .code-copy-wrap {
@@ -335,6 +318,7 @@ body {
   position: absolute;
   top: 0.7rem;
   left: 0.7rem;
+  z-index: 2;
   display: inline-flex;
   align-items: center;
   min-height: 30px;
@@ -353,6 +337,7 @@ body {
   position: absolute;
   top: 0.7rem;
   right: 0.7rem;
+  z-index: 2;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -389,73 +374,31 @@ body {
   color: #dbeafe;
 }
 
-@media (max-width: 720px) {
-  .doc-content pre,
-  #doc-content pre {
-    padding-top: 3rem;
-  }
-
-  .code-language-badge,
-  .code-copy-button {
-    top: 0.65rem;
-    min-height: 28px;
-    padding: 0.32rem 0.58rem;
-    font-size: 0.76rem;
-  }
-
-  .code-language-badge {
-    left: 0.65rem;
-  }
-
-  .code-copy-button {
-    right: 0.65rem;
-  }
-}
-
-/* =========================================================
-   CODE COPY TOAST
-   ========================================================= */
-
 .code-copy-toast {
   position: fixed;
-  right: 1rem;
-  bottom: 1rem;
+  left: 50%;
+  bottom: 1.4rem;
+  transform: translateX(-50%) translateY(10px);
   z-index: 3000;
-  display: inline-flex;
-  align-items: center;
-  min-height: 40px;
-  padding: 0.7rem 0.9rem;
-  border-radius: 14px;
+  padding: 0.65rem 0.9rem;
+  border-radius: 999px;
   background: rgba(15, 23, 42, 0.94);
   color: #f8fafc;
-  font-size: 0.88rem;
-  font-weight: 600;
-  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.2);
+  font-size: 0.86rem;
   opacity: 0;
-  transform: translateY(8px);
   pointer-events: none;
   transition:
-    opacity 160ms ease,
-    transform 160ms ease,
-    background-color 160ms ease;
+    opacity var(--transition-fast),
+    transform var(--transition-fast);
 }
 
 .code-copy-toast.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(-50%) translateY(0);
 }
 
 .code-copy-toast.is-error {
-  background: rgba(127, 29, 29, 0.96);
-}
-
-@media (max-width: 720px) {
-  .code-copy-toast {
-    right: 0.75rem;
-    left: 0.75rem;
-    bottom: 0.75rem;
-    justify-content: center;
-  }
+  background: rgba(127, 29, 29, 0.94);
 }
 
 /* =========================================================
@@ -502,7 +445,7 @@ body {
 }
 
 .doc-content th,
-#doc-content td,
+.doc-content td,
 #doc-content th,
 #doc-content td {
   padding: 0.65rem 0.8rem;
@@ -532,23 +475,59 @@ body {
    28. IMAGE ZOOM
    ========================================================= */
 
+.image-zoom-open {
+  overflow: hidden;
+}
+
 .image-zoom-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(2, 6, 23, 0.9);
+  z-index: 4000;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 4000;
+  padding: 2rem;
+  background: rgba(2, 6, 23, 0.82);
+  backdrop-filter: blur(4px);
   cursor: zoom-out;
 }
 
 .image-zoomed {
-  max-width: 90vw;
-  max-height: 90vh;
-  border-radius: 14px;
+  max-width: min(1200px, 92vw);
+  max-height: 88vh;
+  width: auto;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+  cursor: auto;
 }
 
+@media (max-width: 720px) {
+  .doc-content pre,
+  #doc-content pre {
+    padding-top: 3rem;
+  }
+
+  .code-language-badge,
+  .code-copy-button {
+    top: 0.65rem;
+    min-height: 28px;
+    padding: 0.32rem 0.58rem;
+    font-size: 0.76rem;
+  }
+
+  .code-language-badge {
+    left: 0.65rem;
+  }
+
+  .code-copy-button {
+    right: 0.65rem;
+  }
+
+  .image-zoom-overlay {
+    padding: 1rem;
+  }
+}
 /* =========================================================
    29. QUICK SEARCH RESULTS
    ========================================================= */
@@ -960,97 +939,6 @@ body {
 .doc-content .highlight .gi,
 #doc-content .highlight .gi {
   color: #c3e88d;
-}
-
-/* =========================================================
-   CODE COPY + LANGUAGE BADGE LAYER SAFETY
-   ========================================================= */
-
-.code-copy-wrap {
-  position: relative;
-}
-
-.code-language-badge {
-  position: absolute;
-  top: 0.7rem;
-  left: 0.7rem;
-  z-index: 2;
-  display: inline-flex;
-  align-items: center;
-  min-height: 30px;
-  padding: 0.35rem 0.65rem;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
-  color: #cbd5e1;
-  font-size: 0.78rem;
-  font-weight: 700;
-  line-height: 1;
-  pointer-events: none;
-}
-
-.code-copy-button {
-  position: absolute;
-  top: 0.7rem;
-  right: 0.7rem;
-  z-index: 2;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 30px;
-  padding: 0.35rem 0.65rem;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
-  color: #e5eefb;
-  font-size: 0.78rem;
-  font-weight: 700;
-  line-height: 1;
-  cursor: pointer;
-  transition:
-    background-color var(--transition-fast),
-    border-color var(--transition-fast),
-    color var(--transition-fast),
-    transform var(--transition-fast);
-}
-
-.code-copy-button:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.18);
-  color: #ffffff;
-}
-
-.code-copy-button:active {
-  transform: translateY(1px);
-}
-
-.code-copy-button.is-copied {
-  background: rgba(37, 99, 235, 0.22);
-  border-color: rgba(96, 165, 250, 0.35);
-  color: #dbeafe;
-}
-
-@media (max-width: 720px) {
-  .doc-content pre,
-  #doc-content pre {
-    padding-top: 3rem;
-  }
-
-  .code-language-badge,
-  .code-copy-button {
-    top: 0.65rem;
-    min-height: 28px;
-    padding: 0.32rem 0.58rem;
-    font-size: 0.76rem;
-  }
-
-  .code-language-badge {
-    left: 0.65rem;
-  }
-
-  .code-copy-button {
-    right: 0.65rem;
-  }
 }
 
 /* =========================================================

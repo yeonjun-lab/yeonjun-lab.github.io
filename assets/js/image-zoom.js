@@ -1,18 +1,59 @@
-document.querySelectorAll("#doc-content img").forEach((img) => {
-  img.style.cursor = "zoom-in";
+(function () {
+  const images = Array.from(document.querySelectorAll("#doc-content img"));
+  if (!images.length) return;
 
-  img.addEventListener("click", () => {
-    const overlay = document.createElement("div");
-    overlay.className = "image-zoom-overlay";
+  let activeOverlay = null;
+  let activeKeyHandler = null;
 
-    const clone = img.cloneNode();
-    clone.className = "image-zoomed";
+  function closeOverlay() {
+    if (!activeOverlay) return;
 
-    overlay.appendChild(clone);
-    document.body.appendChild(overlay);
+    if (activeKeyHandler) {
+      document.removeEventListener("keydown", activeKeyHandler);
+      activeKeyHandler = null;
+    }
 
-    overlay.addEventListener("click", () => {
-      overlay.remove();
+    document.body.classList.remove("image-zoom-open");
+    activeOverlay.remove();
+    activeOverlay = null;
+  }
+
+  images.forEach((img) => {
+    img.style.cursor = "zoom-in";
+
+    img.addEventListener("click", () => {
+      if (activeOverlay) return;
+
+      const overlay = document.createElement("div");
+      overlay.className = "image-zoom-overlay";
+
+      const clone = img.cloneNode();
+      clone.className = "image-zoomed";
+      clone.alt = img.alt || "";
+
+      overlay.appendChild(clone);
+      document.body.appendChild(overlay);
+      document.body.classList.add("image-zoom-open");
+
+      activeOverlay = overlay;
+
+      activeKeyHandler = (event) => {
+        if (event.key === "Escape") {
+          closeOverlay();
+        }
+      };
+
+      document.addEventListener("keydown", activeKeyHandler);
+
+      overlay.addEventListener("click", (event) => {
+        if (event.target === overlay) {
+          closeOverlay();
+        }
+      });
+
+      clone.addEventListener("click", (event) => {
+        event.stopPropagation();
+      });
     });
   });
-});
+})();
