@@ -8,6 +8,9 @@
 
   if (!cloud) return;
 
+  let docsCache = [];
+  let topicMapCache = {};
+
   function escapeHtml(str) {
     return String(str)
       .replace(/&/g, "&amp;")
@@ -25,6 +28,26 @@
     return String(topic || "").replace(/-/g, " ");
   }
 
+  function sectionLabel(section) {
+    const map = {
+      foundations: "Foundations",
+      engineering: "Engineering",
+      ai_systems: "AI Systems",
+      research: "Research",
+      projects: "Projects"
+    };
+    return map[section] || String(section || "");
+  }
+
+  function buildTopicMap(docs) {
+    const map = {};
+    docs.forEach((doc) => {
+      if (!doc.topic) return;
+      map[doc.topic] = (map[doc.topic] || 0) + 1;
+    });
+    return map;
+  }
+
   function renderStandalone(selectedTopic, docs) {
     if (!summary || !results) return;
 
@@ -34,19 +57,37 @@
       return;
     }
 
-    const filtered = docs.filter(doc => normalize(doc.topic) === normalize(selectedTopic));
+    const filtered = docs.filter((doc) =>
+      normalize(doc.topic) === normalize(selectedTopic)
+    );
+
     summary.textContent = `${topicLabel(selectedTopic)} · ${filtered.length}개의 결과`;
 
-    results.innerHTML = filtered.map(doc => `
-      <article class="search-result-item">
-        <h2><a href="${doc.url}">${escapeHtml(doc.title)}</a></h2>
-        <p>${escapeHtml(doc.subcategory || "")}${doc.doc_type ? " · " + escapeHtml(doc.doc_type) : ""}</p>
-      </article>
-    `).join("");
+    results.innerHTML = filtered.map((doc) => {
+      const metaParts = [
+        doc.section ? sectionLabel(doc.section) : "",
+        doc.subcategory || "",
+        doc.doc_type || ""
+      ].filter(Boolean);
+
+      return `
+        <article class="search-result-item">
+          <div class="search-result-heading">
+            ${doc.section ? `<span class="search-section-badge">${escapeHtml(sectionLabel(doc.section))}</span>` : ""}
+            <h2><a href="${doc.url}">${escapeHtml(doc.title)}</a></h2>
+          </div>
+          ${metaParts.length ? `<div class="search-result-meta">${metaParts.map(escapeHtml).join('<span class="search-meta-sep">·</span>')}</div>` : ""}
+        </article>
+      `;
+    }).join("");
   }
 
-  function renderCloud(topicMap, currentTopic) {
-    const entries = Object.entries(topicMap).sort((a, b) => {
+  function renderCloud(currentTopic) {
+    const entries = Object.entries(topicMapCache).sort((a, b) => {
+      const aActive = normalize(a[0]) === normalize(currentTopic) ? 1 : 0;
+      const bActive = normalize(b[0]) === normalize(currentTopic) ? 1 : 0;
+
+      if (bActive !== aActive) return bActive - aActive;
       if (b[1] !== a[1]) return b[1] - a[1];
       return a[0].localeCompare(b[0]);
     });
@@ -54,10 +95,15 @@
     cloud.innerHTML = entries.map(([topic, count]) => {
       const active = normalize(topic) === normalize(currentTopic) ? " is-active" : "";
       const href = `/search/?topic=${encodeURIComponent(topic)}`;
-      return `<a class="topic-chip${active}" href="${href}" data-topic="${escapeHtml(topic)}">${escapeHtml(topicLabel(topic))} <span>${count}</span></a>`;
+
+      return `
+        <a class="topic-chip${active}" href="${href}" data-topic="${escapeHtml(topic)}">
+          ${escapeHtml(topicLabel(topic))} <span>${count}</span>
+        </a>
+      `;
     }).join("");
 
-    cloud.querySelectorAll("[data-topic]").forEach(el => {
+    cloud.querySelectorAll("[data-topic]").forEach((el) => {
       el.addEventListener("click", (e) => {
         if (window.__archiveSearch) {
           e.preventDefault();
@@ -67,21 +113,25 @@
     });
   }
 
+  function syncWithSearchState() {
+    if (!window.__archiveSearch) return;
+    renderCloud(window.__archiveSearch.getCurrentTopic());
+  }
+
   fetch("/search.json")
-    .then(res => res.json())
-    .then(docs => {
-      const topicMap = {};
-      docs.forEach(doc => {
-        if (!doc.topic) return;
-        topicMap[doc.topic] = (topicMap[doc.topic] || 0) + 1;
-      });
+    .then((res) => res.json())
+    .then((docs) => {
+      docsCache = Array.isArray(docs) ? docs : [];
+      topicMapCache = buildTopicMap(docsCache);
 
       const currentTopic = window.__archiveSearch
         ? window.__archiveSearch.getCurrentTopic()
         : new URL(window.location.href).searchParams.get("topic") || "";
 
-      renderCloud(topicMap, currentTopic);
-      renderStandalone(currentTopic, docs);
+      renderCloud(currentTopic);
+      renderStandalone(currentTopic, docsCache);
+
+      window.addEventListener("archive:search-state-change", syncWithSearchState);
     })
     .catch(() => {
       cloud.innerHTML = "";

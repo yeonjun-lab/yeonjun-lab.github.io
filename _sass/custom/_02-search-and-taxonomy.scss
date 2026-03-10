@@ -1,0 +1,568 @@
+/* =========================================================
+   FILE MAP
+   - Search page layout and controls
+   - Search discovery / taxonomy chips
+   - Tags and topics listing pages
+   ========================================================= */
+
+/* =========================================================
+   11. SEARCH PAGE DETAIL TUNING
+   ========================================================= */
+
+.search-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.search-page .panel,
+.search-page .search-box,
+.search-page .search-results,
+.search-page .search-discovery {
+  width: 100%;
+  max-width: none;
+  padding: 1.15rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+}
+
+.search-page .search-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.search-page .search-box-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.search-page .page-title {
+  margin: 0;
+  font-size: clamp(1.9rem, 2.5vw, 2.3rem);
+  line-height: 1.12;
+}
+
+.search-page .page-description {
+  margin: 0.25rem 0 0;
+  color: var(--text-soft);
+  font-size: 0.95rem;
+}
+
+.search-page .search-form {
+  margin: 0;
+}
+
+.search-page .search-input {
+  width: 100%;
+  min-height: 52px;
+  padding: 0 1rem;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: #fff;
+  color: var(--text);
+  font-size: 0.98rem;
+}
+
+.search-page .search-input:focus {
+  outline: 0;
+  border-color: rgba(37, 99, 235, 0.45);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.08);
+}
+
+.search-page .search-reset-button {
+  flex: 0 0 auto;
+  min-height: 38px;
+  padding: 0 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--text-soft);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.search-page .search-reset-button:hover:not(:disabled) {
+  border-color: var(--border-strong);
+  background: var(--surface-soft);
+  color: var(--text);
+}
+
+.search-page .search-reset-button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.search-page .search-active-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.1rem;
+}
+
+.search-page .active-filter-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0.4rem 0.7rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.search-page .search-results {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.search-page .search-mode {
+  margin-bottom: 0;
+}
+
+.search-page .search-mode-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0.32rem 0.62rem;
+  border-radius: 999px;
+  background: var(--surface-muted);
+  color: var(--text-soft);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.search-page .search-summary {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+.search-page .search-empty {
+  padding: 0.25rem 0;
+  color: var(--text-muted);
+}
+
+.search-page .search-recommended {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.search-page .search-recommended-header {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.search-page .search-recommended-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-page .search-recommended-item,
+.search-page .search-result-item {
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.search-page .search-recommended-item:first-child,
+.search-page .search-result-item:first-child {
+  padding-top: 0.15rem;
+}
+
+.search-page .search-recommended-item:last-child,
+.search-page .search-result-item:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.search-page .search-result-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.search-page .search-result-heading h2,
+.search-page .search-recommended-item h2 {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.search-page .search-result-heading h2 a,
+.search-page .search-recommended-item h2 a {
+  color: var(--text);
+}
+
+.search-page .search-result-heading h2 a:hover,
+.search-page .search-recommended-item h2 a:hover {
+  color: var(--primary);
+}
+
+.search-page .search-section-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 0.28rem 0.52rem;
+  border-radius: 999px;
+  background: var(--surface-muted);
+  color: var(--text-soft);
+  font-size: 0.78rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.search-page .search-result-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.86rem;
+}
+
+.search-page .search-meta-sep {
+  color: var(--text-muted);
+}
+
+.search-page .search-result-topic-button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--primary);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.search-page .search-result-topic-button:hover {
+  text-decoration: underline;
+}
+
+.search-page .search-result-item p,
+.search-page .search-recommended-item p {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.94rem;
+  line-height: 1.7;
+}
+
+.search-page .search-result-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.7rem;
+}
+
+.search-page .search-result-tag-button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0.28rem 0.55rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--surface-muted);
+  color: var(--text-soft);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.search-page .search-result-tag-button:hover {
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+
+.search-page .search-discovery {
+  padding-top: 1rem;
+}
+
+.search-page .search-discovery-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  list-style: none;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent);
+  user-select: none;
+}
+
+.search-page .search-discovery-summary::-webkit-details-marker {
+  display: none;
+}
+
+.search-page .search-discovery-summary::after {
+  content: "+";
+  color: var(--text-muted);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.search-page .search-discovery[open] .search-discovery-summary::after {
+  content: "−";
+}
+
+.search-page .search-discovery-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.search-page .search-discovery__section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.search-page .taxonomy-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.search-page .tag-chip,
+.search-page .topic-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  min-height: 32px;
+  padding: 0.42rem 0.72rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--text-soft);
+  font-size: 0.86rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.search-page .tag-chip span,
+.search-page .topic-chip span {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.search-page .tag-chip:hover,
+.search-page .topic-chip:hover {
+  border-color: var(--border-strong);
+  background: var(--surface-soft);
+  color: var(--text);
+}
+
+.search-page .tag-chip.is-active,
+.search-page .topic-chip.is-active {
+  border-color: transparent;
+  background: var(--primary-soft);
+  color: var(--primary);
+  box-shadow: inset 0 0 0 1px rgba(37, 99, 235, 0.08);
+}
+
+.search-page .tag-chip.is-active span,
+.search-page .topic-chip.is-active span {
+  color: var(--primary);
+}
+
+@media (max-width: 900px) {
+  .search-page .search-box-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .search-page .search-discovery-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   12. TAGS / TOPICS PAGE DETAIL TUNING
+   ========================================================= */
+
+.tags-page,
+.topics-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.tags-page #tag-cloud,
+.topics-page #topic-cloud {
+  width: 100%;
+  padding: 1.15rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+}
+
+.tags-page .search-summary,
+.topics-page .search-summary {
+  padding: 0 0.15rem;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+.tags-page .search-results,
+.topics-page .search-results {
+  width: 100%;
+  padding: 1.15rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+}
+
+.tags-page .tag-cloud,
+.topics-page .topic-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.tags-page .tag-chip,
+.topics-page .topic-chip,
+.tags-page .tag-cloud a,
+.topics-page .topic-cloud a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  min-height: 32px;
+  padding: 0.42rem 0.72rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--text-soft);
+  font-size: 0.86rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.tags-page .tag-chip span,
+.topics-page .topic-chip span,
+.tags-page .tag-cloud a span,
+.topics-page .topic-cloud a span {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.tags-page .tag-chip:hover,
+.topics-page .topic-chip:hover,
+.tags-page .tag-cloud a:hover,
+.topics-page .topic-cloud a:hover {
+  border-color: var(--border-strong);
+  background: var(--surface-soft);
+  color: var(--text);
+}
+
+.tags-page .tag-chip.is-active,
+.topics-page .topic-chip.is-active,
+.tags-page .tag-cloud a.is-active,
+.topics-page .topic-cloud a.is-active {
+  border-color: transparent;
+  background: var(--primary-soft);
+  color: var(--primary);
+  box-shadow: inset 0 0 0 1px rgba(37, 99, 235, 0.08);
+}
+
+.tags-page .tag-chip.is-active span,
+.topics-page .topic-chip.is-active span,
+.tags-page .tag-cloud a.is-active span,
+.topics-page .topic-cloud a.is-active span {
+  color: var(--primary);
+}
+
+.tags-page .search-result-item,
+.topics-page .search-result-item {
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.tags-page .search-result-item:first-child,
+.topics-page .search-result-item:first-child {
+  padding-top: 0.15rem;
+}
+
+.tags-page .search-result-item:last-child,
+.topics-page .search-result-item:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.tags-page .search-result-heading,
+.topics-page .search-result-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.tags-page .search-result-heading h2,
+.topics-page .search-result-heading h2 {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.tags-page .search-result-heading h2 a,
+.topics-page .search-result-heading h2 a {
+  color: var(--text);
+}
+
+.tags-page .search-result-heading h2 a:hover,
+.topics-page .search-result-heading h2 a:hover {
+  color: var(--primary);
+}
+
+.tags-page .search-section-badge,
+.topics-page .search-section-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 0.28rem 0.52rem;
+  border-radius: 999px;
+  background: var(--surface-muted);
+  color: var(--text-soft);
+  font-size: 0.78rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.tags-page .search-result-meta,
+.topics-page .search-result-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.86rem;
+}
+
+.tags-page .search-meta-sep,
+.topics-page .search-meta-sep {
+  color: var(--text-muted);
+}
+
+@media (max-width: 900px) {
+  .tags-page #tag-cloud,
+  .topics-page #topic-cloud,
+  .tags-page .search-results,
+  .topics-page .search-results {
+    padding: 1rem;
+  }
+}

@@ -5,10 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9101f5f1-46f5-4127-a6ed-47879746a7f4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/_includes/header.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/js/code-copy.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/js/doc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/js/header.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/favicon.ico" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PROJECT_CONTEXT.md" beforeDir="false" afterPath="$PROJECT_DIR$/PROJECT_CONTEXT.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/_config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_includes/footer-custom.html" beforeDir="false" afterPath="$PROJECT_DIR$/_includes/footer-custom.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_foundations/db/mysql/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/db/mysql/index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_foundations/db/oracle/execution-plan/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/db/oracle/execution-plan/index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_foundations/db/oracle/optimizer/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/db/oracle/optimizer/index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_foundations/db/postgresql/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/db/postgresql/index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_foundations/languages/cpp/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/cpp/index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_foundations/languages/java/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/java/index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_foundations/languages/javascript/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/javascript/index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_foundations/languages/python/object-model/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/python/object-model/index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_foundations/languages/r/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/r/index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_layouts/category-hub.html" beforeDir="false" afterPath="$PROJECT_DIR$/_layouts/category-hub.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_layouts/default.html" beforeDir="false" afterPath="$PROJECT_DIR$/_layouts/default.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_layouts/doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/_layouts/doc.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_layouts/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/_layouts/home.html" afterDir="false" />
@@ -16,21 +29,23 @@
       <change beforePath="$PROJECT_DIR$/assets/css/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/style.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/search.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/tags.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/tags.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/toc.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/toc.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/topics.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/topics.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/about.md" beforeDir="false" afterPath="$PROJECT_DIR$/pages/about.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/ai-systems.md" beforeDir="false" afterPath="$PROJECT_DIR$/pages/ai-systems.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/archive.md" beforeDir="false" afterPath="$PROJECT_DIR$/pages/archive.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/engineering.md" beforeDir="false" afterPath="$PROJECT_DIR$/pages/engineering.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/foundations.md" beforeDir="false" afterPath="$PROJECT_DIR$/pages/foundations.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/projects.md" beforeDir="false" afterPath="$PROJECT_DIR$/pages/projects.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/research.md" beforeDir="false" afterPath="$PROJECT_DIR$/pages/research.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/search.md" beforeDir="false" afterPath="$PROJECT_DIR$/pages/search.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/writing-guide.md" beforeDir="false" afterPath="$PROJECT_DIR$/pages/writing-guide.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/tags.md" beforeDir="false" afterPath="$PROJECT_DIR$/pages/tags.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/topics.md" beforeDir="false" afterPath="$PROJECT_DIR$/pages/topics.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -60,6 +75,9 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/assets/css" />
     </key>
@@ -81,7 +99,7 @@
       <updated>1772890093841</updated>
       <workItem from="1772890094922" duration="1274000" />
       <workItem from="1772891397988" duration="9532000" />
-      <workItem from="1773032524985" duration="14880000" />
+      <workItem from="1773032524985" duration="55653000" />
     </task>
     <servers />
   </component>

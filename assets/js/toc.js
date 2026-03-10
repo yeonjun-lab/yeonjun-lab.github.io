@@ -1,10 +1,23 @@
 (function () {
+  const sidebarDetails = document.querySelector(".doc-sidebar-details");
+  const mobileSidebarBreakpoint = window.matchMedia("(max-width: 1100px)");
+
+  function syncSidebarDisclosure(event) {
+    if (!sidebarDetails) return;
+
+    sidebarDetails.open = !event.matches;
+  }
+
+  syncSidebarDisclosure(mobileSidebarBreakpoint);
+  mobileSidebarBreakpoint.addEventListener("change", syncSidebarDisclosure);
+
   const content = document.getElementById("doc-content");
   const tocNav = document.getElementById("doc-toc-nav");
+  const tocPanel = document.querySelector(".doc-toc");
 
   if (!content || !tocNav) return;
 
-  const headings = Array.from(content.querySelectorAll("h2, h3"));
+  const headings = Array.from(content.querySelectorAll("h2, h3, h4"));
   if (headings.length === 0) {
     tocNav.innerHTML = '<div class="doc-toc-empty">목차가 없습니다.</div>';
     return;
@@ -24,9 +37,11 @@
       const slug = slugify(heading.textContent) || `section-${index + 1}`;
       let uniqueId = slug;
       let counter = 2;
+
       while (document.getElementById(uniqueId)) {
         uniqueId = `${slug}-${counter++}`;
       }
+
       heading.id = uniqueId;
     }
   });
@@ -40,37 +55,127 @@
 
     const a = document.createElement("a");
     a.href = `#${heading.id}`;
-    a.textContent = heading.textContent;
+    a.textContent = heading.textContent.trim();
     a.dataset.targetId = heading.id;
 
     li.appendChild(a);
     list.appendChild(li);
   });
 
+  tocNav.innerHTML = "";
   tocNav.appendChild(list);
 
   const tocLinks = Array.from(tocNav.querySelectorAll("a"));
+  const headerOffset = 110;
+  let hasUserScrolled = false;
+  let activeLockId = null;
+  let activeLockTimer = null;
 
-  function setActiveLink() {
-    let activeId = null;
-    const offset = 120;
-
-    for (const heading of headings) {
-      const rect = heading.getBoundingClientRect();
-      if (rect.top <= offset) {
-        activeId = heading.id;
-      }
-    }
+  function setActiveById(id, shouldScrollIntoView = false) {
+    let activeLink = null;
 
     tocLinks.forEach((link) => {
-      if (link.dataset.targetId === activeId) {
-        link.classList.add("is-active");
-      } else {
-        link.classList.remove("is-active");
+      const isActive = link.dataset.targetId === id;
+      link.classList.toggle("is-active", isActive);
+      if (isActive) activeLink = link;
+    });
+
+    if (shouldScrollIntoView && activeLink && tocPanel && window.innerWidth > 1100) {
+      const titleHeight =
+        document.querySelector(".doc-toc-title")?.getBoundingClientRect().height ?? 0;
+      const panelRect = tocPanel.getBoundingClientRect();
+      const linkRect = activeLink.getBoundingClientRect();
+      const topLimit = panelRect.top + titleHeight;
+      const bottomLimit = panelRect.bottom;
+
+      if (linkRect.top < topLimit) {
+        tocPanel.scrollTop -= topLimit - linkRect.top + 8;
+      } else if (linkRect.bottom > bottomLimit) {
+        tocPanel.scrollTop += linkRect.bottom - bottomLimit + 8;
       }
+    }
+  }
+
+  function findClosestHeading() {
+    let closest = headings[0];
+    let closestDistance = Infinity;
+
+    headings.forEach((heading) => {
+      const rect = heading.getBoundingClientRect();
+      const distance = Math.abs(rect.top - headerOffset);
+
+      if (rect.top - headerOffset <= window.innerHeight * 0.5) {
+        if (distance < closestDistance) {
+          closest = heading;
+          closestDistance = distance;
+        }
+      }
+    });
+
+    return closest;
+  }
+
+  function setActiveLink() {
+    if (activeLockId) return;
+
+    const closest = findClosestHeading();
+    if (closest) {
+      setActiveById(closest.id, hasUserScrolled);
+    }
+  }
+
+  tocLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      const targetId = link.dataset.targetId;
+      const target = document.getElementById(targetId);
+
+      if (!target) return;
+
+      activeLockId = targetId;
+      window.clearTimeout(activeLockTimer);
+      setActiveById(targetId, false);
+
+      const targetTop =
+        window.scrollY + target.getBoundingClientRect().top - headerOffset;
+
+      window.scrollTo({
+        top: Math.max(targetTop, 0),
+        behavior: "smooth"
+      });
+      window.history.replaceState(null, "", `#${targetId}`);
+
+      activeLockTimer = window.setTimeout(() => {
+        activeLockId = null;
+        setActiveLink();
+      }, 450);
+    });
+  });
+
+  let ticking = false;
+
+  function onScroll() {
+    hasUserScrolled = true;
+
+    if (ticking) return;
+    ticking = true;
+
+    window.requestAnimationFrame(() => {
+      setActiveLink();
+      ticking = false;
     });
   }
 
-  window.addEventListener("scroll", setActiveLink, { passive: true });
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        setActiveLink();
+      });
+    }
+  });
+
+  setActiveById(headings[0].id, false);
   setActiveLink();
 })();

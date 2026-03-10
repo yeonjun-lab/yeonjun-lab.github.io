@@ -17,5 +17,7 @@ sort_date: 2026-03-07
 
 {% assign docs = site.foundations | where_exp: "item", "item.url contains '/foundations/db/oracle/execution-plan/'" %}
 {% for doc in docs %}
+{% unless doc.url == page.url%}
 - [{{ doc.title }}]({{ doc.url | relative_url }})
+{% endunless %}
 {% endfor %}

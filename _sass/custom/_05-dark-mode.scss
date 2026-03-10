@@ -1,0 +1,515 @@
+/* =========================================================
+   FILE MAP
+   - Dark mode tokens and theme toggle
+   - Dark UI overrides
+   - Search / doc hero / footer dark polish
+   ========================================================= */
+
+/* =========================================================
+   36. DARK MODE TOKENS
+   ========================================================= */
+
+:root[data-theme="dark"] {
+  --surface: #0f172a;
+  --surface-soft: #111827;
+  --surface-muted: #1e293b;
+  --bg: #020617;
+
+  --text: #e5eefb;
+  --text-soft: #cbd5e1;
+  --text-muted: #94a3b8;
+
+  --border: #243244;
+  --border-strong: #334155;
+
+  --primary: #60a5fa;
+  --primary-soft: rgba(96, 165, 250, 0.14);
+  --accent: #f8fafc;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.28);
+  --shadow-md: 0 10px 28px rgba(0, 0, 0, 0.34);
+}
+
+/* =========================================================
+   37. THEME TOGGLE
+   ========================================================= */
+
+.site-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-soft);
+  cursor: pointer;
+}
+
+.site-theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+}
+
+.theme-toggle-sun,
+.theme-toggle-moon {
+  position: absolute;
+  font-size: 0.92rem;
+  line-height: 1;
+  transition:
+    opacity var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+:root[data-theme="light"] .theme-toggle-sun {
+  opacity: 1;
+  transform: scale(1);
+}
+
+:root[data-theme="light"] .theme-toggle-moon {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+:root[data-theme="dark"] .theme-toggle-sun {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+:root[data-theme="dark"] .theme-toggle-moon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* =========================================================
+   38. DARK MODE: CORE UI
+   ========================================================= */
+
+:root[data-theme="dark"] body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+:root[data-theme="dark"] .site-header {
+  background: rgba(2, 6, 23, 0.82);
+  border-bottom-color: var(--border);
+}
+
+:root[data-theme="dark"] .panel,
+:root[data-theme="dark"] .search-box,
+:root[data-theme="dark"] .search-results,
+:root[data-theme="dark"] .search-discovery,
+:root[data-theme="dark"] .hub-latest,
+:root[data-theme="dark"] .hub-extra,
+:root[data-theme="dark"] .doc-sidebar,
+:root[data-theme="dark"] .doc-toc,
+:root[data-theme="dark"] .related-docs,
+:root[data-theme="dark"] .doc-pagination,
+:root[data-theme="dark"] .section-card,
+:root[data-theme="dark"] .hub-latest-card,
+:root[data-theme="dark"] .related-doc-card,
+:root[data-theme="dark"] .quick-search__panel,
+:root[data-theme="dark"] .tags-page #tag-cloud,
+:root[data-theme="dark"] .topics-page #topic-cloud,
+:root[data-theme="dark"] .tags-page .search-results,
+:root[data-theme="dark"] .topics-page .search-results {
+  background: var(--surface);
+  border-color: var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+:root[data-theme="dark"] .section-card,
+:root[data-theme="dark"] .hub-latest-card,
+:root[data-theme="dark"] .related-doc-card {
+  background: linear-gradient(180deg, #0f172a, #111827);
+}
+
+:root[data-theme="dark"] .search-input,
+:root[data-theme="dark"] .quick-search__input {
+  background: #0b1220;
+  color: var(--text);
+  border-color: var(--border);
+}
+
+:root[data-theme="dark"] .search-reset-button,
+:root[data-theme="dark"] .quick-search__close,
+:root[data-theme="dark"] .site-search-link,
+:root[data-theme="dark"] .site-theme-toggle,
+:root[data-theme="dark"] .site-menu-toggle {
+  color: var(--text-soft);
+}
+
+:root[data-theme="dark"] .quick-search__close {
+  background: #0b1220;
+  border-color: var(--border);
+}
+
+:root[data-theme="dark"] .site-nav .page-link:hover,
+:root[data-theme="dark"] .quick-search__close:hover,
+:root[data-theme="dark"] .site-search-link:hover,
+:root[data-theme="dark"] .site-theme-toggle:hover,
+:root[data-theme="dark"] .site-menu-toggle:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+
+:root[data-theme="dark"] .doc-meta-item,
+:root[data-theme="dark"] .search-section-badge,
+:root[data-theme="dark"] .quick-search-item__badge,
+:root[data-theme="dark"] .search-mode-badge,
+:root[data-theme="dark"] .search-result-tag-button,
+:root[data-theme="dark"] .tag-chip,
+:root[data-theme="dark"] .topic-chip,
+:root[data-theme="dark"] .tag-cloud a,
+:root[data-theme="dark"] .topic-cloud a,
+:root[data-theme="dark"] .sidebar-link:hover,
+:root[data-theme="dark"] .doc-toc-item a:hover {
+  background: var(--surface-muted);
+  color: var(--text-soft);
+  border-color: var(--border);
+}
+
+:root[data-theme="dark"] .sidebar-link.is-current,
+:root[data-theme="dark"] .doc-toc-item a.is-active,
+:root[data-theme="dark"] .tag-chip.is-active,
+:root[data-theme="dark"] .topic-chip.is-active,
+:root[data-theme="dark"] .active-filter-chip {
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+
+:root[data-theme="dark"] .breadcrumb-sep,
+:root[data-theme="dark"] .search-meta-sep {
+  color: #475569;
+}
+
+:root[data-theme="dark"] .quick-search__backdrop {
+  background: rgba(2, 6, 23, 0.72);
+}
+
+:root[data-theme="dark"] .quick-search-item {
+  background: #0f172a;
+  border-color: transparent;
+  color: var(--text);
+}
+
+:root[data-theme="dark"] .quick-search-item:hover,
+:root[data-theme="dark"] .quick-search-item.is-active {
+  background: #111827;
+  border-color: var(--border);
+}
+
+:root[data-theme="dark"] .code-copy-toast {
+  background: rgba(15, 23, 42, 0.96);
+  color: #f8fafc;
+}
+
+/* =========================================================
+   39. DARK MODE: CODE BLOCKS
+   ========================================================= */
+
+:root[data-theme="dark"] .doc-content :not(pre) > code,
+:root[data-theme="dark"] #doc-content :not(pre) > code {
+  background: #1e293b;
+  color: #e5eefb;
+}
+
+:root[data-theme="dark"] .code-language-badge,
+:root[data-theme="dark"] .code-copy-button {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* =========================================================
+   40. SEARCH DISCOVERY SUMMARY
+   ========================================================= */
+
+.search-page details.search-discovery {
+  display: block !important;
+}
+
+.search-page details.search-discovery > summary.search-discovery-summary {
+  display: block !important;
+  width: 100%;
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 2rem 0 0 !important;
+  line-height: 1.35;
+}
+
+.search-page details.search-discovery[open] > summary.search-discovery-summary {
+  margin-bottom: 0.8rem !important;
+}
+
+.search-page details.search-discovery > .search-discovery-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 1rem !important;
+  align-items: start !important;
+}
+
+.search-page .search-discovery-summary {
+  position: relative;
+  cursor: pointer;
+  list-style: none;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent);
+  user-select: none;
+}
+
+.search-page .search-discovery-summary::-webkit-details-marker {
+  display: none;
+}
+
+.search-page .search-discovery-summary::after {
+  content: "+";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1.25rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.search-page details.search-discovery[open] > .search-discovery-summary::after {
+  content: "−";
+}
+
+@media (max-width: 900px) {
+  .search-page details.search-discovery > .search-discovery-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* =========================================================
+   41. DOC HERO POLISH
+   ========================================================= */
+
+.doc-main {
+  min-width: 0;
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.32rem;
+  margin-bottom: 0.95rem;
+  color: var(--text-muted);
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+
+.breadcrumb a {
+  color: var(--text-muted);
+}
+
+.breadcrumb a:hover {
+  color: var(--primary);
+}
+
+.breadcrumb-sep {
+  color: #cbd5e1;
+}
+
+.doc-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 1.35rem;
+}
+
+.doc-header h1 {
+  margin: 0;
+  max-width: 18ch;
+  font-size: clamp(2.2rem, 3.4vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--accent);
+}
+
+.doc-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  align-items: center;
+}
+
+.doc-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 32px;
+  padding: 0.38rem 0.68rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--text-soft);
+  font-size: 0.83rem;
+  line-height: 1.25;
+  white-space: normal;
+}
+
+.doc-meta-item a {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.doc-meta-item a:hover {
+  text-decoration: underline;
+}
+
+.doc-meta-item strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.doc-header + .doc-content-wrap {
+  margin-top: 0.15rem;
+}
+
+/* tags가 길게 이어질 때 더 안정적으로 보이게 */
+.doc-meta-item:last-child {
+  max-width: 100%;
+}
+
+/* dark mode hero consistency */
+:root[data-theme="dark"] .breadcrumb-sep {
+  color: #475569;
+}
+
+:root[data-theme="dark"] .doc-meta-item {
+  background: var(--surface);
+  border-color: var(--border);
+  color: var(--text-soft);
+}
+
+/* tablet */
+@media (max-width: 1100px) {
+  .doc-header h1 {
+    max-width: none;
+  }
+}
+
+/* mobile */
+@media (max-width: 720px) {
+  .breadcrumb {
+    margin-bottom: 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .doc-header {
+    gap: 0.75rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .doc-header h1 {
+    font-size: clamp(1.95rem, 8vw, 2.35rem);
+    line-height: 1.1;
+  }
+
+  .doc-meta {
+    gap: 0.38rem;
+  }
+
+  .doc-meta-item {
+    min-height: 30px;
+    padding: 0.34rem 0.6rem;
+    font-size: 0.8rem;
+  }
+}
+
+.doc-meta-item span {
+  min-width: 0;
+}
+
+.doc-meta-item strong + span,
+.doc-meta-item strong + a {
+  margin-left: 0.05rem;
+}
+
+.doc-meta-item:last-child span {
+  word-break: break-word;
+}
+
+/* =========================================================
+   44. DARK MODE: CARD TEXT
+   ========================================================= */
+
+:root[data-theme="dark"] .section-card h2,
+:root[data-theme="dark"] .hub-latest-card h3,
+:root[data-theme="dark"] .related-doc-card h3 {
+  color: var(--text);
+}
+
+:root[data-theme="dark"] .section-card p,
+:root[data-theme="dark"] .hub-latest-card p,
+:root[data-theme="dark"] .related-doc-card p {
+  color: var(--text-soft);
+}
+
+/* =========================================================
+   46. DARK MODE: FOOTER / SIDEBAR / TOC
+   ========================================================= */
+
+:root[data-theme="dark"] .footer-custom {
+  background: rgba(2, 6, 23, 0.88);
+  border-top-color: var(--border);
+}
+
+:root[data-theme="dark"] .footer-title {
+  color: var(--text-soft);
+}
+
+:root[data-theme="dark"] .footer-description,
+:root[data-theme="dark"] .footer-nav a,
+:root[data-theme="dark"] .footer-separator {
+  color: var(--text-muted);
+}
+
+:root[data-theme="dark"] .footer-nav a:hover {
+  color: var(--primary);
+}
+
+:root[data-theme="dark"] .doc-sidebar-title,
+:root[data-theme="dark"] .doc-toc-title {
+  background: var(--surface);
+  color: var(--text);
+  border-bottom-color: var(--border);
+}
+
+/* =========================================================
+   47. DARK MODE: DOC PAGINATION
+   ========================================================= */
+
+:root[data-theme="dark"] .doc-pagination {
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+:root[data-theme="dark"] .doc-pagination-item a {
+  background: #0f172a;
+  border-color: var(--border);
+  color: var(--text);
+}
+
+:root[data-theme="dark"] .doc-pagination-item a:hover {
+  background: #111827;
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-sm);
+}
+
+:root[data-theme="dark"] .doc-pagination-label {
+  color: var(--text-muted);
+}
+
+:root[data-theme="dark"] .doc-pagination-item strong {
+  color: var(--text);
+}

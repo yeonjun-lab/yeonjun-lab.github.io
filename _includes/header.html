@@ -1,0 +1,102 @@
+<header class="site-header" role="banner">
+  <div class="site-header__inner">
+    <button
+      class="site-menu-toggle"
+      type="button"
+      aria-label="메뉴 열기"
+      aria-expanded="false"
+      aria-controls="site-nav-panel"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <a class="site-title" rel="author" href="{{ '/' | relative_url }}">
+      {{ site.title | escape }}
+    </a>
+
+    <button
+      class="site-theme-toggle"
+      type="button"
+      aria-label="테마 전환"
+      title="테마 전환"
+      id="site-theme-toggle"
+    >
+      <span class="theme-toggle-sun" aria-hidden="true">☀</span>
+      <span class="theme-toggle-moon" aria-hidden="true">🌙</span>
+    </button>
+
+    <a
+      class="site-search-link"
+      href="{{ '/search/' | relative_url }}"
+      aria-label="Search"
+      title="Search"
+      data-open-quick-search
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M10.5 4a6.5 6.5 0 1 1 0 13a6.5 6.5 0 0 1 0-13Zm0 1.5a5 5 0 1 0 0 10a5 5 0 0 0 0-10Zm8.03 11.97l2.72 2.72a.75.75 0 1 1-1.06 1.06l-2.72-2.72a.75.75 0 1 1 1.06-1.06Z"
+          fill="currentColor"
+        />
+      </svg>
+    </a>
+
+    <nav class="site-nav" id="site-nav-panel" aria-label="Primary">
+      <div class="site-nav__links">
+        <a class="page-link" href="{{ '/about/' | relative_url }}" {% if page.url == '/about/' %}aria-current="page"{% endif %}>About</a>
+        <a class="page-link" href="{{ '/foundations/' | relative_url }}" {% if page.url == '/foundations/' %}aria-current="page"{% endif %}>Foundations</a>
+        <a class="page-link" href="{{ '/engineering/' | relative_url }}" {% if page.url == '/engineering/' %}aria-current="page"{% endif %}>Engineering</a>
+        <a class="page-link" href="{{ '/ai-systems/' | relative_url }}" {% if page.url == '/ai-systems/' %}aria-current="page"{% endif %}>AI Systems</a>
+        <a class="page-link" href="{{ '/research/' | relative_url }}" {% if page.url == '/research/' %}aria-current="page"{% endif %}>Research</a>
+        <a class="page-link" href="{{ '/projects/' | relative_url }}" {% if page.url == '/projects/' %}aria-current="page"{% endif %}>Projects</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="quick-search" id="quick-search" aria-hidden="true">
+  <div class="quick-search__backdrop" data-quick-search-close></div>
+
+  <div class="quick-search__panel" role="dialog" aria-modal="true" aria-labelledby="quick-search-title">
+    <div class="quick-search__header">
+      <div class="quick-search__title-wrap">
+        <div id="quick-search-title" class="quick-search__title">Quick Search</div>
+        <div class="quick-search__hint">⌘K / Ctrl+K</div>
+      </div>
+
+      <button
+        type="button"
+        class="quick-search__close"
+        aria-label="검색 닫기"
+        data-quick-search-close
+      >
+        ✕
+      </button>
+    </div>
+
+    <form class="quick-search__form" id="quick-search-form">
+      <input
+        type="search"
+        id="quick-search-input"
+        class="quick-search__input"
+        placeholder="검색어를 입력하세요. 예: optimizer, fiber, python"
+        autocomplete="off"
+      />
+    </form>
+
+    <div id="quick-search-meta" class="quick-search__meta">
+      Enter로 문서 이동 · ESC로 닫기
+    </div>
+
+    <div id="quick-search-results" class="quick-search-results"></div>
+  </div>
+</div>
+
+<script>
+  window.__HEADER_CONFIG__ = {
+    searchPage: "{{ '/search/' | relative_url }}",
+    searchJson: "{{ '/search.json' | relative_url }}"
+  };
+</script>
+<script src="{{ '/assets/js/header.js' | relative_url }}"></script>

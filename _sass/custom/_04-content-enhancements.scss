@@ -1,0 +1,1184 @@
+/* =========================================================
+   FILE MAP
+   - Global typography and page rhythm
+   - Responsive tuning and content components
+   - Code / image / table / layout polish
+   ========================================================= */
+
+/* =========================================================
+   20. GLOBAL TYPOGRAPHY / SPACING
+   ========================================================= */
+
+body {
+  font-size: 16px;
+  line-height: 1.72;
+  color: var(--text);
+}
+
+.page-content {
+  padding-block: 2rem 2.5rem;
+}
+
+.page-title,
+.hub-hero h1,
+.home-hero h1,
+.doc-header h1 {
+  letter-spacing: -0.03em;
+}
+
+.page-title,
+.hub-hero h1,
+.home-hero h1 {
+  font-size: clamp(2rem, 2.8vw, 2.5rem);
+  line-height: 1.08;
+}
+
+.page-description,
+.hub-hero p,
+.home-hero p,
+.doc-header .page-description {
+  max-width: 68ch;
+  color: var(--text-soft);
+  font-size: 0.98rem;
+  line-height: 1.72;
+}
+
+.section-title,
+.home-section-header h2,
+.hub-latest-header h2,
+.related-docs > h2 {
+  font-size: 1rem;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.panel,
+.search-box,
+.search-results,
+.search-discovery,
+.hub-latest,
+.hub-extra,
+.related-docs,
+.doc-pagination,
+.doc-sidebar,
+.doc-toc {
+  border-radius: 20px;
+}
+
+/* =========================================================
+   21. HOME / HUB RHYTHM
+   ========================================================= */
+
+.home-hero,
+.hub-hero {
+  gap: 0.7rem;
+  margin-bottom: 1.75rem;
+}
+
+.section-grid {
+  gap: 1rem;
+}
+
+.section-card-body {
+  padding: 1.15rem 1.2rem;
+}
+
+.section-card h2 {
+  margin: 0 0 0.4rem;
+  font-size: 1.02rem;
+  line-height: 1.35;
+}
+
+.section-card p {
+  font-size: 0.93rem;
+  line-height: 1.65;
+}
+
+.home-latest-group {
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.home-latest-group .panel,
+.hub-latest,
+.hub-extra {
+  padding: 1.15rem 1.2rem;
+}
+
+.hub-page {
+  gap: 1.5rem;
+}
+
+.hub-latest-header,
+.home-section-header {
+  margin-bottom: 0.85rem;
+}
+
+.hub-latest-list {
+  gap: 0.85rem;
+}
+
+.hub-latest-card a {
+  padding: 0.9rem 0.95rem;
+}
+
+.hub-latest-card h3 {
+  margin: 0 0 0.3rem;
+  font-size: 0.96rem;
+  line-height: 1.4;
+}
+
+.hub-latest-card p {
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   22. DOC RHYTHM
+   ========================================================= */
+
+.doc-header {
+  margin-bottom: 1.4rem;
+}
+
+.doc-header h1 {
+  margin-bottom: 0.9rem;
+  font-size: clamp(2.15rem, 3vw, 2.7rem);
+  line-height: 1.06;
+}
+
+.doc-meta {
+  gap: 0.45rem;
+}
+
+.doc-meta-item {
+  min-height: 30px;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.84rem;
+}
+
+.doc-content {
+  font-size: 1rem;
+  line-height: 1.82;
+}
+
+.doc-content > * + * {
+  margin-top: 1em;
+}
+
+.doc-content h2 {
+  margin-top: 2.2em;
+  margin-bottom: 0.65em;
+  font-size: 1.55rem;
+  line-height: 1.24;
+}
+
+.doc-content h3 {
+  margin-top: 1.75em;
+  margin-bottom: 0.5em;
+  font-size: 1.22rem;
+  line-height: 1.3;
+}
+
+.doc-content h4 {
+  margin-top: 1.45em;
+  margin-bottom: 0.38em;
+  font-size: 1.02rem;
+  line-height: 1.35;
+}
+
+.doc-content p,
+.doc-content li {
+  color: var(--text-soft);
+}
+
+.doc-content pre {
+  padding: 0.95rem 1rem;
+  border-radius: 16px;
+}
+
+.doc-content blockquote {
+  padding: 0.9rem 1rem;
+  border-radius: 0 14px 14px 0;
+}
+
+.doc-sidebar {
+  padding: 1rem;
+}
+
+.doc-toc {
+  padding: 0 1rem 1rem;
+}
+
+.doc-sidebar-title,
+.doc-toc-title {
+  font-size: 0.93rem;
+}
+
+.sidebar-link,
+.doc-toc-item a {
+  font-size: 0.89rem;
+}
+
+/* =========================================================
+   23. SEARCH / TAGS / TOPICS RHYTHM
+   ========================================================= */
+
+.search-page .panel,
+.tags-page #tag-cloud,
+.tags-page .search-results,
+.topics-page #topic-cloud,
+.topics-page .search-results {
+  border-radius: 18px;
+}
+
+/* =========================================================
+   24. FOOTER RHYTHM
+   ========================================================= */
+
+.footer-custom {
+  margin-top: 2.25rem;
+}
+
+.footer-custom .wrapper {
+  padding-top: 0.9rem;
+  padding-bottom: 1.05rem;
+}
+
+.footer-title {
+  font-size: 0.92rem;
+}
+
+.footer-description,
+.footer-nav a,
+.footer-separator {
+  font-size: 0.88rem;
+}
+
+/* =========================================================
+   25. RESPONSIVE MICRO TUNING
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .page-content {
+    padding-block: 1.5rem 2rem;
+  }
+
+  .home-hero,
+  .hub-hero {
+    margin-bottom: 1.25rem;
+  }
+
+  .home-latest-group,
+  .section-grid,
+  .hub-latest-list,
+  .related-docs-grid,
+  .doc-pagination-grid,
+  .search-discovery-grid {
+    gap: 0.85rem;
+  }
+
+  .section-card-body,
+  .home-latest-group .panel,
+  .hub-latest,
+  .hub-extra,
+  .related-docs,
+  .doc-pagination,
+  .doc-sidebar {
+    padding: 1rem;
+  }
+
+  .doc-toc {
+    padding: 0 1rem 1rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .page-title,
+  .hub-hero h1,
+  .home-hero h1 {
+    font-size: clamp(1.8rem, 7vw, 2.1rem);
+  }
+
+  .doc-header h1 {
+    font-size: clamp(1.95rem, 7vw, 2.3rem);
+  }
+
+  .doc-content {
+    font-size: 0.97rem;
+  }
+
+  .doc-content h2 {
+    font-size: 1.4rem;
+  }
+
+  .doc-content h3 {
+    font-size: 1.13rem;
+  }
+}
+
+/* =========================================================
+   26. DOC CODE COPY / LANGUAGE BADGE
+   ========================================================= */
+
+.doc-content pre,
+#doc-content pre {
+  position: relative;
+  padding-top: 2.9rem;
+}
+
+.code-copy-wrap {
+  position: relative;
+}
+
+.code-language-badge {
+  position: absolute;
+  top: 0.7rem;
+  left: 0.7rem;
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #cbd5e1;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.code-copy-button {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #e5eefb;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.code-copy-button:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+}
+
+.code-copy-button:active {
+  transform: translateY(1px);
+}
+
+.code-copy-button.is-copied {
+  background: rgba(37, 99, 235, 0.22);
+  border-color: rgba(96, 165, 250, 0.35);
+  color: #dbeafe;
+}
+
+@media (max-width: 720px) {
+  .doc-content pre,
+  #doc-content pre {
+    padding-top: 3rem;
+  }
+
+  .code-language-badge,
+  .code-copy-button {
+    top: 0.65rem;
+    min-height: 28px;
+    padding: 0.32rem 0.58rem;
+    font-size: 0.76rem;
+  }
+
+  .code-language-badge {
+    left: 0.65rem;
+  }
+
+  .code-copy-button {
+    right: 0.65rem;
+  }
+}
+
+/* =========================================================
+   CODE COPY TOAST
+   ========================================================= */
+
+.code-copy-toast {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 3000;
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0.7rem 0.9rem;
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.94);
+  color: #f8fafc;
+  font-size: 0.88rem;
+  font-weight: 600;
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.2);
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease,
+    background-color 160ms ease;
+}
+
+.code-copy-toast.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.code-copy-toast.is-error {
+  background: rgba(127, 29, 29, 0.96);
+}
+
+@media (max-width: 720px) {
+  .code-copy-toast {
+    right: 0.75rem;
+    left: 0.75rem;
+    bottom: 0.75rem;
+    justify-content: center;
+  }
+}
+
+/* =========================================================
+   DOC IMAGE
+   ========================================================= */
+
+.doc-content img,
+#doc-content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.6rem auto;
+  border-radius: 12px;
+}
+
+.doc-content figure,
+#doc-content figure {
+  margin: 1.8rem 0;
+  text-align: center;
+}
+
+.doc-content figcaption,
+#doc-content figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+/* =========================================================
+   27. DOC TABLE
+   ========================================================= */
+
+.doc-content table,
+#doc-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.6rem 0;
+  font-size: 0.92rem;
+}
+
+.doc-content thead,
+#doc-content thead {
+  background: rgba(148, 163, 184, 0.08);
+}
+
+.doc-content th,
+#doc-content td,
+#doc-content th,
+#doc-content td {
+  padding: 0.65rem 0.8rem;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  text-align: left;
+}
+
+.doc-content th {
+  font-weight: 700;
+}
+
+.doc-content tr:nth-child(even) td {
+  background: rgba(148, 163, 184, 0.04);
+}
+
+/* =========================================================
+   MOBILE TABLE SCROLL
+   ========================================================= */
+
+.doc-content table {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   28. IMAGE ZOOM
+   ========================================================= */
+
+.image-zoom-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4000;
+  cursor: zoom-out;
+}
+
+.image-zoomed {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 14px;
+}
+
+/* =========================================================
+   29. QUICK SEARCH RESULTS
+   ========================================================= */
+
+.quick-search-results {
+  margin-top: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  max-height: min(52vh, 520px);
+  overflow: auto;
+}
+
+.quick-search-results__empty {
+  padding: 0.75rem 0.1rem 0.2rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.quick-search-item {
+  display: block;
+  padding: 0.85rem 0.9rem;
+  border: 1px solid transparent;
+  border-radius: 16px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.quick-search-item:hover,
+.quick-search-item.is-active {
+  border-color: var(--border);
+  background: var(--surface-soft);
+  color: inherit;
+}
+
+.quick-search-item__top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.28rem;
+}
+
+.quick-search-item__top strong {
+  color: var(--text);
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+
+.quick-search-item__badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0.22rem 0.5rem;
+  border-radius: 999px;
+  background: var(--surface-muted);
+  color: var(--text-soft);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.quick-search-item__meta {
+  margin-bottom: 0.3rem;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.quick-search-item__snippet {
+  color: var(--text-soft);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.quick-search-item__snippet mark {
+  background: rgba(37, 99, 235, 0.14);
+  color: var(--text);
+  border-radius: 4px;
+  padding: 0 0.08rem;
+}
+
+/* =========================================================
+   30. RESPONSIVE: DOC SIDEBAR
+   ========================================================= */
+
+@media (max-width: 1100px) {
+  .doc-shell {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .doc-sidebar {
+    order: -1;
+    position: static !important;
+    top: auto !important;
+    max-height: none !important;
+    height: auto !important;
+    overflow: visible !important;
+    padding: 1rem;
+  }
+
+  .doc-sidebar-title {
+    position: static !important;
+    top: auto !important;
+    margin: 0 0 0.75rem;
+    padding: 0 0 0.5rem;
+  }
+
+  .sidebar-tree {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .sidebar-tree .sidebar-tree {
+    padding-left: 0.65rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .doc-sidebar {
+    padding: 0.9rem 1rem;
+  }
+
+  .sidebar-link {
+    padding: 0.5rem 0.68rem;
+    font-size: 0.88rem;
+  }
+
+  .sidebar-tree .sidebar-tree {
+    padding-left: 0.55rem;
+  }
+}
+/* =========================================================
+   DOC SIDEBAR COLLAPSIBLE
+   ========================================================= */
+
+.doc-sidebar-details {
+  display: block;
+}
+
+.doc-sidebar-summary {
+  display: none;
+}
+
+@media (max-width: 1100px) {
+  .doc-sidebar {
+    background: #fff;
+  }
+
+  .doc-sidebar-title {
+    display: none;
+  }
+
+  .doc-sidebar-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    list-style: none;
+    font-size: 0.94rem;
+    font-weight: 800;
+    color: var(--accent);
+    user-select: none;
+    padding-bottom: 0.2rem;
+  }
+
+  .doc-sidebar-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .doc-sidebar-summary::after {
+    content: "+";
+    color: var(--text-muted);
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .doc-sidebar-details[open] .doc-sidebar-summary::after {
+    content: "−";
+  }
+
+  .doc-sidebar-body {
+    margin-top: 0.8rem;
+  }
+}
+
+/* =========================================================
+   31. DOC CODE COLOR SYSTEM
+   ========================================================= */
+
+/* inline code */
+.doc-content :not(pre) > code,
+#doc-content :not(pre) > code {
+  display: inline;
+  padding: 0.14rem 0.38rem;
+  border-radius: 8px;
+  background: var(--surface-muted);
+  color: var(--text);
+  font-size: 0.9em;
+  font-weight: 500;
+  word-break: break-word;
+}
+
+/* fenced code block */
+.doc-content pre,
+#doc-content pre {
+  position: relative;
+  overflow-x: auto;
+  margin: 1.4rem 0;
+  padding: 2.9rem 1rem 1rem;
+  border: 1px solid #0f172a;
+  border-radius: 18px;
+  background: #0f172a;
+  color: #e5eefb;
+  line-height: 1.65;
+}
+
+/* code inside pre */
+.doc-content pre code,
+#doc-content pre code {
+  display: block;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 0.95em;
+  font-weight: 500;
+  white-space: pre;
+}
+
+/* Jekyll / Rouge wrapper */
+.doc-content .highlighter-rouge,
+#doc-content .highlighter-rouge {
+  margin: 1.4rem 0;
+}
+
+.doc-content .highlighter-rouge .highlight,
+#doc-content .highlighter-rouge .highlight {
+  margin: 0;
+  border-radius: 18px;
+  background: #0f172a;
+}
+
+.doc-content .highlight pre,
+#doc-content .highlight pre {
+  margin: 0;
+  background: #0f172a;
+  color: #e5eefb;
+}
+
+/* =========================================================
+   ROUGE TOKEN COLORS
+   ========================================================= */
+
+/* base */
+.doc-content .highlight,
+#doc-content .highlight {
+  color: #e5eefb;
+}
+
+/* comment */
+.doc-content .highlight .c,
+.doc-content .highlight .c1,
+.doc-content .highlight .cm,
+.doc-content .highlight .cp,
+.doc-content .highlight .cs,
+#doc-content .highlight .c,
+#doc-content .highlight .c1,
+#doc-content .highlight .cm,
+#doc-content .highlight .cp,
+#doc-content .highlight .cs {
+  color: #7f8c98;
+  font-style: italic;
+}
+
+/* keyword */
+.doc-content .highlight .k,
+.doc-content .highlight .kc,
+.doc-content .highlight .kd,
+.doc-content .highlight .kn,
+.doc-content .highlight .kp,
+.doc-content .highlight .kr,
+.doc-content .highlight .kt,
+#doc-content .highlight .k,
+#doc-content .highlight .kc,
+#doc-content .highlight .kd,
+#doc-content .highlight .kn,
+#doc-content .highlight .kp,
+#doc-content .highlight .kr,
+#doc-content .highlight .kt {
+  color: #c792ea;
+}
+
+/* operators / punctuation */
+.doc-content .highlight .o,
+.doc-content .highlight .ow,
+.doc-content .highlight .p,
+#doc-content .highlight .o,
+#doc-content .highlight .ow,
+#doc-content .highlight .p {
+  color: #89ddff;
+}
+
+/* names / functions / classes */
+.doc-content .highlight .na,
+.doc-content .highlight .nb,
+.doc-content .highlight .nc,
+.doc-content .highlight .nd,
+.doc-content .highlight .ne,
+.doc-content .highlight .nf,
+.doc-content .highlight .fm,
+.doc-content .highlight .nl,
+.doc-content .highlight .nn,
+.doc-content .highlight .nx,
+#doc-content .highlight .na,
+#doc-content .highlight .nb,
+#doc-content .highlight .nc,
+#doc-content .highlight .nd,
+#doc-content .highlight .ne,
+#doc-content .highlight .nf,
+#doc-content .highlight .fm,
+#doc-content .highlight .nl,
+#doc-content .highlight .nn,
+#doc-content .highlight .nx {
+  color: #82aaff;
+}
+
+/* strings */
+.doc-content .highlight .s,
+.doc-content .highlight .s1,
+.doc-content .highlight .s2,
+.doc-content .highlight .sa,
+.doc-content .highlight .sb,
+.doc-content .highlight .sc,
+.doc-content .highlight .sd,
+.doc-content .highlight .se,
+.doc-content .highlight .sh,
+.doc-content .highlight .si,
+.doc-content .highlight .sr,
+.doc-content .highlight .ss,
+.doc-content .highlight .sx,
+#doc-content .highlight .s,
+#doc-content .highlight .s1,
+#doc-content .highlight .s2,
+#doc-content .highlight .sa,
+#doc-content .highlight .sb,
+#doc-content .highlight .sc,
+#doc-content .highlight .sd,
+#doc-content .highlight .se,
+#doc-content .highlight .sh,
+#doc-content .highlight .si,
+#doc-content .highlight .sr,
+#doc-content .highlight .ss,
+#doc-content .highlight .sx {
+  color: #ecc48d;
+}
+
+/* numbers */
+.doc-content .highlight .m,
+.doc-content .highlight .mb,
+.doc-content .highlight .mf,
+.doc-content .highlight .mh,
+.doc-content .highlight .mi,
+.doc-content .highlight .il,
+.doc-content .highlight .mo,
+#doc-content .highlight .m,
+#doc-content .highlight .mb,
+#doc-content .highlight .mf,
+#doc-content .highlight .mh,
+#doc-content .highlight .mi,
+#doc-content .highlight .il,
+#doc-content .highlight .mo {
+  color: #f78c6c;
+}
+
+/* booleans / constants / builtins */
+.doc-content .highlight .bp,
+.doc-content .highlight .no,
+.doc-content .highlight .nv,
+.doc-content .highlight .vc,
+.doc-content .highlight .vg,
+.doc-content .highlight .vi,
+.doc-content .highlight .vm,
+#doc-content .highlight .bp,
+#doc-content .highlight .no,
+#doc-content .highlight .nv,
+#doc-content .highlight .vc,
+#doc-content .highlight .vg,
+#doc-content .highlight .vi,
+#doc-content .highlight .vm {
+  color: #ff5370;
+}
+
+/* generic additions */
+.doc-content .highlight .gh,
+.doc-content .highlight .gu,
+#doc-content .highlight .gh,
+#doc-content .highlight .gu {
+  color: #c3e88d;
+  font-weight: 700;
+}
+
+/* deleted / inserted-like tokens */
+.doc-content .highlight .gd,
+#doc-content .highlight .gd {
+  color: #ff5370;
+}
+
+.doc-content .highlight .gi,
+#doc-content .highlight .gi {
+  color: #c3e88d;
+}
+
+/* =========================================================
+   CODE COPY + LANGUAGE BADGE LAYER SAFETY
+   ========================================================= */
+
+.code-copy-wrap {
+  position: relative;
+}
+
+.code-language-badge {
+  position: absolute;
+  top: 0.7rem;
+  left: 0.7rem;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #cbd5e1;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.code-copy-button {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #e5eefb;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.code-copy-button:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+}
+
+.code-copy-button:active {
+  transform: translateY(1px);
+}
+
+.code-copy-button.is-copied {
+  background: rgba(37, 99, 235, 0.22);
+  border-color: rgba(96, 165, 250, 0.35);
+  color: #dbeafe;
+}
+
+@media (max-width: 720px) {
+  .doc-content pre,
+  #doc-content pre {
+    padding-top: 3rem;
+  }
+
+  .code-language-badge,
+  .code-copy-button {
+    top: 0.65rem;
+    min-height: 28px;
+    padding: 0.32rem 0.58rem;
+    font-size: 0.76rem;
+  }
+
+  .code-language-badge {
+    left: 0.65rem;
+  }
+
+  .code-copy-button {
+    right: 0.65rem;
+  }
+}
+
+/* =========================================================
+   32. GLOBAL LAYOUT SAFETY
+   ========================================================= */
+
+html {
+  scrollbar-gutter: stable;
+}
+
+@supports not (scrollbar-gutter: stable) {
+  html {
+    overflow-y: scroll;
+  }
+}
+
+/* =========================================================
+   33. SEARCH DISCOVERY POLISH
+   ========================================================= */
+
+.search-page .search-discovery {
+  overflow: hidden;
+}
+
+.search-page .search-discovery-grid {
+  padding-top: 0.1rem;
+}
+
+.search-page .search-discovery__section {
+  min-width: 0;
+}
+
+.search-page .taxonomy-cloud {
+  align-items: flex-start;
+}
+
+/* =========================================================
+   34. DOC HEADER POLISH
+   ========================================================= */
+
+/* =========================================================
+   35. HOME / HUB CARD BALANCE
+   ========================================================= */
+
+.section-card,
+.hub-latest-card,
+.related-doc-card {
+  height: 100%;
+}
+
+.section-card a,
+.hub-latest-card a,
+.related-doc-card a {
+  display: block;
+  height: 100%;
+}
+
+.section-card-body,
+.hub-latest-card-body,
+.related-doc-card-body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  gap: 0.42rem;
+  min-height: 78px;
+}
+
+.section-card h2,
+.hub-latest-card h3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: calc(1.2em * 2);
+  font-size: 1rem;
+  line-height: 1.2;
+  font-weight: 850;
+  letter-spacing: -0.01em;
+  color: var(--accent);
+}
+
+.related-doc-card h3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 1.2em;
+  font-size: 1rem;
+  line-height: 1.2;
+  font-weight: 850;
+  letter-spacing: -0.01em;
+  color: var(--accent);
+}
+
+.section-card p,
+.hub-latest-card p{
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: calc(1.2em * 2);
+}
+
+.related-doc-card p {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 1.2em;
+}
+
+.related-doc-card-body p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.home-latest-group .panel,
+.hub-latest,
+.related-docs {
+  align-content: start;
+}
+
+.section-grid,
+.hub-latest-list,
+.related-docs-grid {
+  align-items: stretch;
+
+}

@@ -22,21 +22,8 @@ layout: default
 </div>
 {% endif %}
 
-{% if page.show_documents %}
-<div class="recent-section">
-  <h2>Documents</h2>
-  <ul class="recent-list">
-    {% assign docs = site[page.collection_name] | where_exp: "item", "item.url contains page.path_prefix" | sort: "sort_date" | reverse %}
-    {% for doc in docs %}
-      {% unless doc.url == page.url %}
-        <li><a href="{{ doc.url | relative_url }}">{{ doc.title }}</a></li>
-      {% endunless %}
-    {% endfor %}
-  </ul>
-</div>
-{% endif %}
-
-{% if content and content != "" %}
+{% assign trimmed_content = content | strip %}
+{% if trimmed_content != "" %}
 <div class="hub-extra">
   {{ content }}
 </div>

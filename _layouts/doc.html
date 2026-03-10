@@ -7,13 +7,19 @@ layout: default
 <div class="doc-shell">
   {% if sidebar_nodes %}
   <aside class="doc-sidebar">
-    <div class="doc-sidebar-inner">
-      <div class="doc-sidebar-title">
+    <details class="doc-sidebar-details" open>
+      <summary class="doc-sidebar-summary">
         {% assign section_label = site.data.navigation_names[page.section] | default: page.section %}
         {{ section_label }}
+      </summary>
+
+      <div class="doc-sidebar-inner doc-sidebar-body">
+        <div class="doc-sidebar-title">
+          {{ section_label }}
+        </div>
+        {% include sidebar-nav.html nodes=sidebar_nodes %}
       </div>
-      {% include sidebar-nav.html nodes=sidebar_nodes %}
-    </div>
+    </details>
   </aside>
   {% endif %}
 
@@ -44,28 +50,43 @@ layout: default
       <div class="doc-meta">
         {% if page.section %}
           {% assign section_label = site.data.navigation_names[page.section] | default: page.section %}
-          <span class="doc-meta-item">Section: {{ section_label }}</span>
+          <span class="doc-meta-item">
+            <strong>Section</strong>
+            <span>{{ section_label }}</span>
+          </span>
         {% endif %}
+
         {% if page.subcategory %}
           {% assign category_label = site.data.navigation_names[page.subcategory] | default: page.subcategory %}
-          <span class="doc-meta-item">Category: {{ category_label }}</span>
+          <span class="doc-meta-item">
+            <strong>Category</strong>
+            <span>{{ category_label }}</span>
+          </span>
         {% endif %}
+
         {% if page.topic %}
           {% assign topic_label = site.data.navigation_names[page.topic] | default: page.topic %}
           <span class="doc-meta-item">
-            Topic:
+            <strong>Topic</strong>
             <a href="{{ '/search/?topic=' | append: page.topic | relative_url }}">{{ topic_label }}</a>
           </span>
         {% endif %}
+
         {% if page.doc_type %}
-          <span class="doc-meta-item">Type: {{ page.doc_type }}</span>
+          <span class="doc-meta-item">
+            <strong>Type</strong>
+            <span>{{ page.doc_type }}</span>
+          </span>
         {% endif %}
+
         {% if page.tags and page.tags.size > 0 %}
           <span class="doc-meta-item">
-            Tags:
-            {% for tag in page.tags %}
-              <a href="{{ '/search/?tag=' | append: tag | relative_url }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
-            {% endfor %}
+            <strong>Tags</strong>
+            <span>
+              {% for tag in page.tags %}
+                <a href="{{ '/search/?tag=' | append: tag | relative_url }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
+              {% endfor %}
+            </span>
           </span>
         {% endif %}
       </div>
@@ -90,3 +111,6 @@ layout: default
 </div>
 
 <script src="{{ '/assets/js/toc.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/code-copy.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/image-zoom.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/doc.js' | relative_url }}"></script>

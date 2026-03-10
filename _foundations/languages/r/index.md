@@ -17,5 +17,7 @@ R 관련 글 목록입니다.
 
 {% assign docs = site.foundations | where_exp: "item", "item.url contains '/foundations/languages/r/'" %}
 {% for doc in docs %}
+{% unless doc.url == page.url%}
 - [{{ doc.title }}]({{ doc.url | relative_url }})
+{% endunless %}
 {% endfor %}
