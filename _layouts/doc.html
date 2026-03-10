@@ -52,7 +52,10 @@ layout: default
         {% endif %}
         {% if page.topic %}
           {% assign topic_label = site.data.navigation_names[page.topic] | default: page.topic %}
-          <span class="doc-meta-item">Topic: <a href="{{ '/topics/?topic=' | append: page.topic | relative_url }}">{{ topic_label }}</a></span>
+          <span class="doc-meta-item">
+            Topic:
+            <a href="{{ '/search/?topic=' | append: page.topic | relative_url }}">{{ topic_label }}</a>
+          </span>
         {% endif %}
         {% if page.doc_type %}
           <span class="doc-meta-item">Type: {{ page.doc_type }}</span>
@@ -61,7 +64,7 @@ layout: default
           <span class="doc-meta-item">
             Tags:
             {% for tag in page.tags %}
-              <a href="{{ '/tags/?tag=' | append: tag | relative_url }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
+              <a href="{{ '/search/?tag=' | append: tag | relative_url }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
             {% endfor %}
           </span>
         {% endif %}

@@ -197,6 +197,7 @@ GitHub Pages + Jekyll 기반 문서형 기술 아카이브
 - ReactJs
 - NextJs
 - LLM / DeepLearning
+- CUDA
 - AIOS / ACOS
 - Emotion AI / Personalized Emotion Modeling
 - Research Notes / Architecture Expansion

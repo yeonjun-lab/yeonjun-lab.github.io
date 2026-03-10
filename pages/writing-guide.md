@@ -4,8 +4,6 @@ title: "Writing Guide"
 permalink: /writing-guide/
 ---
 
-## Writing Guide
-
 이 페이지는 기술 아카이브 문서를 일관된 기준으로 작성하고 운영하기 위한 기준 문서입니다.
 
 이 아카이브는 단순 블로그가 아니라 다음을 목표로 합니다.

@@ -4,7 +4,7 @@ title: "Research"
 permalink: /research/
 description: "논문 아이디어, 개념 확장, 구조 설계를 정리하는 영역입니다."
 collection_name: research
-latest_limit: 6
+latest_limit: 2
 
 cards:
   - title: "Papers"

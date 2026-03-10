@@ -1,9 +1,12 @@
 (function () {
-  const cloud = document.getElementById("tag-cloud");
+  const cloud =
+    document.getElementById("tag-cloud") ||
+    document.getElementById("search-tag-cloud");
+
   const summary = document.getElementById("tag-results-summary");
   const results = document.getElementById("tag-results");
 
-  if (!cloud || !summary || !results) return;
+  if (!cloud) return;
 
   function escapeHtml(str) {
     return String(str)
@@ -18,42 +21,30 @@
     return String(text || "").trim().toLowerCase();
   }
 
-  function renderDocs(tag, docs) {
-    summary.textContent = tag ? `${tag} · ${docs.length}개의 문서` : "";
+  function renderStandalone(selectedTag, docs) {
+    if (!summary || !results) return;
 
-    if (!tag) {
-      results.innerHTML = `<div class="search-empty">태그를 선택하세요.</div>`;
+    if (!selectedTag) {
+      summary.textContent = "태그를 선택하세요.";
+      results.innerHTML = "";
       return;
     }
 
-    if (docs.length === 0) {
-      results.innerHTML = `<div class="search-empty">해당 태그의 문서가 없습니다.</div>`;
-      return;
-    }
+    const filtered = docs.filter(doc =>
+      Array.isArray(doc.tags) && doc.tags.map(normalize).includes(normalize(selectedTag))
+    );
 
-    results.innerHTML = docs.map(doc => {
-      const meta = [
-        doc.section || "",
-        doc.subcategory || "",
-        doc.topic || "",
-        doc.doc_type || ""
-      ].filter(Boolean).join(" · ");
+    summary.textContent = `${selectedTag} · ${filtered.length}개의 결과`;
 
-      const tags = Array.isArray(doc.tags) && doc.tags.length
-        ? `<div class="search-result-tags">${doc.tags.map(t => `<span>${escapeHtml(t)}</span>`).join("")}</div>`
-        : "";
-
-      return `
-        <article class="search-result-item">
-          <h2><a href="${doc.url}">${escapeHtml(doc.title)}</a></h2>
-          ${meta ? `<div class="search-result-meta">${escapeHtml(meta)}</div>` : ""}
-          ${tags}
-        </article>
-      `;
-    }).join("");
+    results.innerHTML = filtered.map(doc => `
+      <article class="search-result-item">
+        <h2><a href="${doc.url}">${escapeHtml(doc.title)}</a></h2>
+        <p>${escapeHtml(doc.subcategory || "")}${doc.topic ? " · " + escapeHtml(doc.topic) : ""}${doc.doc_type ? " · " + escapeHtml(doc.doc_type) : ""}</p>
+      </article>
+    `).join("");
   }
 
-  function renderCloud(tagMap, currentTag, docs) {
+  function renderCloud(tagMap, currentTag) {
     const entries = Object.entries(tagMap).sort((a, b) => {
       if (b[1] !== a[1]) return b[1] - a[1];
       return a[0].localeCompare(b[0]);
@@ -61,26 +52,24 @@
 
     cloud.innerHTML = entries.map(([tag, count]) => {
       const active = normalize(tag) === normalize(currentTag) ? " is-active" : "";
-      const href = `/tags/?tag=${encodeURIComponent(tag)}`;
-      return `<a class="tag-chip${active}" href="${href}">${escapeHtml(tag)} <span>${count}</span></a>`;
+      const href = `/search/?tag=${encodeURIComponent(tag)}`;
+      return `<a class="tag-chip${active}" href="${href}" data-tag="${escapeHtml(tag)}">${escapeHtml(tag)} <span>${count}</span></a>`;
     }).join("");
-  }
 
-  function applyTag(tag, docs, tagMap) {
-    const normalizedTag = normalize(tag);
-    const matched = docs
-      .filter(doc => Array.isArray(doc.tags) && doc.tags.map(normalize).includes(normalizedTag))
-      .sort((a, b) => String(b.sort_date || "").localeCompare(String(a.sort_date || "")));
-
-    renderCloud(tagMap, tag, docs);
-    renderDocs(tag, matched);
+    cloud.querySelectorAll("[data-tag]").forEach(el => {
+      el.addEventListener("click", (e) => {
+        if (window.__archiveSearch) {
+          e.preventDefault();
+          window.__archiveSearch.setTag(el.dataset.tag);
+        }
+      });
+    });
   }
 
   fetch("/search.json")
     .then(res => res.json())
     .then(docs => {
       const tagMap = {};
-
       docs.forEach(doc => {
         if (!Array.isArray(doc.tags)) return;
         doc.tags.forEach(tag => {
@@ -89,15 +78,16 @@
         });
       });
 
-      const url = new URL(window.location.href);
-      const currentTag = url.searchParams.get("tag") || "";
+      const currentTag = window.__archiveSearch
+        ? window.__archiveSearch.getCurrentTag()
+        : new URL(window.location.href).searchParams.get("tag") || "";
 
-      renderCloud(tagMap, currentTag, docs);
-      applyTag(currentTag, docs, tagMap);
+      renderCloud(tagMap, currentTag);
+      renderStandalone(currentTag, docs);
     })
     .catch(() => {
       cloud.innerHTML = "";
-      summary.textContent = "";
-      results.innerHTML = `<div class="search-empty">태그 인덱스를 불러오지 못했습니다.</div>`;
+      if (summary) summary.textContent = "";
+      if (results) results.innerHTML = "";
     });
 })();

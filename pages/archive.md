@@ -1,10 +1,8 @@
 ---
+layout: page
 title: "Archive"
 permalink: /archive/
-layout: page
 ---
-
-## Archive
 
 ### Foundations
 {% assign docs = site.foundations | sort: "sort_date" | reverse %}

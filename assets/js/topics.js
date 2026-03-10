@@ -1,9 +1,12 @@
 (function () {
-  const cloud = document.getElementById("topic-cloud");
+  const cloud =
+    document.getElementById("topic-cloud") ||
+    document.getElementById("search-topic-cloud");
+
   const summary = document.getElementById("topic-results-summary");
   const results = document.getElementById("topic-results");
 
-  if (!cloud || !summary || !results) return;
+  if (!cloud) return;
 
   function escapeHtml(str) {
     return String(str)
@@ -22,38 +25,24 @@
     return String(topic || "").replace(/-/g, " ");
   }
 
-  function renderDocs(topic, docs) {
-    summary.textContent = topic ? `${topicLabel(topic)} · ${docs.length}개의 문서` : "";
+  function renderStandalone(selectedTopic, docs) {
+    if (!summary || !results) return;
 
-    if (!topic) {
-      results.innerHTML = `<div class="search-empty">토픽을 선택하세요.</div>`;
+    if (!selectedTopic) {
+      summary.textContent = "토픽을 선택하세요.";
+      results.innerHTML = "";
       return;
     }
 
-    if (docs.length === 0) {
-      results.innerHTML = `<div class="search-empty">해당 토픽의 문서가 없습니다.</div>`;
-      return;
-    }
+    const filtered = docs.filter(doc => normalize(doc.topic) === normalize(selectedTopic));
+    summary.textContent = `${topicLabel(selectedTopic)} · ${filtered.length}개의 결과`;
 
-    results.innerHTML = docs.map(doc => {
-      const meta = [
-        doc.section || "",
-        doc.subcategory || "",
-        doc.doc_type || ""
-      ].filter(Boolean).join(" · ");
-
-      const tags = Array.isArray(doc.tags) && doc.tags.length
-        ? `<div class="search-result-tags">${doc.tags.map(t => `<span>${escapeHtml(t)}</span>`).join("")}</div>`
-        : "";
-
-      return `
-        <article class="search-result-item">
-          <h2><a href="${doc.url}">${escapeHtml(doc.title)}</a></h2>
-          ${meta ? `<div class="search-result-meta">${escapeHtml(meta)}</div>` : ""}
-          ${tags}
-        </article>
-      `;
-    }).join("");
+    results.innerHTML = filtered.map(doc => `
+      <article class="search-result-item">
+        <h2><a href="${doc.url}">${escapeHtml(doc.title)}</a></h2>
+        <p>${escapeHtml(doc.subcategory || "")}${doc.doc_type ? " · " + escapeHtml(doc.doc_type) : ""}</p>
+      </article>
+    `).join("");
   }
 
   function renderCloud(topicMap, currentTopic) {
@@ -64,40 +53,39 @@
 
     cloud.innerHTML = entries.map(([topic, count]) => {
       const active = normalize(topic) === normalize(currentTopic) ? " is-active" : "";
-      const href = `/topics/?topic=${encodeURIComponent(topic)}`;
-      return `<a class="topic-chip${active}" href="${href}">${escapeHtml(topicLabel(topic))} <span>${count}</span></a>`;
+      const href = `/search/?topic=${encodeURIComponent(topic)}`;
+      return `<a class="topic-chip${active}" href="${href}" data-topic="${escapeHtml(topic)}">${escapeHtml(topicLabel(topic))} <span>${count}</span></a>`;
     }).join("");
-  }
 
-  function applyTopic(topic, docs, topicMap) {
-    const normalizedTopic = normalize(topic);
-    const matched = docs
-      .filter(doc => normalize(doc.topic) === normalizedTopic)
-      .sort((a, b) => String(b.sort_date || "").localeCompare(String(a.sort_date || "")));
-
-    renderCloud(topicMap, topic);
-    renderDocs(topic, matched);
+    cloud.querySelectorAll("[data-topic]").forEach(el => {
+      el.addEventListener("click", (e) => {
+        if (window.__archiveSearch) {
+          e.preventDefault();
+          window.__archiveSearch.setTopic(el.dataset.topic);
+        }
+      });
+    });
   }
 
   fetch("/search.json")
     .then(res => res.json())
     .then(docs => {
       const topicMap = {};
-
       docs.forEach(doc => {
         if (!doc.topic) return;
         topicMap[doc.topic] = (topicMap[doc.topic] || 0) + 1;
       });
 
-      const url = new URL(window.location.href);
-      const currentTopic = url.searchParams.get("topic") || "";
+      const currentTopic = window.__archiveSearch
+        ? window.__archiveSearch.getCurrentTopic()
+        : new URL(window.location.href).searchParams.get("topic") || "";
 
       renderCloud(topicMap, currentTopic);
-      applyTopic(currentTopic, docs, topicMap);
+      renderStandalone(currentTopic, docs);
     })
     .catch(() => {
       cloud.innerHTML = "";
-      summary.textContent = "";
-      results.innerHTML = `<div class="search-empty">토픽 인덱스를 불러오지 못했습니다.</div>`;
+      if (summary) summary.textContent = "";
+      if (results) results.innerHTML = "";
     });
 })();

@@ -3,19 +3,19 @@ layout: default
 ---
 
 <div class="home-hero">
-  <h1>{{ page.hero_title | default: site.title }}</h1>
-  <p>{{ page.hero_description }}</p>
+    <h1>{{ page.hero_title | default: site.title }}</h1>
+    <p>{{ page.hero_description }}</p>
 </div>
 
 <div class="section-grid">
-  {% for card in page.cards %}
+    {% for card in page.cards %}
     <a class="section-card" href="{{ card.url | relative_url }}">
-      <div class="section-card-body">
-        <h2>{{ card.title }}</h2>
-        <p>{{ card.description }}</p>
-      </div>
+        <div class="section-card-body">
+            <h2>{{ card.title }}</h2>
+            <p>{{ card.description }}</p>
+        </div>
     </a>
-  {% endfor %}
+    {% endfor %}
 </div>
 
 {% assign all_docs = "" | split: "" %}
@@ -26,87 +26,76 @@ layout: default
 {% assign all_docs = all_docs | concat: site.projects %}
 {% assign all_docs = all_docs | sort: "sort_date" | reverse %}
 
-<div class="home-section">
-  <div class="home-section-header">
-    <h2>Latest Updates</h2>
-    <a href="{{ '/archive/' | relative_url }}">View all</a>
-  </div>
-
-  <div class="home-updates-list">
-    {% for doc in all_docs limit: 8 %}
-      <article class="home-update-card">
-        <a href="{{ doc.url | relative_url }}">
-          <div class="home-update-card-body">
-            <h3>{{ doc.title }}</h3>
-            <p>
-              {% if doc.section %}{{ site.data.navigation_names[doc.section] | default: doc.section }}{% endif %}
-              {% if doc.subcategory %} · {{ site.data.navigation_names[doc.subcategory] | default: doc.subcategory }}{% endif %}
-              {% if doc.topic %} · {{ site.data.navigation_names[doc.topic] | default: doc.topic }}{% endif %}
-              {% if doc.doc_type %} · {{ doc.doc_type }}{% endif %}
-            </p>
-          </div>
-        </a>
-      </article>
-    {% endfor %}
-  </div>
-</div>
-
-<div class="home-section">
-  <div class="home-section-header">
-    <h2>Latest by Section</h2>
-  </div>
-
-  <div class="home-section-columns">
-
-    <div class="home-section-column">
-      <h3>Foundations</h3>
-      <ul>
-        {% assign docs = site.foundations | sort: "sort_date" | reverse %}
-        {% for doc in docs limit: 3 %}
-          <li><a href="{{ doc.url | relative_url }}">{{ doc.title }}</a></li>
-        {% endfor %}
-      </ul>
+<div class="home-latest-group">
+    <div class="panel">
+        <div class="home-section-header">
+            <h2>Latest Updates</h2>
+            <a href="{{ '/archive/' | relative_url }}">View all</a>
+        </div>
+        <div class="latest-list">
+            {% for doc in all_docs limit: 2 %}
+            <div class="list-row">
+                <div class="list-row__eyebrow">
+                    {% if doc.section %}
+                    {{ site.data.navigation_names[doc.section] | default: doc.section }}
+                    {% endif %}
+                </div>
+                <h3 class="list-row__title">
+                    <a href="{{ doc.url | relative_url }}">{{ doc.title }}</a>
+                </h3>
+                <p class="list-row__desc">
+                    {% if doc.subcategory %}
+                    {{ site.data.navigation_names[doc.subcategory] | default: doc.subcategory }}
+                    {% endif %}
+                    {% if doc.topic %}
+                    · {{ site.data.navigation_names[doc.topic] | default: doc.topic }}
+                    {% endif %}
+                </p>
+            </div>
+            {% endfor %}
+        </div>
     </div>
 
-    <div class="home-section-column">
-      <h3>Engineering</h3>
-      <ul>
-        {% assign docs = site.engineering | sort: "sort_date" | reverse %}
-        {% for doc in docs limit: 3 %}
-          <li><a href="{{ doc.url | relative_url }}">{{ doc.title }}</a></li>
-        {% endfor %}
-      </ul>
+    <div class="panel">
+        <div class="home-section-header">
+            <h2>Latest by Section</h2>
+        </div>
+        <div class="latest-list">
+            {% assign docs = site.foundations | sort:"sort_date" | reverse | first %}
+            <div class="list-row">
+                <div class="list-row__eyebrow">Foundations</div>
+                <h3 class="list-row__title">
+                    <a href="{{ docs.url | relative_url }}">{{ docs.title }}</a>
+                </h3>
+            </div>
+            {% assign docs = site.engineering | sort:"sort_date" | reverse | first %}
+            <div class="list-row">
+                <div class="list-row__eyebrow">Engineering</div>
+                <h3 class="list-row__title">
+                    <a href="{{ docs.url | relative_url }}">{{ docs.title }}</a>
+                </h3>
+            </div>
+            {% assign docs = site.ai_systems | sort:"sort_date" | reverse | first %}
+            <div class="list-row">
+                <div class="list-row__eyebrow">AI Systems</div>
+                <h3 class="list-row__title">
+                    <a href="{{ docs.url | relative_url }}">{{ docs.title }}</a>
+                </h3>
+            </div>
+            {% assign docs = site.research | sort:"sort_date" | reverse | first %}
+            <div class="list-row">
+                <div class="list-row__eyebrow">Research</div>
+                <h3 class="list-row__title">
+                    <a href="{{ docs.url | relative_url }}">{{ docs.title }}</a>
+                </h3>
+            </div>
+            {% assign docs = site.projects | sort:"sort_date" | reverse | first %}
+            <div class="list-row">
+                <div class="list-row__eyebrow">Projects</div>
+                <h3 class="list-row__title">
+                    <a href="{{ docs.url | relative_url }}">{{ docs.title }}</a>
+                </h3>
+            </div>
+        </div>
     </div>
-
-    <div class="home-section-column">
-      <h3>AI Systems</h3>
-      <ul>
-        {% assign docs = site.ai_systems | sort: "sort_date" | reverse %}
-        {% for doc in docs limit: 3 %}
-          <li><a href="{{ doc.url | relative_url }}">{{ doc.title }}</a></li>
-        {% endfor %}
-      </ul>
-    </div>
-
-    <div class="home-section-column">
-      <h3>Research</h3>
-      <ul>
-        {% assign docs = site.research | sort: "sort_date" | reverse %}
-        {% for doc in docs limit: 3 %}
-          <li><a href="{{ doc.url | relative_url }}">{{ doc.title }}</a></li>
-        {% endfor %}
-      </ul>
-    </div>
-
-    <div class="home-section-column">
-      <h3>Projects</h3>
-      <ul>
-        {% assign docs = site.projects | sort: "sort_date" | reverse %}
-        {% for doc in docs limit: 3 %}
-          <li><a href="{{ doc.url | relative_url }}">{{ doc.title }}</a></li>
-        {% endfor %}
-      </ul>
-    </div>
-
-  </div>
 </div>

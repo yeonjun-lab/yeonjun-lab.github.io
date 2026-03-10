@@ -10,27 +10,40 @@ theme: minima
 
 markdown: kramdown
 highlighter: rouge
+permalink: pretty
 
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
+sass:
+  style: compressed
+
 collections:
   foundations:
     output: true
     permalink: /foundations/:path/
+    sort_by: sort_date
+
   engineering:
     output: true
     permalink: /engineering/:path/
+    sort_by: sort_date
+
   ai_systems:
     output: true
     permalink: /ai-systems/:path/
+    sort_by: sort_date
+
   research:
     output: true
     permalink: /research/:path/
+    sort_by: sort_date
+
   projects:
     output: true
     permalink: /projects/:path/
+    sort_by: sort_date
 
 defaults:
   - scope:
@@ -71,11 +84,7 @@ defaults:
 
 header_pages:
   - pages/about.md
-  - pages/writing-guide.md
-  - pages/archive.md
   - pages/search.md
-  - pages/tags.md
-  - pages/topics.md
   - pages/foundations.md
   - pages/engineering.md
   - pages/ai-systems.md
