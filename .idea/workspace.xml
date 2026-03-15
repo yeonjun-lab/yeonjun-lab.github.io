@@ -5,64 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9101f5f1-46f5-4127-a6ed-47879746a7f4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/tools/generate_topic_hubs.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tools/migrate_topic_slug.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/aos와 soa는 무엇이 다르고 언제 중요한가.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/c 코드의 성능은 무엇으로 결정되는가.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/c는 왜 bottom-up으로 공부해야 하는가.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/endianness는 왜 중요한가.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/extern과 static은 무엇이 다르고 왜 중요한가.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/length-prefixed format은 왜 필요한가.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/malloc과 free는 실제로 무엇을 하는가.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/offsetof와 struct layout을 어떻게 확인하는가.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/packed struct는 왜 위험할 수 있는가.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/schema evolution은 왜 중요한가.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/struct padding과 alignment는 왜 중요한가.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/type-length-value는 왜 자주 쓰이는가.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/undefined behavior는 왜 위험한가.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/use-after-free는 왜 치명적인가.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/문자열 리터럴과 char 배열의 차이.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/배열과 포인터는 왜 비슷하면서 다른가.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/버전 필드는 언제 필요하고 언제 해가 될 수 있는가.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/버퍼 오버플로우는 어떻게 생기는가.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/변수는 메모리 관점에서 무엇인가.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/비트  바이트  주소란 무엇인가.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/스택과 힙의 차이.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/오브젝트 파일과 심볼이란 무엇인가.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/정수는 메모리에 어떻게 저장되는가.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/정적 라이브러리와 동적 라이브러리는 무엇이 다른가.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/직렬화와 역직렬화는 왜 단순 memcpy가 아닌가.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/캐시 친화적 접근은 왜 빠른가.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/컴파일  어셈블  링크의 전체 흐름.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/텍스트 직렬화와 바이너리 직렬화는 어떻게 다른가.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/파일 입출력은 내부적으로 어떻게 동작하는가.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/포인터 타입은 왜 중요한가.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/포인터란 무엇인가.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/표준 라이브러리와 시스템 콜의 차이.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/함수 호출 시 스택에서는 무슨 일이 일어나는가.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/헤더 파일과 선언 정의 분리는 왜 필요한가.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/python/object-model/mutable-immutable.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/python/object-model/mutable-immutable.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_includes/sidebar-nav.html" beforeDir="false" afterPath="$PROJECT_DIR$/_includes/sidebar-nav.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_layouts/category-hub.html" beforeDir="false" afterPath="$PROJECT_DIR$/_layouts/category-hub.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_layouts/doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/_layouts/doc.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sass/custom/_01-core.scss" beforeDir="false" afterPath="$PROJECT_DIR$/_sass/custom/_01-core.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sass/custom/_02-search-and-taxonomy.scss" beforeDir="false" afterPath="$PROJECT_DIR$/_sass/custom/_02-search-and-taxonomy.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sass/custom/_03-doc-and-header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/_sass/custom/_03-doc-and-header.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sass/custom/_04-content-enhancements.scss" beforeDir="false" afterPath="$PROJECT_DIR$/_sass/custom/_04-content-enhancements.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sass/custom/_05-dark-mode.scss" beforeDir="false" afterPath="$PROJECT_DIR$/_sass/custom/_05-dark-mode.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/doc.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/doc.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/writing-guide.md" beforeDir="false" afterPath="$PROJECT_DIR$/pages/writing-guide.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/concept.md" beforeDir="false" afterPath="$PROJECT_DIR$/templates/concept.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/deep-dive.md" beforeDir="false" afterPath="$PROJECT_DIR$/templates/deep-dive.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/project-log.md" beforeDir="false" afterPath="$PROJECT_DIR$/templates/project-log.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/research-note.md" beforeDir="false" afterPath="$PROJECT_DIR$/templates/research-note.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/troubleshooting.md" beforeDir="false" afterPath="$PROJECT_DIR$/templates/troubleshooting.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/new_doc.sh" beforeDir="false" afterPath="$PROJECT_DIR$/tools/new_doc.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/validate_docs.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/validate_docs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/validate_docs_strict.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/validate_docs_strict.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +77,7 @@
       <workItem from="1772891397988" duration="9532000" />
       <workItem from="1773032524985" duration="73107000" />
       <workItem from="1773548992766" duration="15339000" />
-      <workItem from="1773583848633" duration="2016000" />
+      <workItem from="1773583848633" duration="2085000" />
     </task>
     <servers />
   </component>
