@@ -26,6 +26,33 @@
     toc.hidden = !hasMeaningfulContent;
   }
 
+  function scrollSidebarItemIntoView(sidebarBody, target, behavior = "smooth") {
+    if (!sidebarBody || !target) return;
+
+    const bodyRect = sidebarBody.getBoundingClientRect();
+    const targetRect = target.getBoundingClientRect();
+
+    const topPadding = 20;
+    const bottomPadding = 20;
+
+    const fullyVisible =
+      targetRect.top >= bodyRect.top + topPadding &&
+      targetRect.bottom <= bodyRect.bottom - bottomPadding;
+
+    if (fullyVisible) return;
+
+    const targetTopWithinContainer = target.offsetTop;
+    const desiredTop = Math.max(
+      targetTopWithinContainer - sidebarBody.clientHeight * 0.25,
+      0
+    );
+
+    sidebarBody.scrollTo({
+      top: desiredTop,
+      behavior
+    });
+  }
+
   function setupTopicGroups() {
     const topicGroups = Array.from(document.querySelectorAll(".sidebar-topic-group"));
     if (!topicGroups.length) return;
@@ -64,19 +91,9 @@
         const sidebarBody = document.querySelector(".doc-sidebar-body");
         const topicRow = group.querySelector('[data-topic-row="true"]');
 
-        if (sidebarBody && topicRow) {
-          requestAnimationFrame(() => {
-            const targetScrollTop = Math.max(
-              topicRow.offsetTop - sidebarBody.clientHeight * 0.28,
-              0
-            );
-
-            sidebarBody.scrollTo({
-              top: targetScrollTop,
-              behavior: "smooth"
-            });
-          });
-        }
+        requestAnimationFrame(() => {
+          scrollSidebarItemIntoView(sidebarBody, topicRow, "smooth");
+        });
       });
     });
   }
@@ -111,23 +128,7 @@
     if (!target) return;
 
     requestAnimationFrame(() => {
-      const bodyRect = sidebarBody.getBoundingClientRect();
-      const targetRect = target.getBoundingClientRect();
-
-      const topPadding = 24;
-      const bottomPadding = 24;
-
-      const isAbove = targetRect.top < bodyRect.top + topPadding;
-      const isBelow = targetRect.bottom > bodyRect.bottom - bottomPadding;
-
-      if (isAbove || isBelow) {
-        const targetScrollTop = Math.max(target.offsetTop - sidebarBody.clientHeight * 0.35, 0);
-
-        sidebarBody.scrollTo({
-          top: targetScrollTop,
-          behavior: "auto"
-        });
-      }
+      scrollSidebarItemIntoView(sidebarBody, target, "auto");
     });
   }
 
