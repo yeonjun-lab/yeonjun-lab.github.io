@@ -116,6 +116,8 @@ for root in ROOTS:
         section = get_value(fm, "section")
         subcategory = get_value(fm, "subcategory")
         topic = get_value(fm, "topic")
+        topic_slug = get_value(fm, "topic_slug")
+        language = get_value(fm, "language")
         doc_type = get_value(fm, "doc_type")
         tags = parse_tags(fm)
 
@@ -134,7 +136,7 @@ for root in ROOTS:
             if title and len(title.strip()) < 5:
                 warnings.append(f"{p}: title looks too short")
 
-            if doc_type and doc_type not in  DOC_TYPES:
+            if doc_type and doc_type not in DOC_TYPES:
                 errors.append(f"{p}: invalid doc_type '{doc_type}'")
 
             if doc_type == "research-note" and not str(p).startswith("_research/"):
@@ -142,8 +144,16 @@ for root in ROOTS:
             if doc_type == "project-log" and not str(p).startswith("_projects/"):
                 warnings.append(f"{p}: project-log should usually live under _projects/")
 
-            if topic is None or topic == "":
-                warnings.append(f"{p}: topic is empty")
+            if subcategory == "languages":
+                if topic is None or topic == "":
+                    errors.append(f"{p}: topic is required for languages docs")
+                if topic_slug is None or topic_slug == "":
+                    errors.append(f"{p}: topic_slug is required for languages docs")
+                if language is None or language == "":
+                    warnings.append(f"{p}: language is recommended for languages docs")
+            else:
+                if topic is None or topic == "":
+                    warnings.append(f"{p}: topic is empty")
 
             if tags is None:
                 warnings.append(f"{p}: tags field missing")
@@ -156,13 +166,14 @@ for root in ROOTS:
                 if updated_at < created_at:
                     warnings.append(f"{p}: updated_at is earlier than created_at")
 
-            if permalink and nav_group:
-                expected_group = str(Path(permalink).parent).replace("\\", "/")
-                if not expected_group.endswith("/"):
-                    expected_group += "/"
-                if nav_group != expected_group:
+            if nav_group and not nav_group.endswith("/"):
+                errors.append(f"{p}: nav_group must end with '/'")
+
+            if subcategory == "languages" and permalink and nav_group and topic_slug:
+                expected_prefix = f"{nav_group}{topic_slug}/"
+                if not permalink.startswith(expected_prefix):
                     warnings.append(
-                        f"{p}: nav_group '{nav_group}' differs from expected '{expected_group}'"
+                        f"{p}: permalink '{permalink}' should start with '{expected_prefix}'"
                     )
 
             headings = extract_headings(body)

@@ -9,22 +9,135 @@ layout: default
   {% endif %}
 </div>
 
-{% if page.cards %}
-<div class="section-grid">
-  {% for card in page.cards %}
-    <a class="section-card" href="{{ card.url | relative_url }}">
-      <div class="section-card-body">
-        <h2>{{ card.title }}</h2>
-        <p>{{ card.description }}</p>
-      </div>
-    </a>
-  {% endfor %}
-</div>
+{% assign docs = empty %}
+
+{% case page.section %}
+  {% when "foundations" %}
+    {% assign docs = site.foundations %}
+  {% when "engineering" %}
+    {% assign docs = site.engineering %}
+  {% when "ai_systems" %}
+    {% assign docs = site.ai_systems %}
+  {% when "research" %}
+    {% assign docs = site.research %}
+  {% when "projects" %}
+    {% assign docs = site.projects %}
+{% endcase %}
+
+{% assign docs = docs | where_exp: "doc", "doc.url != page.url" %}
+
+{% if page.subcategory %}
+  {% assign docs = docs | where: "subcategory", page.subcategory %}
+{% endif %}
+
+{% if page.hub_mode == "topic-cards" %}
+  {% assign docs = docs | where: "layout", "doc" %}
+
+  {% if page.language %}
+    {% assign docs = docs | where: "language", page.language %}
+  {% endif %}
+
+  {% assign topic_keys = docs | map: "topic" | compact | uniq | sort %}
+
+  {% if topic_keys and topic_keys.size > 0 %}
+    <div class="hub-topic-grid">
+      {% for topic_key in topic_keys %}
+        {% assign topic_docs = docs | where: "topic", topic_key | sort: "sort_date" | reverse %}
+        {% assign representative = topic_docs.first %}
+        {% assign topic_doc_count = topic_docs | size %}
+
+        {% assign effective_topic_slug = representative.topic_slug %}
+        {% if effective_topic_slug == nil or effective_topic_slug == "" %}
+          {% assign prefix = page.language | append: "-" %}
+          {% assign effective_topic_slug = topic_key | remove_first: prefix %}
+        {% endif %}
+
+        {% assign topic_url = page.url | append: effective_topic_slug | append: "/" %}
+
+        <a class="hub-topic-card" href="{{ topic_url | relative_url }}">
+          <div class="hub-topic-card__body">
+            <div class="hub-topic-card__head">
+              <h2>{{ representative.topic_title | default: effective_topic_slug | replace: "-", " " }}</h2>
+              <span class="hub-topic-card__count">{{ topic_doc_count }}</span>
+            </div>
+
+            {% if representative.topic_description %}
+              <p>{{ representative.topic_description }}</p>
+            {% elsif representative.description %}
+              <p>{{ representative.description }}</p>
+            {% endif %}
+
+            {% if representative.tags and representative.tags.size > 0 %}
+              <div class="hub-card-tags">
+                {% for tag in representative.tags limit: 4 %}
+                  <span class="tag-chip">{{ tag }}</span>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="hub-empty">
+      <p>아직 연결된 topic 문서가 없습니다.</p>
+    </div>
+  {% endif %}
+
+{% elsif page.hub_mode == "doc-list" %}
+  {% if page.language %}
+    {% assign docs = docs | where: "language", page.language %}
+  {% endif %}
+
+  {% assign scoped_docs = docs | where: "layout", "doc" | where: "topic", page.topic | sort: "sort_date" | reverse %}
+
+  {% if scoped_docs and scoped_docs.size > 0 %}
+    <div class="hub-doc-grid">
+      {% for doc in scoped_docs %}
+        <a class="hub-doc-tile" href="{{ doc.url | relative_url }}">
+          <div class="hub-doc-tile-head">
+            <h2>{{ doc.title }}</h2>
+            {% if doc.doc_type %}
+              <span class="doc-pill">{{ doc.doc_type }}</span>
+            {% endif %}
+          </div>
+
+          {% if doc.tags and doc.tags.size > 0 %}
+            <div class="hub-card-tags">
+              {% for tag in doc.tags limit: 4 %}
+                <span class="tag-chip">{{ tag }}</span>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="hub-empty">
+      <p>아직 이 topic에 연결된 문서가 없습니다.</p>
+    </div>
+  {% endif %}
+
+{% elsif page.cards %}
+  <div class="hub-topic-grid">
+    {% for card in page.cards %}
+      <a class="hub-topic-card" href="{{ card.url | relative_url }}">
+        <div class="hub-topic-card__body">
+          <div class="hub-topic-card__head">
+            <h2>{{ card.title }}</h2>
+          </div>
+          <p>{{ card.description }}</p>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
 {% endif %}
 
 {% assign trimmed_content = content | strip %}
-{% if trimmed_content != "" %}
-<div class="hub-extra">
-  {{ content }}
-</div>
-{% endif %}
+{% unless page.hub_mode == "topic-cards" or page.hub_mode == "doc-list" %}
+  {% if trimmed_content != "" %}
+    <div class="hub-extra">
+      {{ content }}
+    </div>
+  {% endif %}
+{% endunless %}

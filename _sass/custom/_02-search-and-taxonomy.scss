@@ -24,7 +24,7 @@
   padding: 1.15rem 1.2rem;
   border: 1px solid var(--border);
   border-radius: 18px;
-  background: #fff;
+  background: var(--surface-raised);
   box-shadow: var(--shadow-sm);
 }
 
@@ -63,15 +63,15 @@
   padding: 0 1rem;
   border: 1px solid var(--border);
   border-radius: 14px;
-  background: #fff;
+  background: var(--input-bg);
   color: var(--text);
   font-size: 0.98rem;
 }
 
 .search-page .search-input:focus {
   outline: 0;
-  border-color: rgba(37, 99, 235, 0.45);
-  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.08);
+  border-color: var(--focus-ring-strong);
+  box-shadow: var(--focus-ring-shadow);
 }
 
 .search-page .search-reset-button {
@@ -80,7 +80,7 @@
   padding: 0 0.85rem;
   border: 1px solid var(--border);
   border-radius: 999px;
-  background: #fff;
+  background: var(--control-bg);
   color: var(--text-soft);
   font-size: 0.9rem;
   font-weight: 600;
@@ -344,7 +344,7 @@
   padding: 0.42rem 0.72rem;
   border: 1px solid var(--border);
   border-radius: 999px;
-  background: #fff;
+  background: var(--control-bg);
   color: var(--text-soft);
   font-size: 0.86rem;
   font-weight: 600;
@@ -369,7 +369,7 @@
   border-color: transparent;
   background: var(--primary-soft);
   color: var(--primary);
-  box-shadow: inset 0 0 0 1px rgba(37, 99, 235, 0.08);
+  box-shadow: inset 0 0 0 1px var(--focus-ring-inset);
 }
 
 .search-page .tag-chip.is-active span,
@@ -405,7 +405,7 @@
   padding: 1.15rem 1.2rem;
   border: 1px solid var(--border);
   border-radius: 18px;
-  background: #fff;
+  background: var(--surface-raised);
   box-shadow: var(--shadow-sm);
 }
 
@@ -422,7 +422,7 @@
   padding: 1.15rem 1.2rem;
   border: 1px solid var(--border);
   border-radius: 18px;
-  background: #fff;
+  background: var(--surface-raised);
   box-shadow: var(--shadow-sm);
 }
 
@@ -444,7 +444,7 @@
   padding: 0.42rem 0.72rem;
   border: 1px solid var(--border);
   border-radius: 999px;
-  background: #fff;
+  background: var(--control-bg);
   color: var(--text-soft);
   font-size: 0.86rem;
   font-weight: 600;
@@ -475,7 +475,7 @@
   border-color: transparent;
   background: var(--primary-soft);
   color: var(--primary);
-  box-shadow: inset 0 0 0 1px rgba(37, 99, 235, 0.08);
+  box-shadow: inset 0 0 0 1px var(--focus-ring-inset);
 }
 
 .tags-page .tag-chip.is-active span,

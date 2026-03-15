@@ -1,23 +1,118 @@
-{% assign nodes = include.nodes %}
 {% assign current_url = page.url %}
+{% assign current_section = page.section %}
+{% assign current_subcategory = page.subcategory %}
+{% assign current_nav_group = page.nav_group %}
+{% assign current_topic = page.topic %}
+
+{% assign docs = empty %}
+
+{% case current_section %}
+  {% when "foundations" %}
+    {% assign docs = site.foundations %}
+  {% when "engineering" %}
+    {% assign docs = site.engineering %}
+  {% when "ai_systems" %}
+    {% assign docs = site.ai_systems %}
+  {% when "research" %}
+    {% assign docs = site.research %}
+  {% when "projects" %}
+    {% assign docs = site.projects %}
+{% endcase %}
+
+{% assign docs = docs | where: "layout", "doc" %}
+
+{% if current_subcategory %}
+  {% assign docs = docs | where: "subcategory", current_subcategory %}
+{% endif %}
+
+{% if current_nav_group %}
+  {% assign docs = docs | where: "nav_group", current_nav_group %}
+{% endif %}
+
+{% assign topic_keys = docs | map: "topic" | compact | uniq | sort %}
+
+{% assign section_label = site.data.navigation_names[current_section] | default: current_section | replace: "-", " " | capitalize %}
+{% assign subcategory_label = site.data.navigation_names[current_subcategory] | default: current_subcategory | replace: "-", " " | capitalize %}
+{% assign language_label = page.language | upcase %}
+
+<div class="doc-sidebar-title">
+  {{ section_label }}
+</div>
 
 <ul class="sidebar-tree">
-  {% for node in nodes %}
-    {% assign is_exact = current_url == node.url %}
-    {% assign is_section = current_url contains node.url %}
+  {% if current_subcategory %}
     <li class="sidebar-tree-item">
-      <a
-        href="{{ node.url | relative_url }}"
-        class="sidebar-link{% if is_exact %} is-current{% elsif is_section %} is-ancestor{% endif %}"
-      >
-        {{ node.title }}
-      </a>
+      <span class="sidebar-link is-static">{{ subcategory_label }}</span>
 
-      {% if node.children %}
-        {% if is_section or is_exact %}
-          {% include sidebar-nav.html nodes=node.children %}
+      <ul class="sidebar-tree">
+        {% if page.language %}
+          <li class="sidebar-tree-item">
+            <span class="sidebar-link is-static">{{ language_label }}</span>
+
+            <ul class="sidebar-tree">
+              {% for topic_key in topic_keys %}
+                {% assign topic_docs = docs | where: "topic", topic_key | sort: "sort_date" | reverse %}
+                {% assign representative = topic_docs.first %}
+
+                {% assign topic_slug = representative.topic_slug %}
+                {% if topic_slug == nil or topic_slug == "" %}
+                  {% if page.language %}
+                    {% assign prefix = page.language | append: "-" %}
+                    {% assign topic_slug = topic_key | remove_first: prefix %}
+                  {% else %}
+                    {% assign topic_slug = topic_key %}
+                  {% endif %}
+                {% endif %}
+
+                {% assign topic_title = representative.topic_title %}
+                {% if topic_title == nil or topic_title == "" %}
+                  {% assign topic_title = topic_slug | replace: "-", " " %}
+                {% endif %}
+
+                {% assign is_current_topic = false %}
+                {% if current_topic == topic_key %}
+                  {% assign is_current_topic = true %}
+                {% endif %}
+
+                {% assign topic_panel_id = "sidebar-topic-panel-" | append: forloop.index %}
+
+                <li class="sidebar-tree-item">
+                  <div class="sidebar-topic-group{% if is_current_topic %} is-open{% endif %}" data-topic-key="{{ topic_key }}">
+                    <div class="sidebar-topic-row" data-topic-row="true">
+                      <span class="sidebar-link sidebar-topic-link{% if is_current_topic %} is-current{% endif %}">
+                        {{ topic_title }}
+                      </span>
+
+                      <button
+                        type="button"
+                        class="sidebar-topic-summary{% if is_current_topic %} is-current{% endif %}"
+                        data-topic-toggle="true"
+                        aria-expanded="{% if is_current_topic %}true{% else %}false{% endif %}"
+                        aria-controls="{{ topic_panel_id }}"
+                      >
+                        <span class="sidebar-topic-toggle" aria-hidden="true"></span>
+                      </button>
+                    </div>
+
+                    <ul class="sidebar-tree" id="{{ topic_panel_id }}">
+                      {% for doc in topic_docs %}
+                        <li class="sidebar-tree-item">
+                          <a
+                            href="{{ doc.url | relative_url }}"
+                            class="sidebar-link{% if current_url == doc.url %} is-current{% endif %}"
+                          >
+                            {{ doc.title }}
+                          </a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </li>
+              {% endfor %}
+            </ul>
+          </li>
         {% endif %}
-      {% endif %}
+      </ul>
     </li>
-  {% endfor %}
+  {% endif %}
 </ul>

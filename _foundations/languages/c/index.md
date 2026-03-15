@@ -5,7 +5,9 @@ title: "C"
 permalink: /foundations/languages/c/
 section: foundations
 subcategory: languages
-topic: c
+language: c
+hub_mode: topic-cards
+description: C 언어 핵심 주제
 created_at: 2026-03-07
 updated_at: 2026-03-07
 sort_date: 2026-03-07

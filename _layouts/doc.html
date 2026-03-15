@@ -7,19 +7,16 @@ layout: default
 <div class="doc-shell">
   {% if sidebar_nodes %}
   <aside class="doc-sidebar">
-    <details class="doc-sidebar-details" open>
-      <summary class="doc-sidebar-summary">
+    <div class="doc-sidebar-details">
+      <button type="button" class="doc-sidebar-summary" aria-expanded="false">
         {% assign section_label = site.data.navigation_names[page.section] | default: page.section %}
         {{ section_label }}
-      </summary>
+      </button>
 
       <div class="doc-sidebar-inner doc-sidebar-body">
-        <div class="doc-sidebar-title">
-          {{ section_label }}
-        </div>
         {% include sidebar-nav.html nodes=sidebar_nodes %}
       </div>
-    </details>
+    </div>
   </aside>
   {% endif %}
 

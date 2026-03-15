@@ -3,10 +3,12 @@ doc_type: concept
 layout: doc
 nav_group: /foundations/languages/python/object-model/
 title: "파이썬의 가변 객체와 불변 객체"
-permalink: /foundations/languages/python/object-model/mutable-immutable/
+permalink: /foundations/languages/python/object-model/object-model/mutable-immutable/
 section: foundations
 subcategory: languages
+language: python
 topic: python-object-model
+topic_slug: object-model
 tags: [python, mutable, immutable, object-model]
 created_at: 2026-03-07
 updated_at: 2026-03-07
