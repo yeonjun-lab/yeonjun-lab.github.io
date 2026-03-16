@@ -1,6 +1,6 @@
 ---
-title: "파일 입출력은 내부적으로 어떻게 동작하는가"
-permalink: /foundations/languages/c/systems-interface/파일 입출력은 내부적으로 어떻게 동작하는가/
+title: "파일 입출력은 내부적으로 어떻게 동작하는가 deep-dive"
+permalink: /foundations/languages/c/system-interface/파일 입출력은 내부적으로 어떻게 동작하는가 deep-dive/
 layout: doc
 section: foundations
 subcategory: languages
@@ -10,9 +10,9 @@ updated_at: 2026-03-10
 sort_date: 2026-03-10
 nav_group: /foundations/languages/c/
 doc_type: deep-dive
-topic: c-systems-interface
-topic_slug: systems-interface
-tags: [c, systems-interface, file-io, stream, file-descriptor, buffering, libc]
+topic: c-system-interface
+topic_slug: system-interface
+tags: [c, system-interface, file-io, stream, file-descriptor, buffering, libc]
 ---
 
 ## 1. 왜 이 주제를 깊게 봐야 하는가

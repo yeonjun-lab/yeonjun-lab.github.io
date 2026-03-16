@@ -5,7 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9101f5f1-46f5-4127-a6ed-47879746a7f4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/_foundations/languages/c/system-interface/index.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/binary-layout/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/binary-layout/index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/build-and-linking/extern과 static은 무엇이 다르고 왜 중요한가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/build-and-linking/extern과 static은 무엇이 다르고 왜 중요한가.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/build-and-linking/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/build-and-linking/index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/build-and-linking/오브젝트 파일과 심볼이란 무엇인가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/build-and-linking/오브젝트 파일과 심볼이란 무엇인가.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/build-and-linking/정적 라이브러리와 동적 라이브러리는 무엇이 다른가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/build-and-linking/정적 라이브러리와 동적 라이브러리는 무엇이 다른가.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/build-and-linking/컴파일  어셈블  링크의 전체 흐름.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/build-and-linking/컴파일  어셈블  링크의 전체 흐름.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/dynamic-memory/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/dynamic-memory/index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/learning-path/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/learning-path/index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/memory-model/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/memory-model/index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/memory-safety/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/memory-safety/index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/performance-model/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/performance-model/index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/pointer-model/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/pointer-model/index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/struct-layout/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/struct-layout/index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/systems-interface/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/systems-interface/파일 입출력은 내부적으로 어떻게 동작하는가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/system-interface/파일 입출력은 내부적으로 어떻게 동작하는가 deep-dive.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/systems-interface/표준 라이브러리와 시스템 콜의 차이.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/system-interface/표준 라이브러리와 시스템 콜의 차이 deep-dive.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +70,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/_foundations/languages/c/systems-interface" />
       <recent name="$PROJECT_DIR$/_foundations/languages/c/binary-layout" />
       <recent name="$PROJECT_DIR$/_sass/custom" />
       <recent name="$PROJECT_DIR$/assets/css" />
@@ -78,7 +96,7 @@
       <workItem from="1773032524985" duration="73107000" />
       <workItem from="1773548992766" duration="15339000" />
       <workItem from="1773583848633" duration="3549000" />
-      <workItem from="1773587855914" duration="3203000" />
+      <workItem from="1773587855914" duration="8477000" />
     </task>
     <servers />
   </component>

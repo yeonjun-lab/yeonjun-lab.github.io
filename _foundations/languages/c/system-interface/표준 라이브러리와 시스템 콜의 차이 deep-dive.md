@@ -1,6 +1,6 @@
 ---
-title: "표준 라이브러리와 시스템 콜의 차이"
-permalink: /foundations/languages/c/systems-interface/표준 라이브러리와 시스템 콜의 차이/
+title: "표준 라이브러리와 시스템 콜의 차이 deep-dive"
+permalink: /foundations/languages/c/system-interface/표준 라이브러리와 시스템 콜의 차이 deep-dive/
 layout: doc
 section: foundations
 subcategory: languages
@@ -10,9 +10,9 @@ updated_at: 2026-03-10
 sort_date: 2026-03-10
 nav_group: /foundations/languages/c/
 doc_type: deep-dive
-topic: c-systems-interface
-topic_slug: systems-interface
-tags: [c, systems-interface, standard-library, system-call, libc, os, file-io]
+topic: c-system-interface
+topic_slug: system-interface
+tags: [c, system-interface, standard-library, system-call, libc, os, file-io]
 ---
 
 ## 1. 왜 이 주제를 깊게 봐야 하는가
