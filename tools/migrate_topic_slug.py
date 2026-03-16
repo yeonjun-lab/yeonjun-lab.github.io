@@ -68,6 +68,13 @@ def derive_language(path: Path):
 def normalize_permalink_path(path_str: str):
     return "/" + path_str.strip("/").replace("\\", "/") + "/"
 
+def slugify(value: str):
+    value = value.lower()
+    value = re.sub(r"[^a-z0-9가-힣\s-]", " ", value)
+    value = re.sub(r"\s+", "-", value)
+    value = re.sub(r"-+", "-", value)
+    return value.strip("-")
+
 changed = []
 
 for root in ROOTS:
@@ -82,11 +89,13 @@ for root in ROOTS:
 
         fm, body = extracted
         layout = get_value(fm, "layout")
+        title = get_value(fm, "title")
         subcategory = get_value(fm, "subcategory")
         topic = get_value(fm, "topic")
         topic_slug = get_value(fm, "topic_slug")
         language = get_value(fm, "language")
         nav_group = get_value(fm, "nav_group")
+        doc_type = get_value(fm, "doc_type")
 
         if layout != "doc":
             continue
@@ -98,11 +107,16 @@ for root in ROOTS:
         effective_topic_slug = topic_slug or derive_topic_slug(topic)
         effective_language = language or derive_language(p)
 
-        if not effective_topic_slug or not effective_language:
+        if not effective_topic_slug or not effective_language or not doc_type:
             continue
 
         current_parent = p.parent.name
-        already_in_topic_dir = current_parent == effective_topic_slug
+        current_grandparent = p.parent.parent.name if p.parent.parent else ""
+        already_in_doc_type_dir = current_parent in {"concept", "deep-dive", "troubleshooting", "project-log", "research-note"}
+        already_in_topic_dir = (
+            current_parent == effective_topic_slug or
+            (already_in_doc_type_dir and current_grandparent == effective_topic_slug)
+        )
 
         lines = fm.splitlines()
 
@@ -113,28 +127,24 @@ for root in ROOTS:
         if not language:
             lines = set_value(lines, "language", effective_language)
 
-        # 새 물리 경로
-        target_dir = p.parent / effective_topic_slug if not already_in_topic_dir else p.parent
-        if not already_in_topic_dir:
-            target_dir = p.parent / effective_topic_slug
-
-            # 기존 위치가 _foundations/languages/c/ 아래면 그 아래 topic_slug 폴더로 이동
-            if p.parent.name == effective_language:
-                target_dir = p.parent / effective_topic_slug
-            else:
-                # 혹시 다른 중간 폴더 구조가 있어도 language 바로 아래로 정규화
-                parts = p.parts
-                if len(parts) >= 4 and parts[0] == "_foundations" and parts[1] == "languages":
-                    base_dir = Path(parts[0]) / parts[1] / effective_language
-                    target_dir = base_dir / effective_topic_slug
+        # 새 물리 경로: languages/<language>/<topic_slug>/<doc_type>/
+        target_dir = p.parent
+        parts = p.parts
+        if len(parts) >= 4 and parts[0] == "_foundations" and parts[1] == "languages":
+            base_dir = Path(parts[0]) / parts[1] / effective_language / effective_topic_slug / doc_type
+            target_dir = base_dir
+        elif not already_in_topic_dir:
+            target_dir = p.parent / effective_topic_slug / doc_type
+        elif not already_in_doc_type_dir:
+            target_dir = p.parent / doc_type
 
         target_dir.mkdir(parents=True, exist_ok=True)
         target_path = target_dir / p.name
 
         # 새 permalink
-        doc_slug = p.stem
+        doc_slug = slugify(title.strip('"')) if title else p.stem
         new_permalink = normalize_permalink_path(
-            f"{nav_group}{effective_topic_slug}/{doc_slug}"
+            f"{nav_group}{effective_topic_slug}/{doc_type}/{doc_slug}"
         )
         lines = set_value(lines, "permalink", new_permalink)
 

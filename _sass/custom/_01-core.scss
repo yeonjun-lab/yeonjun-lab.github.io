@@ -95,6 +95,30 @@
   --hub-chip-border: var(--border);
   --hub-chip-text: var(--text-soft);
 
+  --doc-pill-bg: var(--hub-chip-bg);
+  --doc-pill-border: var(--hub-chip-border);
+  --doc-pill-text: var(--hub-chip-text);
+
+  --doc-pill-concept-bg: #e0f2fe;
+  --doc-pill-concept-border: #7dd3fc;
+  --doc-pill-concept-text: #075985;
+
+  --doc-pill-deep-dive-bg: #ede9fe;
+  --doc-pill-deep-dive-border: #a78bfa;
+  --doc-pill-deep-dive-text: #5b21b6;
+
+  --doc-pill-troubleshooting-bg: #fee2e2;
+  --doc-pill-troubleshooting-border: #fca5a5;
+  --doc-pill-troubleshooting-text: #b91c1c;
+
+  --doc-pill-project-log-bg: #dcfce7;
+  --doc-pill-project-log-border: #86efac;
+  --doc-pill-project-log-text: #166534;
+
+  --doc-pill-research-note-bg: #fef3c7;
+  --doc-pill-research-note-border: #fcd34d;
+  --doc-pill-research-note-text: #92400e;
+
   /* =========================================================
      CODE BLOCK TOKENS
      ========================================================= */

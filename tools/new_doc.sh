@@ -72,6 +72,25 @@ ensure_topic_dir() {
   esac
 }
 
+ensure_doc_type_dir() {
+  local path="$1"
+  local doc_type="$2"
+  local trimmed="${path%/}"
+
+  case "$trimmed" in
+    _foundations/languages/*/*)
+      if [[ "${trimmed##*/}" == "$doc_type" ]]; then
+        echo "${trimmed}/"
+      else
+        echo "${trimmed}/${doc_type}/"
+      fi
+      ;;
+    *)
+      echo "${trimmed}/"
+      ;;
+  esac
+}
+
 infer_nav_group_dir() {
   local path="$1"
   case "$path" in
@@ -136,6 +155,7 @@ infer_language() {
 
 FILE_PATH="$(normalize_dir "$FILE_PATH")"
 FILE_PATH="$(ensure_topic_dir "$FILE_PATH" "$TOPIC_SLUG")"
+FILE_PATH="$(ensure_doc_type_dir "$FILE_PATH" "$TEMPLATE_NAME")"
 SLUG="$(slugify "$TITLE")"
 FILE_PATH="${FILE_PATH}${SLUG}.md"
 
@@ -144,7 +164,7 @@ NAV_GROUP="$(to_nav_group "$NAV_GROUP_DIR")"
 SECTION="$(infer_section "$FILE_PATH")"
 SUBCATEGORY="$(infer_subcategory "$FILE_PATH")"
 LANGUAGE="$(infer_language "$FILE_PATH")"
-PERMALINK="${NAV_GROUP}${TOPIC_SLUG}/${SLUG}/"
+PERMALINK="${NAV_GROUP}${TOPIC_SLUG}/${TEMPLATE_NAME}/${SLUG}/"
 
 TEMPLATE_FILE="templates/${TEMPLATE_NAME}.md"
 if [ ! -f "$TEMPLATE_FILE" ]; then

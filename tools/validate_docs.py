@@ -169,8 +169,8 @@ for root in ROOTS:
             if nav_group and not nav_group.endswith("/"):
                 errors.append(f"{p}: nav_group must end with '/'")
 
-            if subcategory == "languages" and permalink and nav_group and topic_slug:
-                expected_prefix = f"{nav_group}{topic_slug}/"
+            if subcategory == "languages" and permalink and nav_group and topic_slug and doc_type:
+                expected_prefix = f"{nav_group}{topic_slug}/{doc_type}/"
                 if not permalink.startswith(expected_prefix):
                     warnings.append(
                         f"{p}: permalink '{permalink}' should start with '{expected_prefix}'"

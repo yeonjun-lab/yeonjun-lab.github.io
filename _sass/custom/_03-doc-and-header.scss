@@ -40,12 +40,12 @@
   font-weight: 800;
   font-size: 1.02rem;
   letter-spacing: -0.02em;
-  color: var(--accent);
+  color: var(--text);
   white-space: nowrap;
 }
 
 .site-title:hover {
-  color: var(--accent);
+  color: var(--text);
 }
 
 .site-nav {
@@ -187,14 +187,22 @@
     top: calc(100% + 8px);
     left: 0;
     right: 0;
-    display: none;
     justify-self: stretch;
     padding: 0;
     z-index: 1200;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px) scale(0.98);
+    transform-origin: top center;
   }
 
   .site-nav.is-open {
-    display: block;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+    animation: site-nav-open 220ms ease;
   }
 
   .site-nav__links {
@@ -202,7 +210,6 @@
     flex-direction: column;
     align-items: stretch;
     gap: 0.25rem;
-    padding: 0.75rem;
     border: 1px solid var(--border);
     border-radius: 18px;
     background: var(--surface-overlay);
@@ -213,6 +220,29 @@
     min-height: 42px;
     padding: 0 0.9rem;
     border-radius: 12px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+   .site-nav {
+    top: calc(100% + 8px) !important;
+    background-color: transparent !important;
+    border: transparent !important;
+    justify-self: stretch;
+    padding: 0;
+    z-index: 1200;
+  }
+}
+
+@keyframes site-nav-open {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
@@ -228,11 +258,9 @@ body.quick-search-open {
   position: fixed;
   inset: 0;
   z-index: 2000;
-  display: none;
-}
-
-.quick-search[aria-hidden="false"] {
-  display: block;
+  visibility: hidden;
+  pointer-events: none;
+  transition: visibility 0s linear 260ms;
 }
 
 .quick-search__backdrop {
@@ -240,6 +268,8 @@ body.quick-search-open {
   inset: 0;
   background: var(--backdrop);
   backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: opacity 180ms ease;
 }
 
 .quick-search__panel {
@@ -251,6 +281,27 @@ body.quick-search-open {
   border-radius: 22px;
   background: var(--surface-overlay);
   box-shadow: var(--shadow-lg);
+  opacity: 0;
+  transform: translateY(18px) scale(0.98);
+  transition:
+    opacity 220ms ease,
+    transform 260ms ease,
+    box-shadow 220ms ease;
+}
+
+.quick-search[aria-hidden="false"] {
+  visibility: visible;
+  pointer-events: auto;
+  transition: visibility 0s linear 0s;
+}
+
+.quick-search[aria-hidden="false"] .quick-search__backdrop {
+  opacity: 1;
+}
+
+.quick-search[aria-hidden="false"] .quick-search__panel {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 .quick-search__header {

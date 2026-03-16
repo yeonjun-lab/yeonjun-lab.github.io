@@ -543,7 +543,7 @@ body {
 .quick-search-item.is-active {
   border-color: var(--border);
   background: var(--surface-soft);
-  color: inherit;
+  color: var(--text);
 }
 
 .quick-search-item__top {
@@ -1165,6 +1165,39 @@ html {
   min-height: 1.95rem;
   padding: 0.32rem 0.72rem;
   font-size: 0.79rem;
+  background: var(--doc-pill-bg);
+  border-color: var(--doc-pill-border);
+  color: var(--doc-pill-text);
+}
+
+.doc-pill--concept {
+  background: var(--doc-pill-concept-bg);
+  border-color: var(--doc-pill-concept-border);
+  color: var(--doc-pill-concept-text);
+}
+
+.doc-pill--deep-dive {
+  background: var(--doc-pill-deep-dive-bg);
+  border-color: var(--doc-pill-deep-dive-border);
+  color: var(--doc-pill-deep-dive-text);
+}
+
+.doc-pill--troubleshooting {
+  background: var(--doc-pill-troubleshooting-bg);
+  border-color: var(--doc-pill-troubleshooting-border);
+  color: var(--doc-pill-troubleshooting-text);
+}
+
+.doc-pill--project-log {
+  background: var(--doc-pill-project-log-bg);
+  border-color: var(--doc-pill-project-log-border);
+  color: var(--doc-pill-project-log-text);
+}
+
+.doc-pill--research-note {
+  background: var(--doc-pill-research-note-bg);
+  border-color: var(--doc-pill-research-note-border);
+  color: var(--doc-pill-research-note-text);
 }
 
 .hub-topic-card__count,

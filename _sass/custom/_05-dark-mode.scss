@@ -61,6 +61,30 @@
   --hub-chip-border: var(--border);
   --hub-chip-text: var(--text-soft);
 
+  --doc-pill-bg: var(--hub-chip-bg);
+  --doc-pill-border: var(--hub-chip-border);
+  --doc-pill-text: var(--hub-chip-text);
+
+  --doc-pill-concept-bg: rgba(14, 116, 144, 0.24);
+  --doc-pill-concept-border: rgba(103, 232, 249, 0.38);
+  --doc-pill-concept-text: #a5f3fc;
+
+  --doc-pill-deep-dive-bg: rgba(91, 33, 182, 0.24);
+  --doc-pill-deep-dive-border: rgba(167, 139, 250, 0.4);
+  --doc-pill-deep-dive-text: #ddd6fe;
+
+  --doc-pill-troubleshooting-bg: rgba(153, 27, 27, 0.24);
+  --doc-pill-troubleshooting-border: rgba(248, 113, 113, 0.42);
+  --doc-pill-troubleshooting-text: #fecaca;
+
+  --doc-pill-project-log-bg: rgba(22, 101, 52, 0.24);
+  --doc-pill-project-log-border: rgba(74, 222, 128, 0.38);
+  --doc-pill-project-log-text: #bbf7d0;
+
+  --doc-pill-research-note-bg: rgba(146, 64, 14, 0.24);
+  --doc-pill-research-note-border: rgba(251, 191, 36, 0.42);
+  --doc-pill-research-note-text: #fde68a;
+
   --code-block-bg: linear-gradient(180deg, #1a2436, #111827);
   --code-block-border: rgba(148, 163, 184, 0.24);
   --code-block-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
@@ -422,7 +446,7 @@
 }
 
 .doc-meta-item a:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .doc-meta-item strong {
@@ -517,7 +541,6 @@
   color: var(--text-soft);
 }
 
-:root[data-theme="dark"] .doc-pill,
 :root[data-theme="dark"] .hub-topic-card__count,
 :root[data-theme="dark"] .hub-summary-pill {
   background: var(--surface-soft);

@@ -98,7 +98,7 @@ layout: default
           <div class="hub-doc-tile-head">
             <h2>{{ doc.title }}</h2>
             {% if doc.doc_type %}
-              <span class="doc-pill">{{ doc.doc_type }}</span>
+              <span class="doc-pill doc-pill--{{ doc.doc_type | slugify }}">{{ doc.doc_type }}</span>
             {% endif %}
           </div>
 
