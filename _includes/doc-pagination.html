@@ -1,5 +1,7 @@
 {% assign collection_docs = site[page.collection] | default: empty %}
 {% assign group_docs = collection_docs | where: "nav_group", page.nav_group | sort: "sort_date" %}
+{% assign manual_prev_url = page.prev_url %}
+{% assign manual_next_url = page.next_url %}
 
 {% assign current_index = -1 %}
 {% for doc in group_docs %}
@@ -14,32 +16,58 @@
 {% assign prev_doc = nil %}
 {% assign next_doc = nil %}
 
-{% for doc in group_docs %}
-  {% if forloop.index0 == prev_index %}
-    {% assign prev_doc = doc %}
-  {% endif %}
-  {% if forloop.index0 == next_index %}
-    {% assign next_doc = doc %}
-  {% endif %}
-{% endfor %}
+{% if manual_prev_url or manual_next_url %}
+  {% for doc in collection_docs %}
+    {% if manual_prev_url and doc.url == manual_prev_url %}
+      {% assign prev_doc = doc %}
+    {% endif %}
+    {% if manual_next_url and doc.url == manual_next_url %}
+      {% assign next_doc = doc %}
+    {% endif %}
+  {% endfor %}
+{% else %}
+  {% for doc in group_docs %}
+    {% if forloop.index0 == prev_index %}
+      {% assign prev_doc = doc %}
+    {% endif %}
+    {% if forloop.index0 == next_index %}
+      {% assign next_doc = doc %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
 
-{% if prev_doc or next_doc %}
+{% assign prev_href = nil %}
+{% assign next_href = nil %}
+
+{% if prev_doc %}
+  {% assign prev_href = prev_doc.url %}
+{% elsif manual_prev_url %}
+  {% assign prev_href = manual_prev_url %}
+{% endif %}
+
+{% if next_doc %}
+  {% assign next_href = next_doc.url %}
+{% elsif manual_next_url %}
+  {% assign next_href = manual_next_url %}
+{% endif %}
+
+{% if prev_href or next_href %}
 <nav class="doc-pagination" aria-label="Document pagination">
   <div class="doc-pagination-grid">
     <div class="doc-pagination-item prev">
-      {% if prev_doc %}
-        <a href="{{ prev_doc.url | relative_url }}">
+      {% if prev_href %}
+        <a href="{{ prev_href | relative_url }}">
           <span class="doc-pagination-label">이전</span>
-          <strong>{{ prev_doc.title }}</strong>
+          <strong>{{ prev_doc.title | default: prev_href }}</strong>
         </a>
       {% endif %}
     </div>
 
     <div class="doc-pagination-item next">
-      {% if next_doc %}
-        <a href="{{ next_doc.url | relative_url }}">
+      {% if next_href %}
+        <a href="{{ next_href | relative_url }}">
           <span class="doc-pagination-label">다음</span>
-          <strong>{{ next_doc.title }}</strong>
+          <strong>{{ next_doc.title | default: next_href }}</strong>
         </a>
       {% endif %}
     </div>

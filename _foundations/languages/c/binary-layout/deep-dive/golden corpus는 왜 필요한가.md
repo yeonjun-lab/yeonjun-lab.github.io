@@ -1,6 +1,8 @@
 ---
 title: "golden corpus는 왜 필요한가"
 permalink: /foundations/languages/c/binary-layout/deep-dive/golden-corpus는-왜-필요한가/
+prev_url: /foundations/languages/c/binary-layout/deep-dive/unknown-field-preservation은-왜-중요한가/
+next_url: /foundations/languages/c/binary-layout/deep-dive/mixed-version-round-trip-테스트는-왜-필요한가/
 layout: doc
 section: foundations
 subcategory: languages
@@ -328,58 +330,112 @@ golden corpus 테스트는 단순 unit test보다 느릴 수 있다.
 
 ---
 
-## 7. 실무에서 중요한 판단 기준
+## 7. 어디서부터 샘플 모음과 장기 호환성 기준선이 갈리는가
 
-### 7.1 최소한 “지원한다고 주장하는 버전” 샘플은 반드시 가진다
+### 7.1 예제 파일 몇 개가 있다고 해서 golden corpus가 되는 것은 아니다
+
+샘플이 있다는 사실만으로는 충분하지 않다.  
+중요한 것은 그 샘플들이 실제로 어떤 버전 계약과 경계 사례를 대표하느냐다.
+
+즉, corpus는 단순 수집물이 아니라  
+검증 기준선으로 설계된 데이터 집합이어야 한다.
+
+### 7.2 현재 코드가 만든 샘플과 과거 데이터를 보존한 corpus는 역할이 다르다
+
+현재 serializer가 만든 입력만 있으면  
+현재 구현의 편향을 그대로 따라가게 된다.  
+반면 golden corpus는 과거 버전 artifact와 운영 입력을 함께 보존해  
+호환성 검증 기준을 제공한다.
+
+즉, self-generated sample과 compatibility corpus는 다른 층의 자산이다.
+
+### 7.3 raw bytes만 있으면 부족하고 expected semantics가 함께 있어야 한다
+
+샘플 데이터가 있어도  
+어떻게 해석되어야 하는지 기준이 없으면 테스트 의미가 흔들린다.
+
+즉, corpus는 데이터 파일만이 아니라  
+oracle과 기대 동작까지 포함한 자산으로 봐야 한다.
+
+### 7.4 corpus는 시간이 지날수록 가치가 커지는 장기 자산이다
+
+운영에서 실제 깨졌던 데이터, mixed-version artifact, migration sample이 쌓일수록  
+새 코드가 과거 계약을 깨는지 더 잘 잡을 수 있다.
+
+즉, corpus는 일회성 fixture가 아니라  
+시간과 함께 강화되는 회귀 자산이다.
+
+### 7.5 corpus 품질은 개수보다 대표성과 분류 체계에 더 달려 있다
+
+무작정 많으면 CI 비용과 유지보수 비용만 늘 수 있다.  
+중요한 것은 어떤 버전/시나리오/경계 사례를 대표하는지 명확한 구조다.
+
+즉, corpus는 수량보다 설계 품질이 더 중요하다.
+
+---
+
+## 8. 실무에서 중요한 판단 기준
+
+### 8.1 최소한 “지원한다고 주장하는 버전” 샘플은 반드시 가진다
 
 v1, v2, v3 지원이라고 말한다면  
 각 버전 실제 artifact가 corpus에 있어야 한다.
 
 즉, 호환성 지원 선언과 corpus 범위가 맞아야 한다.
 
-### 7.2 정상 데이터만이 아니라 edge case도 포함한다
+### 8.2 정상 데이터만이 아니라 edge case도 포함한다
 
 좋은 corpus는 happy path만 담지 않는다.  
 빈 값, 최대 길이, unknown field, deprecated field, 미래 enum 같은 케이스가 있어야 한다.
 
-### 7.3 운영 장애 데이터를 가능한 한 corpus에 편입한다
+### 8.3 운영 장애 데이터를 가능한 한 corpus에 편입한다
 
 한 번 실제로 깨진 데이터는  
 다시 깨질 가능성이 높은 귀중한 자산이다.
 
 즉, incident-driven corpus 확장은 매우 효과적이다.
 
-### 7.4 raw bytes와 expected semantics를 함께 저장한다
+### 8.4 raw bytes와 expected semantics를 함께 저장한다
 
 샘플만 있고 기대 결과가 없으면 해석이 흔들린다.  
 따라서 데이터와 oracle을 함께 관리해야 한다.
 
-### 7.5 corpus를 테스트 자산으로 취급한다
+### 8.5 corpus를 테스트 자산으로 취급한다
 
 golden corpus는 임시 테스트 파일이 아니다.  
 버전 관리, 검토, 문서화, 분류가 필요한 장기 자산이다.
 
 ---
 
-## 8. 더 깊게 볼 포인트
+## 9. 판단 체크리스트
 
-### 8.1 fixture naming strategy
+- 샘플 모음과 실제 compatibility 기준선을 같은 것으로 보고 있지 않은가
+- 현재 코드가 만든 샘플과 과거 artifact 중심 corpus를 구분하고 있는가
+- raw bytes뿐 아니라 expected semantics/oracle을 함께 관리하고 있는가
+- corpus를 일회성 fixture가 아니라 장기 회귀 자산으로 보고 있는가
+- corpus 품질을 개수보다 대표성과 분류 체계로 관리하고 있는가
+
+---
+
+## 10. 더 깊게 볼 포인트
+
+### 10.1 fixture naming strategy
 
 버전, 시나리오, 기대 결과를 이름 체계로 어떻게 표현할지 확장할 수 있다.
 
-### 8.2 corpus minimization
+### 10.2 corpus minimization
 
 충분한 커버리지를 유지하면서도 corpus 크기를 어떻게 억제할지 전략적으로 다룰 수 있다.
 
-### 8.3 fuzzing과 corpus 결합
+### 10.3 fuzzing과 corpus 결합
 
 golden corpus와 fuzz seed를 결합해 parser robustness 테스트로 확장할 수 있다.
 
-### 8.4 migration corpus
+### 10.4 migration corpus
 
 스토리지 마이그레이션 전용 corpus를 별도로 두는 전략으로 이어질 수 있다.
 
-### 8.5 compatibility dashboards
+### 10.5 compatibility dashboards
 
 버전별 corpus 테스트 결과를 시각화하고 추적하는 운영 방식으로 확장할 수 있다.
 

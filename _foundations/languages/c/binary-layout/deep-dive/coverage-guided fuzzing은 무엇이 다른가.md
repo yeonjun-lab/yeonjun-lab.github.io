@@ -1,6 +1,8 @@
 ---
 title: "coverage-guided fuzzing은 무엇이 다른가"
 permalink: /foundations/languages/c/binary-layout/deep-dive/coverage-guided-fuzzing은-무엇이-다른가/
+prev_url: /foundations/languages/c/binary-layout/deep-dive/mixed-version-round-trip-테스트는-왜-필요한가/
+next_url: /foundations/languages/c/binary-layout/deep-dive/grammar-aware-fuzzing은-언제-필요한가/
 layout: doc
 section: foundations
 subcategory: languages
@@ -319,14 +321,57 @@ coverage-guided fuzzing은 강력하지만
 
 ---
 
-## 7. 실무에서 중요한 판단 기준
+## 7. 어디서부터 무작위 입력 생성과 피드백 기반 탐색이 갈리는가
 
-### 7.1 외부 입력 parser는 coverage-guided fuzzing 우선 대상이다
+### 7.1 많이 돌린다는 것과 깊이 탐색한다는 것은 다르다
+
+단순 랜덤 fuzzing은 실행 횟수는 많아도  
+대부분 얕은 reject 경로에서 끝날 수 있다.  
+coverage-guided fuzzing은 새 경로를 연 입력을 유지해 더 깊이 들어간다.
+
+즉, 횟수와 탐색 품질은 다른 문제다.
+
+### 7.2 crash가 없더라도 새 coverage는 중요한 성과다
+
+많은 사람이 fuzzing을 crash 발견 도구로만 본다.  
+하지만 새로운 코드 경로를 여는 입력을 찾는 것 자체가  
+더 깊은 버그 탐색 가능성을 넓힌다.
+
+즉, coverage-guided fuzzing은 bug 발견 이전 단계의  
+탐색 능력 자체를 측정한다.
+
+### 7.3 instrumentation 오버헤드와 탐색 효율 향상은 trade-off다
+
+coverage 계측 때문에 입력당 속도는 느려질 수 있다.  
+하지만 의미 있는 경로를 훨씬 더 자주 열 수 있다면 총 효율은 좋아질 수 있다.
+
+즉, 속도 저하와 탐색 품질 향상을 함께 봐야 한다.
+
+### 7.4 seed corpus가 없으면 feedback도 빈약해질 수 있다
+
+coverage-guided라고 해도  
+처음부터 너무 빈약한 입력만 있으면 깊은 상태에 잘 못 들어갈 수 있다.
+
+즉, 이 기법도 좋은 시작점과 결합될 때 더 강하다.
+
+### 7.5 이 기법은 입력 생성기보다 탐색 전략에 더 가깝다
+
+coverage-guided fuzzing의 핵심은  
+무슨 바이트를 넣느냐보다 어떤 입력을 남기고 어떻게 진화시키느냐다.
+
+즉, 이는 단순 mutation 방식이 아니라  
+피드백 기반 탐색 알고리즘이다.
+
+---
+
+## 8. 실무에서 중요한 판단 기준
+
+### 8.1 외부 입력 parser는 coverage-guided fuzzing 우선 대상이다
 
 단순 unit test만으로는 parser 깊은 분기를 충분히 검증하기 어렵다.  
 파일 포맷, TLV, 네트워크 프레임 parser는 coverage-guided fuzzing 가치가 매우 높다.
 
-### 7.2 seed corpus는 작아도 의미 있게 준비한다
+### 8.2 seed corpus는 작아도 의미 있게 준비한다
 
 다음 같은 seed가 좋다.
 
@@ -338,7 +383,7 @@ coverage-guided fuzzing은 강력하지만
 
 즉, 적더라도 parser 여러 경로를 여는 seed가 중요하다.
 
-### 7.3 fuzz 결과에서 “새 coverage”와 “crash”를 분리해서 본다
+### 8.3 fuzz 결과에서 “새 coverage”와 “crash”를 분리해서 본다
 
 crash만 보는 것은 부족하다.  
 새 coverage를 계속 늘리고 있는지 보는 것도 중요하다.
@@ -346,14 +391,14 @@ crash만 보는 것은 부족하다.
 즉, fuzzing은 즉시 버그 발견만이 아니라  
 탐색 능력 자체도 관찰해야 한다.
 
-### 7.4 발견된 interesting input은 regression corpus로 승격한다
+### 8.4 발견된 interesting input은 regression corpus로 승격한다
 
 새로운 coverage를 열었거나 실제 bug를 만들었던 입력은  
 golden regression corpus에 편입할 가치가 있다.
 
 즉, fuzzing과 golden corpus는 선순환 구조를 이룬다.
 
-### 7.5 parser harness를 단순하고 결정적으로 유지한다
+### 8.5 parser harness를 단순하고 결정적으로 유지한다
 
 coverage-guided fuzzing은 재현성과 측정성이 중요하므로  
 대상 함수는 가능한 한 입력-출력 관계가 단순해야 한다.
@@ -362,25 +407,35 @@ coverage-guided fuzzing은 재현성과 측정성이 중요하므로
 
 ---
 
-## 8. 더 깊게 볼 포인트
+## 9. 판단 체크리스트
 
-### 8.1 grammar-aware fuzzing
+- 실행 횟수와 탐색 깊이를 같은 것으로 보고 있지 않은가
+- crash가 없어도 새 coverage가 중요한 탐색 성과라는 점을 이해하고 있는가
+- instrumentation 오버헤드와 탐색 효율 향상을 함께 보고 있는가
+- coverage-guided fuzzing도 seed 품질에 영향을 받는다는 점을 의식하고 있는가
+- 이 기법을 단순 입력 생성기가 아니라 피드백 기반 탐색 전략으로 보고 있는가
+
+---
+
+## 10. 더 깊게 볼 포인트
+
+### 10.1 grammar-aware fuzzing
 
 포맷 구조를 이해하는 mutation을 coverage-guided 방식과 결합하는 전략으로 확장할 수 있다.
 
-### 8.2 structure-aware mutation
+### 10.2 structure-aware mutation
 
 length field, checksum, nested TLV 관계를 보존하며 변형하는 기법으로 이어질 수 있다.
 
-### 8.3 differential fuzzing
+### 10.3 differential fuzzing
 
 같은 입력을 두 구현에 넣고 결과 차이를 coverage와 함께 보는 전략으로 확장할 수 있다.
 
-### 8.4 stateful coverage-guided fuzzing
+### 10.4 stateful coverage-guided fuzzing
 
 단일 메시지 parser를 넘어서 세션 상태를 가진 프로토콜 fuzzing으로 이어질 수 있다.
 
-### 8.5 crash triage와 minimization
+### 10.5 crash triage와 minimization
 
 coverage-guided fuzzing이 만든 많은 interesting input 중  
 실제 중요한 버그를 분류하는 과정으로 확장할 수 있다.

@@ -1,6 +1,8 @@
 ---
 title: "endianness는 왜 중요한가"
 permalink: /foundations/languages/c/binary-layout/deep-dive/endianness는-왜-중요한가/
+prev_url: /foundations/languages/c/binary-layout/deep-dive/텍스트-직렬화와-바이너리-직렬화는-어떻게-다른가/
+next_url: /foundations/languages/c/binary-layout/deep-dive/length-prefixed-format은-왜-필요한가/
 layout: doc
 section: foundations
 subcategory: languages
@@ -316,9 +318,51 @@ padding 문제만이 아니라 endianness 문제까지 함께 품는다.
 
 ---
 
-## 7. 실무에서 중요한 판단 기준
+## 7. 어디서부터 논리값과 바이트 표현 순서가 갈리는가
 
-### 7.1 메모리 안 값과 외부 포맷 값을 구분한다
+### 7.1 숫자 값이 같다는 것과 메모리 바이트 배열이 같다는 것은 다르다
+
+프로그래머는 보통 정수 값을 숫자 하나로 본다.  
+하지만 메모리 안에서는 그 값이 여러 바이트로 나뉘어 놓인다.
+
+즉, 논리값 동일성과 바이트 배열 동일성은 다른 층의 정보다.
+
+### 7.2 같은 시스템 내부 계산과 시스템 경계 밖 교환은 다른 문제다
+
+한 머신 안에서 정수 연산만 할 때는  
+endianness가 거의 드러나지 않을 수 있다.  
+하지만 파일, 네트워크, FFI, 장치 경계로 나가면 바이트 순서가 직접 문제가 된다.
+
+즉, endianness는 계산 규칙보다  
+시스템 경계 문제로 보는 편이 정확하다.
+
+### 7.3 레이아웃이 맞는 것과 값 의미가 맞는 것은 다르다
+
+packed struct나 raw dump로 바이트 배치를 얼추 맞출 수는 있어도  
+멀티바이트 필드의 바이트 순서까지 자동으로 해결되지는 않는다.
+
+즉, struct layout과 value interpretation은 분리해서 봐야 한다.
+
+### 7.4 raw copy가 가능한 것과 portable한 것은 다르다
+
+`memcpy`나 raw dump는 현재 환경에서는 자연스러워 보일 수 있다.  
+하지만 다른 endian 환경으로 넘어가는 순간 값 의미가 뒤집힐 수 있다.
+
+즉, 물리적 복사 가능성과 의미 보존 가능성은 같은 말이 아니다.
+
+### 7.5 이 주제는 속도보다 정확한 계약 문제다
+
+endianness는 보통 성능보다  
+어떤 바이트 순서를 외부 계약으로 삼을 것인가의 문제로 더 중요하다.
+
+즉, endian 문서는 미세 최적화보다  
+정확한 표현 계약 문서로 읽어야 한다.
+
+---
+
+## 8. 실무에서 중요한 판단 기준
+
+### 8.1 메모리 안 값과 외부 포맷 값을 구분한다
 
 실무에서는 먼저 다음을 구분해야 한다.
 
@@ -327,7 +371,7 @@ padding 문제만이 아니라 endianness 문제까지 함께 품는다.
 
 후자라면 endianness를 반드시 의식해야 한다.
 
-### 7.2 바이너리 포맷에는 byte order를 명시해야 한다
+### 8.2 바이너리 포맷에는 byte order를 명시해야 한다
 
 파일 포맷이나 프로토콜을 설계할 때  
 “그냥 int를 쓴다” 정도로 정의하면 안 된다.
@@ -340,7 +384,7 @@ padding 문제만이 아니라 endianness 문제까지 함께 품는다.
 
 즉, 포맷 설계에는 byte order 명세가 필수다.
 
-### 7.3 구조체를 그대로 직렬화하면 안심하면 안 된다
+### 8.3 구조체를 그대로 직렬화하면 안심하면 안 된다
 
 다음이 맞는지 항상 의심해야 한다.
 
@@ -350,14 +394,14 @@ padding 문제만이 아니라 endianness 문제까지 함께 품는다.
 
 즉, struct raw dump는 매우 신중해야 한다.
 
-### 7.4 네트워크와 파일은 host byte order와 다를 수 있다고 가정한다
+### 8.4 네트워크와 파일은 host byte order와 다를 수 있다고 가정한다
 
 네트워크 프로토콜이나 표준 파일 포맷은  
 현재 머신 메모리 순서와 다를 수 있다고 먼저 생각하는 편이 안전하다.
 
 즉, “내 머신 기준으로 정상”은 외부 호환성 근거가 아니다.
 
-### 7.5 디버깅할 때 hex dump를 읽는 눈이 필요하다
+### 8.5 디버깅할 때 hex dump를 읽는 눈이 필요하다
 
 endianness를 이해하면 hex dump를 볼 때  
 값이 왜 뒤집혀 보이는지, 어떤 바이트가 어느 의미인지 읽을 수 있다.
@@ -366,25 +410,35 @@ endianness를 이해하면 hex dump를 볼 때
 
 ---
 
-## 8. 더 깊게 볼 포인트
+## 9. 판단 체크리스트
 
-### 8.1 network byte order 변환 함수
+- 논리값과 바이트 배열을 같은 층으로 보고 있지 않은가
+- 같은 시스템 내부 계산과 시스템 경계 밖 교환을 구분하고 있는가
+- struct layout과 값 의미 해석을 분리해서 보고 있는가
+- raw copy 가능성과 portable한 의미 보존을 같은 것으로 보고 있지 않은가
+- byte order를 외부 포맷 계약의 일부로 명시하고 있는가
+
+---
+
+## 10. 더 깊게 볼 포인트
+
+### 10.1 network byte order 변환 함수
 
 네트워크 프로그래밍에서 host/network byte order 변환이 어떻게 쓰이는지 더 깊게 볼 수 있다.
 
-### 8.2 serialization format design
+### 10.2 serialization format design
 
 portable binary format을 설계할 때 왜 명시적 byte order가 필요한지 확장할 수 있다.
 
-### 8.3 bit field와 endianness
+### 10.3 bit field와 endianness
 
 비트필드는 바이트 순서 문제보다 더 구현 의존성이 커질 수 있어 별도로 깊게 볼 가치가 있다.
 
-### 8.4 memory-mapped file / device
+### 10.4 memory-mapped file / device
 
 메모리 맵핑된 데이터나 장치 레지스터를 다룰 때 byte order 문제가 어떻게 드러나는지 더 깊게 볼 수 있다.
 
-### 8.5 FFI와 cross-platform ABI
+### 10.5 FFI와 cross-platform ABI
 
 다른 언어, 다른 시스템과 바이너리 데이터를 주고받을 때 endianness가 어떤 함정을 만드는지 확장할 수 있다.
 

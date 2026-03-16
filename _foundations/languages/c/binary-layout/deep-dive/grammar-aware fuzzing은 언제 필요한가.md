@@ -1,6 +1,8 @@
 ---
 title: "grammar-aware fuzzing은 언제 필요한가"
 permalink: /foundations/languages/c/binary-layout/deep-dive/grammar-aware-fuzzing은-언제-필요한가/
+prev_url: /foundations/languages/c/binary-layout/deep-dive/coverage-guided-fuzzing은-무엇이-다른가/
+next_url: /foundations/languages/c/binary-layout/deep-dive/differential-fuzzing은-언제-유용한가/
 layout: doc
 section: foundations
 subcategory: languages
@@ -326,14 +328,58 @@ grammar-aware fuzzing을 하려면
 
 ---
 
-## 7. 실무에서 중요한 판단 기준
+## 7. 어디서부터 바이트 mutation과 구조 보존형 mutation이 갈리는가
 
-### 7.1 shallow reject가 너무 많은 parser라면 적극 검토한다
+### 7.1 입력을 많이 바꾸는 것과 의미 있는 구조를 유지한 채 깊게 흔드는 것은 다르다
+
+단순 바이트 mutation은 많은 입력을 만들 수 있지만  
+복잡한 포맷에서는 shallow reject만 많이 만들 수 있다.  
+grammar-aware fuzzing은 구조를 어느 정도 보존한 채 더 깊은 경로를 노린다.
+
+즉, 변이량과 탐색 품질은 같은 문제가 아니다.
+
+### 7.2 grammar를 안다고 해서 정상 입력만 만드는 것이 목적은 아니다
+
+포맷 구조를 활용한다고 해서  
+항상 잘 formed 입력만 만들어야 하는 것은 아니다.  
+오히려 경계 조건과 이상 조합을 구조적으로 만들 수 있어야 bug 탐지가 강해진다.
+
+즉, grammar-aware fuzzing은  
+정상 입력 생성기보다 구조 인식 mutation 전략에 가깝다.
+
+### 7.3 형식 복잡도가 높을수록 입력당 비용과 깊이 탐색 이득이 동시에 커진다
+
+모델링 비용은 늘지만  
+nested TLV, length consistency, optional field가 많은 포맷에서는  
+그 대가만큼 deeper path 이득이 커질 수 있다.
+
+즉, 이 기법은 포맷 복잡도와 함께 가치가 커지는 도구다.
+
+### 7.4 coverage-guided와 grammar-aware는 대체 관계보다 보완 관계다
+
+하나는 어떤 입력을 남길지 정하는 탐색 전략이고,  
+다른 하나는 어떤 형태로 변이할지 정하는 구조 전략에 가깝다.
+
+즉, 둘을 결합할 때 가장 강력해지는 경우가 많다.
+
+### 7.5 이 기법의 핵심은 parser가 의미 검증 단계까지 도달하게 만드는 데 있다
+
+magic mismatch, syntax reject, length reject를 넘기지 못하면  
+깊은 semantic bug는 잘 드러나지 않는다.
+
+즉, grammar-aware fuzzing은  
+parser deeper path 진입률을 높이는 전략으로 보면 정확하다.
+
+---
+
+## 8. 실무에서 중요한 판단 기준
+
+### 8.1 shallow reject가 너무 많은 parser라면 적극 검토한다
 
 fuzzer를 돌려 봤는데 대부분 magic mismatch, syntax error, length mismatch에서 끝난다면  
 grammar-aware 전략이 필요할 가능성이 높다.
 
-### 7.2 nested structure나 self-describing format에서 특히 유용하다
+### 8.2 nested structure나 self-describing format에서 특히 유용하다
 
 다음 같은 경우는 특히 적합하다.
 
@@ -342,44 +388,54 @@ grammar-aware 전략이 필요할 가능성이 높다.
 - length-prefixed nested message
 - optional/unknown field가 많은 protocol
 
-### 7.3 coverage-guided fuzzing과 결합하는 편이 좋다
+### 8.3 coverage-guided fuzzing과 결합하는 편이 좋다
 
 grammar-aware만 쓰면 입력 품질은 좋아도 탐색 방향성이 약할 수 있다.  
 coverage와 결합하면 훨씬 강해진다.
 
-### 7.4 grammar를 “정상 입력 생성기”로만 생각하면 안 된다
+### 8.4 grammar를 “정상 입력 생성기”로만 생각하면 안 된다
 
 목표는 specification-conformant sample generator가 아니라  
 bug를 찾는 것이다.
 
 즉, 구조를 유지하되 경계 조건, 부분 위반, 이상 조합도 만들 수 있어야 한다.
 
-### 7.5 발견된 구조적 crash sample은 반드시 corpus에 편입한다
+### 8.5 발견된 구조적 crash sample은 반드시 corpus에 편입한다
 
 grammar-aware fuzzing으로 찾은 입력은 종종 parser deep logic bug를 재현한다.  
 이런 입력은 regression corpus에 매우 가치 있다.
 
 ---
 
-## 8. 더 깊게 볼 포인트
+## 9. 판단 체크리스트
 
-### 8.1 AST-based mutation
+- 바이트 mutation 양과 구조 보존형 탐색 품질을 같은 것으로 보고 있지 않은가
+- grammar-aware fuzzing을 정상 입력 생성기가 아니라 구조 인식 mutation 전략으로 이해하고 있는가
+- 포맷 복잡도가 높을수록 이 기법의 가치가 커질 수 있음을 의식하고 있는가
+- coverage-guided와 grammar-aware를 보완 관계로 보고 결합하고 있는가
+- 목표가 parser deeper path 진입률 향상이라는 점을 명확히 알고 있는가
+
+---
+
+## 10. 더 깊게 볼 포인트
+
+### 10.1 AST-based mutation
 
 텍스트 포맷을 파싱 트리 수준에서 변형하는 전략으로 확장할 수 있다.
 
-### 8.2 checksum-aware fuzzing
+### 10.2 checksum-aware fuzzing
 
 형식을 유지하면서 checksum이나 length consistency까지 맞춰 주는 전략으로 이어질 수 있다.
 
-### 8.3 stateful grammar fuzzing
+### 10.3 stateful grammar fuzzing
 
 단일 메시지가 아니라 여러 메시지 순서와 상태 전이를 포함한 프로토콜로 확장할 수 있다.
 
-### 8.4 format-aware minimization
+### 10.4 format-aware minimization
 
 구조를 망가뜨리지 않고 crash input을 더 작게 줄이는 전략으로 이어질 수 있다.
 
-### 8.5 semantic oracle 결합
+### 10.5 semantic oracle 결합
 
 단순 crash뿐 아니라 semantic inconsistency까지 탐지하는 고급 fuzzing 전략으로 확장할 수 있다.
 

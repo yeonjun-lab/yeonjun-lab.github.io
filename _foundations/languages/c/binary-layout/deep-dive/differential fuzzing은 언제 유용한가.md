@@ -1,6 +1,7 @@
 ---
 title: "differential fuzzing은 언제 유용한가"
 permalink: /foundations/languages/c/binary-layout/deep-dive/differential-fuzzing은-언제-유용한가/
+prev_url: /foundations/languages/c/binary-layout/deep-dive/grammar-aware-fuzzing은-언제-필요한가/
 layout: doc
 section: foundations
 subcategory: languages
@@ -332,9 +333,54 @@ coverage-guided나 grammar-aware 방식으로 입력 하나를 만든다.
 
 ---
 
-## 7. 실무에서 중요한 판단 기준
+## 7. 어디서부터 crash 탐지와 semantic discrepancy 탐지가 갈리는가
 
-### 7.1 비교 가능한 두 구현이 있을 때 적극 검토한다
+### 7.1 충돌이 없다고 같은 의미를 보장하는 것은 아니다
+
+두 구현이 모두 멀쩡히 끝나더라도  
+해석 결과가 다를 수 있다.  
+이런 문제는 단순 crash 중심 fuzzing으로는 잘 드러나지 않는다.
+
+즉, differential fuzzing은 안정성 버그와 별도의  
+의미 불일치 층을 겨냥한다.
+
+### 7.2 비교 대상이 있다는 것과 좋은 oracle이 있다는 것은 다르다
+
+구현 둘을 준비했다고 해서 바로 유용한 테스트가 되는 것은 아니다.  
+무엇을 같은 결과로 볼지 비교 기준이 명확해야 한다.
+
+즉, differential fuzzing의 핵심은 두 구현 수보다  
+semantic oracle 설계다.
+
+### 7.3 discrepancy는 곧바로 새 구현 버그를 뜻하지 않는다
+
+차이가 나면 old 코드가 틀렸을 수도 있고,  
+spec이 모호할 수도 있으며,  
+normalization 부족일 수도 있다.
+
+즉, discrepancy는 발견 이후 triage가 필수다.
+
+### 7.4 normalization을 빼면 의미 없는 차이가 noise가 된다
+
+형식 차이, canonical ordering 차이, benign reformatting을 그대로 비교하면  
+진짜 문제보다 false positive가 더 많아질 수 있다.
+
+즉, differential fuzzing은 comparison layer 품질에 크게 의존한다.
+
+### 7.5 이 기법은 정답을 직접 쓰기 어려운 영역에서 특히 강하다
+
+파서 재작성, serializer 교체, legacy/new 비교처럼  
+직접 oracle을 쓰기 어려운 경우에  
+구현 간 계약을 oracle로 삼을 수 있다.
+
+즉, differential fuzzing은  
+oracle 대체 전략으로 이해하면 더 정확하다.
+
+---
+
+## 8. 실무에서 중요한 판단 기준
+
+### 8.1 비교 가능한 두 구현이 있을 때 적극 검토한다
 
 다음 같은 경우 differential fuzzing 가치가 높다.
 
@@ -343,7 +389,7 @@ coverage-guided나 grammar-aware 방식으로 입력 하나를 만든다.
 - strict parser vs optimized parser
 - serializer A vs serializer B
 
-### 7.2 semantic oracle를 먼저 정한다
+### 8.2 semantic oracle를 먼저 정한다
 
 무엇이 같은 결과인지 명확해야 한다.
 
@@ -354,44 +400,54 @@ coverage-guided나 grammar-aware 방식으로 입력 하나를 만든다.
 
 즉, oracle 정의가 핵심이다.
 
-### 7.3 false discrepancy를 줄이는 normalization이 중요하다
+### 8.3 false discrepancy를 줄이는 normalization이 중요하다
 
 byte-for-byte 비교만으로는 noise가 많을 수 있다.  
 특히 canonical ordering, formatting 차이, benign reordering은 정규화해서 제거해야 한다.
 
-### 7.4 discrepancy triage 체계를 준비한다
+### 8.4 discrepancy triage 체계를 준비한다
 
 차이가 발견되면 곧바로 “새 코드가 틀렸다”라고 결론내리면 안 된다.  
 old 코드가 틀렸을 수도 있고, spec이 모호할 수도 있다.
 
 즉, discrepancy 분석 프로세스가 필요하다.
 
-### 7.5 발견 입력은 corpus와 regression test로 편입한다
+### 8.5 발견 입력은 corpus와 regression test로 편입한다
 
 한 번 의미 차이를 드러낸 입력은 매우 가치 있다.  
 이런 입력은 반드시 regression asset으로 승격하는 것이 좋다.
 
 ---
 
-## 8. 더 깊게 볼 포인트
+## 9. 판단 체크리스트
 
-### 8.1 N-way differential fuzzing
+- crash가 없다고 의미가 같다고 가정하고 있지 않은가
+- 비교 대상 수보다 semantic oracle 설계가 더 중요하다는 점을 의식하고 있는가
+- discrepancy를 바로 새 구현 버그로 단정하지 않고 있는가
+- normalization 없이 noise가 쌓이지 않도록 비교 계층을 설계하고 있는가
+- 직접 정답을 쓰기 어려운 영역에서 구현 간 계약을 oracle로 활용하고 있는가
+
+---
+
+## 10. 더 깊게 볼 포인트
+
+### 10.1 N-way differential fuzzing
 
 두 구현이 아니라 세 개 이상 구현을 동시에 비교하는 전략으로 확장할 수 있다.
 
-### 8.2 metamorphic testing과의 관계
+### 10.2 metamorphic testing과의 관계
 
 입력 변환 전후에 특정 성질이 유지되어야 한다는 관점과 differential fuzzing을 비교할 수 있다.
 
-### 8.3 serializer/parser cross-check
+### 10.3 serializer/parser cross-check
 
 serialize(parse(x))와 parse(serialize(y)) 관계를 함께 비교하는 방식으로 확장할 수 있다.
 
-### 8.4 spec ambiguity detection
+### 10.4 spec ambiguity detection
 
 차이가 구현 버그가 아니라 명세 모호성임을 어떻게 판별할지 더 깊게 볼 수 있다.
 
-### 8.5 heterogeneous implementation fuzzing
+### 10.5 heterogeneous implementation fuzzing
 
 C 구현과 다른 언어 구현을 함께 비교할 때 생기는 장점과 주의점으로 확장할 수 있다.
 

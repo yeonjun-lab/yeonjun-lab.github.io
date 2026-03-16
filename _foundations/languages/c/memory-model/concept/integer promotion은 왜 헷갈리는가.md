@@ -1,6 +1,8 @@
 ---
 title: "integer promotion은 왜 헷갈리는가"
 permalink: /foundations/languages/c/memory-model/concept/integer-promotion은-왜-헷갈리는가/
+prev_url: /foundations/languages/c/memory-safety/deep-dive/use-after-free는-왜-치명적인가/
+next_url: /foundations/languages/c/memory-model/concept/signed-unsigned-변환은-왜-위험한가/
 layout: doc
 section: foundations
 subcategory: languages
@@ -369,6 +371,31 @@ C에서는 식 내부 변환 단계가 매우 중요하다.
 
 ---
 
+## 어디서부터 직관과 실제 규칙이 갈리는가
+
+### 1. 선언 타입이 아니라 식 안의 계산 타입이 의미를 결정한다
+
+사람은 보통 `char`, `short`를 보면 그 타입 그대로 계산한다고 생각한다.  
+하지만 C는 저장 타입과 계산 타입을 분리하는 방향으로 설계되어 있다.
+
+즉 다음을 따로 봐야 한다.
+
+- 메모리에 저장된 타입
+- 식에 들어온 뒤 승격된 타입
+- 최종 대입 시 다시 줄어드는 타입
+
+이 세 단계를 한꺼번에 보지 않으면 promotion은 계속 헷갈린다.
+
+### 2. promotion은 산술보다 비트 연산에서 더 교묘하게 문제를 만든다
+
+덧셈/뺄셈은 그나마 값 의미로 따라가기 쉽지만,  
+`~`, `<<`, `>>`, 마스크 연산은 "몇 비트 폭에서 계산되는가"를 놓치는 순간 직관이 바로 무너진다.
+
+즉 promotion은 부수 규칙이 아니라  
+**정수형 식 해석의 시작점**이다.
+
+---
+
 ## 실무 관점
 
 ### 1. 작은 정수형은 저장용으로, 연산은 더 큰 타입에서 일어난다고 생각하는 편이 낫다
@@ -421,6 +448,20 @@ C에서는 식 내부 변환 단계가 매우 중요하다.
 - undefined behavior는 왜 위험한가
 
 즉 정수형 식 해석의 중간 다리 역할을 한다.
+
+---
+
+## 판단 체크리스트
+
+작은 정수형이 식에 들어오면 먼저 아래를 묻는 편이 좋다.
+
+1. 이 값은 저장 타입이 무엇인가
+2. 연산 직전에 `int` 또는 `unsigned int`로 승격되는가
+3. 실제 의미는 승격된 타입에서 어떻게 계산되는가
+4. 최종 대입 시 다시 좁아지면서 값이 바뀌지는 않는가
+
+즉 integer promotion은 외워야 할 부칙이 아니라  
+**"이 식은 실제로 몇 비트 세계에서 계산되고 있는가"를 묻는 기본 체크리스트**다.
 
 ---
 

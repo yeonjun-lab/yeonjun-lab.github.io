@@ -1,6 +1,8 @@
 ---
 title: "unknown field preservation은 왜 중요한가"
 permalink: /foundations/languages/c/binary-layout/deep-dive/unknown-field-preservation은-왜-중요한가/
+prev_url: /foundations/languages/c/binary-layout/deep-dive/버전-필드는-언제-필요하고-언제-해가-될-수-있는가/
+next_url: /foundations/languages/c/binary-layout/deep-dive/golden-corpus는-왜-필요한가/
 layout: doc
 section: foundations
 subcategory: languages
@@ -316,9 +318,53 @@ unknown field raw blob를 저장해야 하므로
 
 ---
 
-## 7. 실무에서 중요한 판단 기준
+## 7. 어디서부터 parse 성공과 정보 보존이 갈리는가
 
-### 7.1 내 컴포넌트가 end-point인지 transit node인지 먼저 구분한다
+### 7.1 unknown field를 skip할 수 있다는 것과 다시 살려낼 수 있다는 것은 다르다
+
+많은 사람이 "모르는 필드를 넘길 수 있으면 충분하다"고 생각한다.  
+하지만 중간 계층에서는 parse 성공만으로는 부족하고,  
+다시 serialize할 때 그 정보가 살아 있어야 할 수 있다.
+
+즉, parse success와 information preservation은 다른 층이다.
+
+### 7.2 end-point와 transit node는 요구가 다를 수 있다
+
+최종 소비자는 모르는 필드를 버려도 큰 문제가 없을 수 있다.  
+반면 relay, gateway, partial update store는  
+모르는 필드를 잃으면 미래 데이터 계약을 파괴할 수 있다.
+
+즉, preservation 필요성은 컴포넌트 역할에 따라 달라진다.
+
+### 7.3 unknown field preservation은 parser 세부 기능이 아니라 evolution 정책이다
+
+raw blob를 어떻게 들고 다닐지,  
+순서를 보존할지, duplicate field를 어떻게 다룰지는  
+실제로 schema evolution 정책과 연결된다.
+
+즉, 구현 디테일처럼 보여도  
+장기 호환성 계약 일부다.
+
+### 7.4 partial update 시스템에서는 손실 없는 재직렬화가 핵심일 수 있다
+
+일부 필드만 수정하고 나머지는 유지해야 하는 시스템에서는  
+unknown field를 잃는 순간 의도치 않은 lossy transform이 된다.
+
+즉, preservation은 특히 partial update와 mixed-version 경계에서 중요하다.
+
+### 7.5 preservation 수준은 byte-exact 보존과 의미 보존 사이에서 설계해야 한다
+
+어떤 시스템은 원본에 최대한 가깝게 다시 써야 하고,  
+어떤 시스템은 의미만 유지하면 충분할 수 있다.
+
+즉, preservation도 하나가 아니라  
+어느 수준까지 보존할지 정책을 정해야 한다.
+
+---
+
+## 8. 실무에서 중요한 판단 기준
+
+### 8.1 내 컴포넌트가 end-point인지 transit node인지 먼저 구분한다
 
 이 질문이 가장 중요하다.
 
@@ -328,21 +374,21 @@ unknown field raw blob를 저장해야 하므로
 
 중간 계층일수록 preservation 필요성이 커진다.
 
-### 7.2 partial update 시스템에서는 preservation을 강하게 고려한다
+### 8.2 partial update 시스템에서는 preservation을 강하게 고려한다
 
 일부 필드만 수정하고 나머지는 유지해야 하는 시스템에서는  
 unknown field 손실이 매우 위험하다.
 
 예를 들어 config store, metadata store, gateway, sync engine 같은 곳이 여기에 가깝다.
 
-### 7.3 unknown field를 버리면 lossy transformation임을 명시해야 한다
+### 8.3 unknown field를 버리면 lossy transformation임을 명시해야 한다
 
 preservation을 안 하기로 했다면  
 그 컴포넌트가 메시지를 lossy하게 변환할 수 있다는 사실을 문서화해야 한다.
 
 즉, 침묵 속 데이터 손실이 가장 위험하다.
 
-### 7.4 preservation 정책은 포맷 설계와 함께 정해야 한다
+### 8.4 preservation 정책은 포맷 설계와 함께 정해야 한다
 
 단순 parser 구현 문제가 아니다.  
 다음이 함께 정의되어야 한다.
@@ -354,7 +400,7 @@ preservation을 안 하기로 했다면
 
 즉, schema policy의 일부다.
 
-### 7.5 테스트에서 mixed-version round-trip을 반드시 본다
+### 8.5 테스트에서 mixed-version round-trip을 반드시 본다
 
 다음 같은 테스트가 중요하다.
 
@@ -366,25 +412,35 @@ preservation을 안 하기로 했다면
 
 ---
 
-## 8. 더 깊게 볼 포인트
+## 9. 판단 체크리스트
 
-### 8.1 protobuf unknown fields
+- unknown field skip과 unknown field preservation을 다른 문제로 보고 있는가
+- 내 컴포넌트 역할이 end-point인지 transit node인지 먼저 구분하고 있는가
+- preservation을 parser 기능이 아니라 evolution 정책으로 이해하고 있는가
+- partial update 시스템에서 손실 없는 재직렬화가 중요한지 판단하고 있는가
+- preservation 수준을 byte-exact 보존과 의미 보존 사이에서 명시적으로 정하고 있는가
+
+---
+
+## 10. 더 깊게 볼 포인트
+
+### 10.1 protobuf unknown fields
 
 실제 시스템이 unknown field preservation을 어떻게 다루는지 사례 기반으로 확장할 수 있다.
 
-### 8.2 canonical form vs original form preservation
+### 10.2 canonical form vs original form preservation
 
 원본 바이트를 최대한 그대로 보존할지, 의미만 보존할지 더 깊게 비교할 수 있다.
 
-### 8.3 patch/merge semantics
+### 10.3 patch/merge semantics
 
 부분 업데이트와 병합 로직에서 unknown field preservation이 어떤 의미를 가지는지 확장할 수 있다.
 
-### 8.4 gateway protocol translation
+### 10.4 gateway protocol translation
 
 서로 다른 버전 또는 서로 다른 프로토콜 사이를 중계할 때 preservation이 어떻게 작동해야 하는지로 이어질 수 있다.
 
-### 8.5 storage migration tools
+### 10.5 storage migration tools
 
 옛 데이터를 새 형식으로 변환할 때 unknown field를 어떻게 다뤄야 하는지 실무 문제로 확장할 수 있다.
 

@@ -79,6 +79,17 @@ GitHub Pages + Jekyll 기반 문서형 기술 아카이브
 - project-log
 - research-note
 
+### languages 문서 구조
+`_foundations/languages/*` 하위 문서는 가능하면 아래 구조를 따른다.
+
+- `languages/<language>/<topic_slug>/index.md`
+- `languages/<language>/<topic_slug>/<doc_type>/<doc>.md`
+
+permalink 규칙:
+- `/foundations/languages/<language>/<topic_slug>/<doc_type>/<doc-slug>/`
+
+특히 `languages/c`는 이 규칙으로 재정리되어 있다.
+
 ### topic
 같은 시리즈 / 같은 학습 축 문서를 묶는 기준
 
@@ -187,7 +198,21 @@ GitHub Pages + Jekyll 기반 문서형 기술 아카이브
 - 용어 정의와 보장 범위를 분리
 - 언어 규칙 / 구현체 / 시스템 계층을 혼동하지 않음
 - 흔한 오해와 반례를 통해 설명을 교정
-- 문서 마지막을 실무 판단 기준으로 닫음
+- 문서 마지막을 실무 판단 체크리스트로 닫음
+- concept 문서에는 "어디서부터 ... 갈리는가" 성격의 경계 설명을 넣음
+- deep-dive 문서에는 필요한 경우 ABI / 런타임 / allocator / 로더 계층까지 분리함
+- 저장공간 / 객체 / 값 / 표현 / 해석 / ownership 같은 층위를 섞지 않음
+- 시리즈 문서는 front matter의 `prev_url` / `next_url`와 본문 `다음에 볼 것`을 같은 읽기 흐름으로 유지함
+
+## Current High-Priority Content Track
+현재는 C 시리즈를 중심으로 실제 문서 보강이 진행 중이다.
+
+진행 중인 상태:
+- `memory-model`, `memory-safety`, `system-interface`, `build-and-linking`, `pointer-model`, `dynamic-memory` 축 문서 보강 진행
+- 기존 문서는 경계 설명 + 판단 체크리스트 기준으로 순차 수정 중
+- 비어 있는 `concept` 축은 `memory-safety`, `system-interface`, `performance-model`, `binary-layout` 순으로 채우는 중
+- `languages/c`는 문서별 `prev_url` / `next_url`를 넣어 실제 학습 순서 기반 pagination을 사용 중
+- `다음에 볼 것` 섹션이 있는 문서는 pagination 흐름과 동일하게 유지하는 운영 규칙을 사용 중
 
 ## Long-Term Direction
 이 프로젝트는 앞으로 다음 기술축을 중심으로 성장한다.

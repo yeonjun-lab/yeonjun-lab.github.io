@@ -11,6 +11,7 @@ yeonjun-lab.github.io/
 ├─ OPERATIONS.md
 ├─ HANDOFF.md
 ├─ CHANGELOG.md
+│  # 구조 변경, 운영 단계, 현재 집중 축 기록
 │
 ├─ _data/
 │  ├─ navigation.yml
@@ -42,6 +43,7 @@ yeonjun-lab.github.io/
 ├─ pages/
 │  ├─ about.md
 │  ├─ writing-guide.md
+│  │  # 정밀도 기준, 문체, 구조 규칙
 │  ├─ archive.md
 │  ├─ search.md
 │  ├─ tags.md
@@ -148,11 +150,13 @@ yeonjun-lab.github.io/
 │
 ├─ tools/
 │  ├─ new_doc.sh
+│  │  # languages는 topic_slug/doc_type 경로 규칙 반영
 │  ├─ touch_doc.sh
 │  ├─ doc_commit.sh
 │  ├─ prepublish.sh
 │  ├─ publish.sh
 │  ├─ validate_docs.py
+│  │  # permalink / metadata / template structure 검증
 │  └─ validate_docs_strict.py
 │
 ├─ templates/
@@ -161,5 +165,6 @@ yeonjun-lab.github.io/
 │  ├─ troubleshooting.md
 │  ├─ project-log.md
 │  └─ research-note.md
+│  # 현재 기준: 경계 설명 + 판단 체크리스트 패턴 반영
 │
 └─ _site/   # build 결과물

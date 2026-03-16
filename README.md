@@ -34,11 +34,24 @@
 - Topics: 시리즈 축 탐색
 - Latest Updates: 최근 수정 문서 탐색
 
+순차 탐색 규칙:
+- 문서 하단 Previous / Next는 front matter의 `prev_url` / `next_url`를 우선 사용합니다.
+- 본문 `다음에 볼 것`이 있는 시리즈 문서는 같은 읽기 흐름을 가리키도록 유지합니다.
+
 ## Writing and Operations
 
 문서 작성과 운영 기준은 다음 페이지를 참고합니다.
 
 - `/writing-guide/`
+- `OPERATIONS.md`
+- `HANDOFF.md`
+- `CURRENT_STATUS.md`
+
+현재 작성 기준의 핵심:
+- concept 문서는 정의 후 "어디서부터 ... 갈리는가"로 직관과 실제 경계를 분리합니다.
+- deep-dive 문서는 언어 규칙 / 구현 / 시스템 / ABI 경계를 명시적으로 분리합니다.
+- 문서 끝은 요약만이 아니라 판단 체크리스트로 닫습니다.
+- 특히 C, 시스템, 런타임, 성능 문서는 "설명 가능"보다 "보장 범위와 경계가 분명한 설명"을 목표로 합니다.
 
 주요 운영 명령:
 

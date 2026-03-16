@@ -1,6 +1,8 @@
 ---
 title: "mixed-version round-trip 테스트는 왜 필요한가"
 permalink: /foundations/languages/c/binary-layout/deep-dive/mixed-version-round-trip-테스트는-왜-필요한가/
+prev_url: /foundations/languages/c/binary-layout/deep-dive/golden-corpus는-왜-필요한가/
+next_url: /foundations/languages/c/binary-layout/deep-dive/coverage-guided-fuzzing은-무엇이-다른가/
 layout: doc
 section: foundations
 subcategory: languages
@@ -344,9 +346,52 @@ parse test만으로는 절대 충분하지 않다.
 
 ---
 
-## 7. 실무에서 중요한 판단 기준
+## 7. 어디서부터 parse 성공과 실제 mixed-version 호환성이 갈리는가
 
-### 7.1 “지원하는 버전 조합”을 먼저 정의한다
+### 7.1 읽을 수 있다는 것과 다시 써도 계약이 유지된다는 것은 다르다
+
+옛 reader가 새 데이터를 parse할 수 있다고 해서  
+그 데이터를 다시 serialize했을 때 정보가 그대로 유지된다는 보장은 없다.
+
+즉, parse success와 round-trip safety는 다른 층의 검증이다.
+
+### 7.2 단일 버전 round-trip과 mixed-version round-trip은 다른 테스트다
+
+같은 버전 안에서 serialize/parse/serialize가 되는 것은 기본이다.  
+하지만 실제 운영에서는 서로 다른 버전의 writer, reader, 중간 노드가 섞인다.
+
+즉, mixed-version 테스트는  
+실제 배포 경로를 검증하는 별도 문제다.
+
+### 7.3 equality 기준을 먼저 정하지 않으면 테스트 의미가 흔들린다
+
+바이트 동일성이 필요한지,  
+의미 동일성만 필요한지,  
+unknown field preservation까지 요구하는지에 따라 결과 해석이 달라진다.
+
+즉, round-trip 테스트는 입력보다  
+동등성 기준 설계가 더 중요할 수 있다.
+
+### 7.4 부분 수정 경로는 일반 parse 경로보다 더 위험하다
+
+read-modify-write 컴포넌트는  
+모르는 필드를 지우거나 기본값을 덮어쓰는 식의 손실을 만들기 쉽다.
+
+즉, mixed-version 문제는 특히 partial update 경로에서 잘 드러난다.
+
+### 7.5 지원 정책이 없으면 테스트 범위도 설계할 수 없다
+
+어떤 writer/reader 조합을 보장할지 모르면  
+무엇을 mixed-version 테스트해야 하는지도 모호해진다.
+
+즉, compatibility test는  
+지원 정책 문서 위에 서야 한다.
+
+---
+
+## 8. 실무에서 중요한 판단 기준
+
+### 8.1 “지원하는 버전 조합”을 먼저 정의한다
 
 테스트 전에 먼저 정해야 한다.
 
@@ -357,7 +402,7 @@ parse test만으로는 절대 충분하지 않다.
 
 즉, 테스트는 지원 정책 위에 서야 한다.
 
-### 7.2 parse test와 round-trip test를 분리해서 생각한다
+### 8.2 parse test와 round-trip test를 분리해서 생각한다
 
 둘은 다르다.
 
@@ -366,7 +411,7 @@ parse test만으로는 절대 충분하지 않다.
 
 즉, parse 성공을 compatibility 완료로 착각하면 안 된다.
 
-### 7.3 equality 기준을 명시한다
+### 8.3 equality 기준을 명시한다
 
 테스트에서 무엇을 비교할지 명확해야 한다.
 
@@ -377,39 +422,49 @@ parse test만으로는 절대 충분하지 않다.
 
 즉, 테스트 실패가 진짜 문제인지 아닌지를 구분할 기준이 필요하다.
 
-### 7.4 partial update 경로는 별도 테스트한다
+### 8.4 partial update 경로는 별도 테스트한다
 
 일부 필드만 수정하는 컴포넌트는 가장 위험하다.  
 unknown field 손실, 기본값 덮어쓰기, enum 축소 문제가 잘 발생한다.
 
 즉, edit-in-place 성격 경로는 별도 시나리오가 필요하다.
 
-### 7.5 mixed-version 테스트는 CI에 넣는 것이 좋다
+### 8.5 mixed-version 테스트는 CI에 넣는 것이 좋다
 
 문서로만 남기면 쉽게 잊힌다.  
 따라서 실제 버전 fixture와 sample corpus를 만들어 CI에서 지속적으로 검증하는 편이 좋다.
 
 ---
 
-## 8. 더 깊게 볼 포인트
+## 9. 판단 체크리스트
 
-### 8.1 golden corpus 관리
+- parse 성공과 round-trip 안전성을 다른 문제로 보고 있는가
+- 단일 버전 round-trip과 mixed-version round-trip을 구분하고 있는가
+- 바이트 동일성/의미 동일성/unknown preservation 중 어떤 기준을 쓰는지 명시했는가
+- partial update 경로를 별도 위험 구간으로 보고 테스트하고 있는가
+- 지원 버전 정책 위에 테스트 조합을 설계하고 있는가
+
+---
+
+## 10. 더 깊게 볼 포인트
+
+### 10.1 golden corpus 관리
 
 버전별 샘플 데이터 세트를 어떻게 유지할지로 확장할 수 있다.
 
-### 8.2 property-based round-trip testing
+### 10.2 property-based round-trip testing
 
 랜덤/생성 기반 테스트로 다양한 조합을 자동화하는 방식으로 이어질 수 있다.
 
-### 8.3 compatibility matrix minimization
+### 10.3 compatibility matrix minimization
 
 버전 수가 많을 때 어떤 조합만 골라 테스트할지 전략적으로 줄이는 문제로 확장할 수 있다.
 
-### 8.4 migration testing
+### 10.4 migration testing
 
 저장 데이터 포맷을 배치 마이그레이션할 때 round-trip 성질을 어떻게 검증할지로 이어질 수 있다.
 
-### 8.5 proxy/gateway semantics
+### 10.5 proxy/gateway semantics
 
 단순 전달자와 일부 수정 전달자의 preservation 요구가 어떻게 다른지 더 깊게 볼 수 있다.
 

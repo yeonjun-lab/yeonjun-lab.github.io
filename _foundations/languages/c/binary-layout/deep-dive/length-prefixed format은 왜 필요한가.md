@@ -1,6 +1,8 @@
 ---
 title: "length-prefixed format은 왜 필요한가"
 permalink: /foundations/languages/c/binary-layout/deep-dive/length-prefixed-format은-왜-필요한가/
+prev_url: /foundations/languages/c/binary-layout/deep-dive/endianness는-왜-중요한가/
+next_url: /foundations/languages/c/binary-layout/deep-dive/tlv-type-length-value-는-왜-자주-쓰이는가/
 layout: doc
 section: foundations
 subcategory: languages
@@ -405,16 +407,58 @@ length-prefixed는 이런 escape 부담이 줄어든다.
 
 ---
 
-## 7. 실무에서 중요한 판단 기준
+## 7. 어디서부터 데이터 내용과 메시지 경계 정보가 갈리는가
 
-### 7.1 가변 길이 binary data에는 우선 검토할 가치가 높다
+### 7.1 payload와 payload 길이는 서로 다른 종류의 정보다
+
+초보자는 데이터를 받으면  
+그 내용만 잘 읽으면 된다고 생각하기 쉽다.  
+하지만 가변 길이 데이터에서는 경계 정보가 별도로 있어야 한다.
+
+즉, 내용과 경계는 다른 층의 정보다.
+
+### 7.2 delimiter 기반과 length 기반은 경계 모델 자체가 다르다
+
+하나는 끝 문자를 찾는 방식이고,  
+다른 하나는 길이를 먼저 선언하는 방식이다.
+
+즉, length-prefixed는 단순 문법 차이가 아니라  
+메시지 framing 모델 차이다.
+
+### 7.3 length가 있으면 단순해지는 부분과 더 엄격해지는 부분이 동시에 생긴다
+
+경계 계산은 쉬워질 수 있지만  
+잘못된 length 값 검증 책임은 더 커진다.
+
+즉, length prefix는 편의와 검증 책임이 같이 따라오는 구조다.
+
+### 7.4 binary-safe라는 것과 안전하다는 것은 다르다
+
+delimiter 충돌 없이 임의 바이트를 담을 수 있다는 점은 장점이다.  
+하지만 length 검증이 없으면 parser는 여전히 무너질 수 있다.
+
+즉, binary-safe는 포맷 표현력 이야기이고  
+parser safety는 별도 문제다.
+
+### 7.5 framing 해결이 포맷 전체 설계를 끝내 주는 것은 아니다
+
+length prefix가 있어도 byte order, nested structure, 버전, 에러 처리 정책은 남는다.
+
+즉, length-prefixed는 핵심 기법이지만  
+포맷 전체 해법은 아니다.
+
+---
+
+## 8. 실무에서 중요한 판단 기준
+
+### 8.1 가변 길이 binary data에는 우선 검토할 가치가 높다
 
 문자열, blob, nested message처럼  
 길이가 달라질 수 있는 binary data에는 length-prefixed 방식이 매우 자연스럽다.
 
 즉, delimiter보다 먼저 고려할 만한 기본 후보가 된다.
 
-### 7.2 길이 필드는 항상 신뢰하지 않는다
+### 8.2 길이 필드는 항상 신뢰하지 않는다
 
 역직렬화에서 가장 중요한 원칙 중 하나다.
 
@@ -424,7 +468,7 @@ length-prefixed는 이런 escape 부담이 줄어든다.
 
 즉, length는 포맷 핵심이면서 동시에 공격 표면이다.
 
-### 7.3 길이 타입 크기를 신중히 정한다
+### 8.3 길이 타입 크기를 신중히 정한다
 
 u8, u16, u32 중 무엇을 쓸지는 단순 취향 문제가 아니다.
 
@@ -437,14 +481,14 @@ u8, u16, u32 중 무엇을 쓸지는 단순 취향 문제가 아니다.
 
 즉, 포맷 설계의 일부다.
 
-### 7.4 텍스트 문자열과 바이너리 payload를 구분해서 생각한다
+### 8.4 텍스트 문자열과 바이너리 payload를 구분해서 생각한다
 
 텍스트라면 delimiter 기반이 더 자연스러운 경우도 있다.  
 하지만 binary payload는 delimiter 충돌 가능성이 높다.
 
 즉, 데이터 성격에 따라 framing 전략도 달라져야 한다.
 
-### 7.5 length-prefixed만으로 모든 문제가 해결되지는 않는다
+### 8.5 length-prefixed만으로 모든 문제가 해결되지는 않는다
 
 길이만 있으면 끝나는 것이 아니다.  
 다음도 같이 설계해야 한다.
@@ -459,25 +503,35 @@ u8, u16, u32 중 무엇을 쓸지는 단순 취향 문제가 아니다.
 
 ---
 
-## 8. 더 깊게 볼 포인트
+## 9. 판단 체크리스트
 
-### 8.1 TLV(Type-Length-Value)
+- payload 내용과 메시지 경계 정보를 분리해서 보고 있는가
+- delimiter 기반과 length 기반이 서로 다른 framing 모델이라는 점을 이해하고 있는가
+- length가 있다고 해서 검증 책임이 줄어든다고 생각하고 있지 않은가
+- binary-safe와 parser-safe를 같은 뜻으로 보고 있지 않은가
+- length prefix가 framing 해법이지 포맷 전체 해법은 아니라는 점을 의식하고 있는가
+
+---
+
+## 10. 더 깊게 볼 포인트
+
+### 10.1 TLV(Type-Length-Value)
 
 length-prefixed를 더 일반화한 포맷 설계 방식으로 확장할 수 있다.
 
-### 8.2 varint length
+### 10.2 varint length
 
 고정 길이 정수 대신 가변 길이 정수로 length를 표현하는 전략으로 이어질 수 있다.
 
-### 8.3 streaming state machine parser
+### 10.3 streaming state machine parser
 
 네트워크 입력이 조각나 들어올 때 parser를 어떻게 상태 기계로 설계할지로 이어질 수 있다.
 
-### 8.4 denial-of-service 방어
+### 10.4 denial-of-service 방어
 
 악의적인 큰 length 값으로 인한 과다 할당, 과다 복사, parser 붕괴를 어떻게 막을지 확장할 수 있다.
 
-### 8.5 framed transport design
+### 10.5 framed transport design
 
 메시지 경계가 없는 byte stream 위에서 어떻게 안정적인 message framing을 만들지 더 깊게 볼 수 있다.
 
