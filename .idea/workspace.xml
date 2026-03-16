@@ -6,11 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9101f5f1-46f5-4127-a6ed-47879746a7f4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/memory-safety/concept/undefined behavior는 왜 위험한가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/memory-safety/concept/undefined behavior는 왜 위험한가 concept.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/memory-safety/concept/버퍼 오버플로우는 어떻게 생기는가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/memory-safety/concept/버퍼 오버플로우는 어떻게 생기는가 concept.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/memory-safety/deep-dive/undefined behavior는 왜 위험한가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/memory-safety/deep-dive/undefined behavior는 왜 위험한가 deep-dive.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/memory-safety/deep-dive/use-after-free는 왜 치명적인가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/memory-safety/deep-dive/use-after-free는 왜 치명적인가 deep-dive.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/memory-safety/deep-dive/버퍼 오버플로우는 어떻게 생기는가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/memory-safety/deep-dive/버퍼 오버플로우는 어떻게 생기는가 deep-dive.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PROJECT_CONTEXT.md" beforeDir="false" afterPath="$PROJECT_DIR$/PROJECT_CONTEXT.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/writing-guide.md" beforeDir="false" afterPath="$PROJECT_DIR$/pages/writing-guide.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +82,7 @@
       <workItem from="1773032524985" duration="73107000" />
       <workItem from="1773548992766" duration="15339000" />
       <workItem from="1773583848633" duration="3549000" />
-      <workItem from="1773587855914" duration="15022000" />
+      <workItem from="1773587855914" duration="23093000" />
     </task>
     <servers />
   </component>
