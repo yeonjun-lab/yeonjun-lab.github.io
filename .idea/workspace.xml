@@ -5,79 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9101f5f1-46f5-4127-a6ed-47879746a7f4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PROJECT_CONTEXT.md" beforeDir="false" afterPath="$PROJECT_DIR$/PROJECT_CONTEXT.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/db/oracle/execution-plan/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/db/oracle/optimizer/dbms-optimizer-basics.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/db/oracle/optimizer/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/binary-layout/deep-dive/coverage-guided fuzzing은 무엇이 다른가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/binary-layout/deep-dive/coverage-guided fuzzing은 무엇이 다른가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/binary-layout/deep-dive/differential fuzzing은 언제 유용한가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/binary-layout/deep-dive/differential fuzzing은 언제 유용한가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/binary-layout/deep-dive/endianness는 왜 중요한가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/binary-layout/deep-dive/endianness는 왜 중요한가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/binary-layout/deep-dive/golden corpus는 왜 필요한가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/binary-layout/deep-dive/golden corpus는 왜 필요한가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/binary-layout/deep-dive/grammar-aware fuzzing은 언제 필요한가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/binary-layout/deep-dive/grammar-aware fuzzing은 언제 필요한가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/binary-layout/deep-dive/length-prefixed format은 왜 필요한가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/binary-layout/deep-dive/length-prefixed format은 왜 필요한가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/binary-layout/deep-dive/mixed-version round-trip 테스트는 왜 필요한가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/binary-layout/deep-dive/mixed-version round-trip 테스트는 왜 필요한가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/binary-layout/deep-dive/schema evolution은 왜 중요한가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/binary-layout/deep-dive/schema evolution은 왜 중요한가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/binary-layout/deep-dive/type-length-value는 왜 자주 쓰이는가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/binary-layout/deep-dive/type-length-value는 왜 자주 쓰이는가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/binary-layout/deep-dive/unknown field preservation은 왜 중요한가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/binary-layout/deep-dive/unknown field preservation은 왜 중요한가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/binary-layout/deep-dive/버전 필드는 언제 필요하고 언제 해가 될 수 있는가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/binary-layout/deep-dive/버전 필드는 언제 필요하고 언제 해가 될 수 있는가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/binary-layout/deep-dive/직렬화와 역직렬화는 왜 단순 memcpy가 아닌가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/binary-layout/deep-dive/직렬화와 역직렬화는 왜 단순 memcpy가 아닌가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/binary-layout/deep-dive/텍스트 직렬화와 바이너리 직렬화는 어떻게 다른가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/binary-layout/deep-dive/텍스트 직렬화와 바이너리 직렬화는 어떻게 다른가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/build-and-linking/concept/extern과 static은 무엇이 다르고 왜 중요한가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/build-and-linking/concept/extern과 static은 무엇이 다르고 왜 중요한가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/build-and-linking/concept/오브젝트 파일과 심볼이란 무엇인가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/build-and-linking/concept/오브젝트 파일과 심볼이란 무엇인가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/build-and-linking/concept/정적 라이브러리와 동적 라이브러리는 무엇이 다른가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/build-and-linking/concept/정적 라이브러리와 동적 라이브러리는 무엇이 다른가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/build-and-linking/concept/컴파일  어셈블  링크의 전체 흐름.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/build-and-linking/concept/컴파일  어셈블  링크의 전체 흐름.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/build-and-linking/concept/헤더 파일과 선언 정의 분리는 왜 필요한가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/build-and-linking/concept/헤더 파일과 선언 정의 분리는 왜 필요한가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/dynamic-memory/concept/스택과 힙의 차이.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/dynamic-memory/concept/스택과 힙의 차이.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/dynamic-memory/deep-dive/malloc과 free는 실제로 무엇을 하는가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/dynamic-memory/deep-dive/malloc과 free는 실제로 무엇을 하는가.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_foundations/languages/c/learning-path/concept/c는 왜 bottom-up으로 공부해야 하는가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/learning-path/concept/c는 왜 bottom-up으로 공부해야 하는가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/memory-model/concept/bitwise 연산과 shift는 실무에서 어떻게 연결되는가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/memory-model/concept/bitwise 연산과 shift는 실무에서 어떻게 연결되는가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/memory-model/concept/const는 무엇을 제한하는가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/memory-model/concept/const는 무엇을 제한하는가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/memory-model/concept/c의 타입 시스템은 어떻게 이루어져 있는가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/memory-model/concept/c의 타입 시스템은 어떻게 이루어져 있는가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/memory-model/concept/effective type은 무엇인가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/memory-model/concept/effective type은 무엇인가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/memory-model/concept/integer promotion은 왜 헷갈리는가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/memory-model/concept/integer promotion은 왜 헷갈리는가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/memory-model/concept/lvalue와 rvalue는 c에서 어떻게 이해해야 하는가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/memory-model/concept/lvalue와 rvalue는 c에서 어떻게 이해해야 하는가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/memory-model/concept/memcpy는 왜 타입 재해석의 기준점이 되는가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/memory-model/concept/memcpy는 왜 타입 재해석의 기준점이 되는가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/memory-model/concept/signed unsigned 변환은 왜 위험한가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/memory-model/concept/signed unsigned 변환은 왜 위험한가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/memory-model/concept/sizeof는 무엇을 알려주고 무엇을 숨기는가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/memory-model/concept/sizeof는 무엇을 알려주고 무엇을 숨기는가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/memory-model/concept/구조체는 메모리에 어떻게 배치되는가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/memory-model/concept/구조체는 메모리에 어떻게 배치되는가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/memory-model/concept/문자와 문자열은 왜 구분해서 이해해야 하는가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/memory-model/concept/문자와 문자열은 왜 구분해서 이해해야 하는가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/memory-model/concept/배열은 언제 포인터로 decay되는가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/memory-model/concept/배열은 언제 포인터로 decay되는가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/memory-model/concept/변수는 메모리 관점에서 무엇인가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/memory-model/concept/변수는 메모리 관점에서 무엇인가.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_foundations/languages/c/memory-model/concept/비트  바이트  주소란 무엇인가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/memory-model/concept/비트  바이트  주소란 무엇인가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/memory-model/concept/전처리기는 컴파일 전에 무엇을 하는가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/memory-model/concept/전처리기는 컴파일 전에 무엇을 하는가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/memory-model/concept/포인터의 포인터는 왜 필요한가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/memory-model/concept/포인터의 포인터는 왜 필요한가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/memory-model/concept/함수 인자는 왜 값으로 전달되는가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/memory-model/concept/함수 인자는 왜 값으로 전달되는가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/memory-model/deep-dive/strict aliasing은 왜 어려운가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/memory-model/deep-dive/strict aliasing은 왜 어려운가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/memory-model/deep-dive/union 기반 재해석은 어디까지 믿을 수 있는가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/memory-model/deep-dive/union 기반 재해석은 어디까지 믿을 수 있는가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/memory-model/deep-dive/정수는 메모리에 어떻게 저장되는가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/memory-model/deep-dive/정수는 메모리에 어떻게 저장되는가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/memory-model/deep-dive/함수 호출 시 스택에서는 무슨 일이 일어나는가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/memory-model/deep-dive/함수 호출 시 스택에서는 무슨 일이 일어나는가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/memory-safety/deep-dive/undefined behavior는 왜 위험한가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/memory-safety/deep-dive/undefined behavior는 왜 위험한가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/memory-safety/deep-dive/use-after-free는 왜 치명적인가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/memory-safety/deep-dive/use-after-free는 왜 치명적인가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/memory-safety/deep-dive/버퍼 오버플로우는 어떻게 생기는가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/memory-safety/deep-dive/버퍼 오버플로우는 어떻게 생기는가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/performance-model/deep-dive/aos와 soa는 무엇이 다르고 언제 중요한가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/performance-model/deep-dive/aos와 soa는 무엇이 다르고 언제 중요한가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/performance-model/deep-dive/c 코드의 성능은 무엇으로 결정되는가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/performance-model/deep-dive/c 코드의 성능은 무엇으로 결정되는가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/performance-model/deep-dive/struct padding과 alignment는 왜 중요한가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/performance-model/deep-dive/struct padding과 alignment는 왜 중요한가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/performance-model/deep-dive/캐시 친화적 접근은 왜 빠른가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/performance-model/deep-dive/캐시 친화적 접근은 왜 빠른가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/pointer-model/concept/문자열 리터럴과 char 배열의 차이.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/pointer-model/concept/문자열 리터럴과 char 배열의 차이.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/pointer-model/concept/포인터 타입은 왜 중요한가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/pointer-model/concept/포인터 타입은 왜 중요한가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/pointer-model/concept/포인터란 무엇인가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/pointer-model/concept/포인터란 무엇인가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/pointer-model/deep-dive/배열과 포인터는 왜 비슷하면서 다른가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/pointer-model/deep-dive/배열과 포인터는 왜 비슷하면서 다른가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/struct-layout/deep-dive/offsetof와 struct layout을 어떻게 확인하는가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/struct-layout/deep-dive/offsetof와 struct layout을 어떻게 확인하는가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/struct-layout/deep-dive/packed struct는 왜 위험할 수 있는가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/struct-layout/deep-dive/packed struct는 왜 위험할 수 있는가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/system-interface/deep-dive/파일 입출력은 내부적으로 어떻게 동작하는가.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/system-interface/deep-dive/파일 입출력은 내부적으로 어떻게 동작하는가.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/c/system-interface/deep-dive/표준 라이브러리와 시스템 콜의 차이.md" beforeDir="false" afterPath="$PROJECT_DIR$/_foundations/languages/c/system-interface/deep-dive/표준 라이브러리와 시스템 콜의 차이.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/javascript/closure/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_foundations/languages/python/object-model/index.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_includes/doc-pagination.html" beforeDir="false" afterPath="$PROJECT_DIR$/_includes/doc-pagination.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/writing-guide.md" beforeDir="false" afterPath="$PROJECT_DIR$/pages/writing-guide.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/repo_structure.txt" beforeDir="false" afterPath="$PROJECT_DIR$/repo_structure.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/concept.md" beforeDir="false" afterPath="$PROJECT_DIR$/templates/concept.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/deep-dive.md" beforeDir="false" afterPath="$PROJECT_DIR$/templates/deep-dive.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/project-log.md" beforeDir="false" afterPath="$PROJECT_DIR$/templates/project-log.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/research-note.md" beforeDir="false" afterPath="$PROJECT_DIR$/templates/research-note.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/troubleshooting.md" beforeDir="false" afterPath="$PROJECT_DIR$/templates/troubleshooting.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +84,7 @@
       <workItem from="1773032524985" duration="73107000" />
       <workItem from="1773548992766" duration="15339000" />
       <workItem from="1773583848633" duration="3549000" />
-      <workItem from="1773587855914" duration="29564000" />
+      <workItem from="1773587855914" duration="40926000" />
     </task>
     <servers />
   </component>

@@ -36,7 +36,7 @@ tags: [c, memcpy, effective-type, strict-aliasing, object-representation, type-p
 
 ## 먼저 큰 그림부터
 
-많은 초보자는 이렇게 생각하기 쉽다.
+처음 이 문제를 접하면 이렇게 생각하기 쉽다.
 
 - `float`의 비트를 보고 싶다
 - 그럼 그냥 `int *`로 캐스팅해서 읽으면 되지 않나

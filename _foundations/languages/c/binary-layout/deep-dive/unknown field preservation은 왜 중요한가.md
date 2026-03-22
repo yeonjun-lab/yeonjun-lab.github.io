@@ -26,7 +26,7 @@ schema evolution과 versioning까지 이해했다면, 그다음에는 아주 실
 - gateway, proxy, relay 같은 중간 계층은 자기에게 불필요한 필드를 어떻게 다뤄야 하는가
 - unknown field를 skip하는 것과 preservation하는 것은 무엇이 다른가
 
-초보자는 보통 이렇게 생각한다.
+처음 이 문제를 접하면 이렇게 생각하기 쉽다.
 
 - 모르는 필드는 어차피 내 코드가 못 쓰니 버려도 된다
 - unknown field skip만 되면 forward compatibility는 충분하다

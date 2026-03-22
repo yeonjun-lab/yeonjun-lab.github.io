@@ -30,7 +30,7 @@ tags: [c, serialization, schema-evolution, compatibility, protocol, tlv, version
 
 이 문제를 다루는 핵심 개념이 바로 **schema evolution**이다.
 
-초보자는 종종 포맷을 이렇게 생각한다.
+처음 포맷을 설계하면 이렇게 생각하기 쉽다.
 
 - 지금 필요한 필드를 정의한다
 - 저장한다

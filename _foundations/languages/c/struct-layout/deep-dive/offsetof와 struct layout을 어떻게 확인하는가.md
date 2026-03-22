@@ -30,7 +30,7 @@ tags: [c, struct, offsetof, memory-layout, padding, alignment, debugging]
 
 여기서 중요한 도구가 바로 `offsetof`다.
 
-초보자는 구조체 레이아웃을 머릿속으로만 계산하려는 경우가 많다.  
+처음 배우는 사람은 구조체 레이아웃을 머릿속으로만 계산하려는 경우가 많다.  
 예를 들어 다음을 보고:
 
 ```c

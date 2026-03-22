@@ -29,7 +29,7 @@ fuzzing, coverage-guided fuzzing, grammar-aware fuzzing까지 보면
 
 여기서 중요한 기법이 바로 **differential fuzzing**이다.
 
-초보자는 테스트 oracle을 보통 이렇게 생각한다.
+처음 배우는 사람은 테스트 oracle을 보통 이렇게 생각한다.
 
 - 입력이 있으면 정답 출력이 있다
 - 그 정답과 비교하면 된다

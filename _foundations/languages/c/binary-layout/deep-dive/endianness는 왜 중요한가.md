@@ -22,7 +22,7 @@ tags: [c, endianness, binary-layout, memory, serialization, abi, systems]
 C를 어느 정도 배우고 나면 메모리와 값의 차이, 정수 저장 방식, 구조체 레이아웃, packed struct 같은 주제를 보게 된다.  
 그 다음 단계에서 반드시 만나게 되는 것이 **endianness**다.
 
-초보자는 보통 숫자를 이렇게 생각한다.
+처음 배우는 사람은 보통 숫자를 이렇게 생각한다.
 
 - 32비트 정수는 그냥 4바이트 값이다
 - 메모리에 저장되든 레지스터에 있든 같은 숫자다

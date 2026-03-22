@@ -64,16 +64,11 @@ yeonjun-lab.github.io/
 │  │  ├─ java/
 │  │  │  └─ index.md
 │  │  ├─ python/
-│  │  │  ├─ index.md
-│  │  │  └─ object-model/
-│  │  │     ├─ index.md
-│  │  │     └─ mutable-immutable.md
+│  │  │  └─ index.md
 │  │  ├─ r/
 │  │  │  └─ index.md
 │  │  └─ javascript/
-│  │     ├─ index.md
-│  │     └─ closure/
-│  │        └─ index.md
+│  │     └─ index.md
 │  │
 │  ├─ cs/
 │  │  ├─ index.md

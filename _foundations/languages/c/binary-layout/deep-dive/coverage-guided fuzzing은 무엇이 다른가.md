@@ -28,7 +28,7 @@ tags: [c, fuzzing, coverage-guided-fuzzing, parser, testing, robustness, safety]
 - seed corpus가 왜 중요한가
 - parser 깊은 내부 상태까지 어떻게 들어가는가
 
-초보자는 fuzzing을 종종 이렇게 생각한다.
+처음 fuzzing을 접하면 이렇게 생각하기 쉽다.
 
 - 입력을 무작위로 막 만든다
 - 프로그램에 넣는다

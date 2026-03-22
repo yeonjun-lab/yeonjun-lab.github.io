@@ -29,7 +29,7 @@ tags: [c, performance-safety, data-layout, aos, soa, cache, memory, performance]
 - AoS: Array of Structures
 - SoA: Structure of Arrays
 
-초보자는 종종 이 차이를 단순 문법 차이 정도로 본다.
+처음 배우는 사람은 이 차이를 단순 문법 차이 정도로 보기 쉽다.
 
 - 구조체 배열이냐
 - 배열 여러 개냐
