@@ -40,9 +40,25 @@
     json: "JSON",
     yaml: "YAML",
     yml: "YAML",
+    toml: "TOML",
+    ini: "INI",
+    conf: "Config",
+    cfg: "Config",
+    dotenv: "dotenv",
+    env: "dotenv",
     xml: "XML",
+    text: "Text",
+    txt: "Text",
+    plaintext: "Text",
     markdown: "Markdown",
     md: "Markdown",
+    console: "Console",
+    terminal: "Terminal",
+    "shell-session": "Shell",
+    http: "HTTP",
+    nginx: "Nginx",
+    diff: "Diff",
+    patch: "Patch",
     dockerfile: "Dockerfile",
     makefile: "Makefile"
   };
@@ -93,9 +109,21 @@
     }, 1800);
   }
 
+  function findLanguageClass(node) {
+    let current = node;
+
+    while (current && current !== docContent) {
+      const classList = Array.from(current.classList || []);
+      const languageClass = classList.find((cls) => cls.startsWith("language-"));
+      if (languageClass) return languageClass;
+      current = current.parentElement;
+    }
+
+    return "";
+  }
+
   function extractLanguage(code) {
-    const classList = Array.from(code.classList);
-    const languageClass = classList.find((cls) => cls.startsWith("language-"));
+    const languageClass = findLanguageClass(code);
     if (!languageClass) return "";
 
     const raw = languageClass.replace("language-", "").toLowerCase().trim();
